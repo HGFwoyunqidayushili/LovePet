@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:id="@+id/messages"
+        android:icon="@mipmap/messages"
+        android:title="消息"/>
+    <item
+
+        android:id="@+id/pet"
+        android:icon="@mipmap/pet"
+        android:title="宠物"/>
+    <item
+
+        android:id="@+id/order_details"
+        android:icon="@mipmap/order_details"
+        android:title="订单"/>
+    <item
+
+        android:id="@+id/collection_account"
+        android:icon="@mipmap/collection_account"
+        android:title="钱包"/>
+    <item
+
+        android:id="@+id/about"
+        android:icon="@mipmap/about"
+        android:title="需知"/>
+    <item
+
+        android:id="@+id/perfect_information"
+        android:icon="@mipmap/perfect_information"
+        android:title="设置"/>
+</menu>
