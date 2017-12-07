@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity {
         initView();//寻找控件
         initData();//点击跳转到各个界面
         //分支
+        //继续上传
     }
     @Override
     protected void initView() {
