@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity {
         setContentView(getLayoutId());//加载布局
         initView();//寻找控件
         initData();//点击跳转到各个界面
+        //分支
     }
     @Override
     protected void initView() {
