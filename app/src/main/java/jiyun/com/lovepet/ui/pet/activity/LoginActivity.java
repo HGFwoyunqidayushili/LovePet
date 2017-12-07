@@ -32,7 +32,7 @@ public class LoginActivity extends BaseActivity {
     TextView tvChart;
     @Bind(R.id.tv_qq)
     TextView tvQq;
-
+//111
 
     @Override
     protected void initView() {

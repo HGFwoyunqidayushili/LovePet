@@ -58,7 +58,7 @@ public class WeChatActivity extends BaseActivity implements View.OnClickListener
     protected void initData() {
 
     }
-
+//111
 
     @Override
     protected int getLayoutId() {

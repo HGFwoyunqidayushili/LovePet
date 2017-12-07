@@ -28,7 +28,7 @@ public class BingPhoneActivity extends BaseActivity implements View.OnClickListe
     private EditText et_pass;
     private EditText et_num_pass;
     private Button btn_et_sure;
-
+//hh
     @Override
     protected void initView() {
         bindphone = findViewById(R.id.bindphone);

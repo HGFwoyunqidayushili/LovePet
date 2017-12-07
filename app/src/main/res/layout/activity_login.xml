@@ -115,7 +115,8 @@
                 android:background="@android:color/transparent"
                 android:drawableTop="@mipmap/login_weixin"
                 android:gravity="center"
-                android:text="微信" />
+                android:text="微信"
+                android:textColor="@color/colorFont" />
 
             <TextView
                 android:id="@+id/tv_qq"
@@ -126,7 +127,8 @@
                 android:background="@android:color/transparent"
                 android:drawableTop="@mipmap/login_qq"
                 android:gravity="center"
-                android:text="手机QQ" />
+                android:text="手机QQ"
+                android:textColor="@color/colorFont" />
         </RelativeLayout>
 
     </LinearLayout>
