@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity {
         initData();//点击跳转到各个界面
         //分支
         //继续上传
+        //再次急=进行上传
     }
     @Override
     protected void initView() {
