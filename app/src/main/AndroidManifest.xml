@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".ui.order.activity.MyOrderActivity" />
         <activity android:name=".ui.BaseActivity" />
-        <activity android:name=".ui.pet.activity.MyPetActivity"></activity>
+        <activity android:name=".ui.pet.activity.MyPetActivity" />
+        <activity android:name=".ui.liuActivity"></activity>
     </application>
 
 </manifest>
