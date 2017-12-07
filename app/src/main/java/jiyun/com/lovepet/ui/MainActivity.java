@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity {
         //继续上传
         //再次急=进行上传
         //fffffffffffff
+        //33333333333
     }
     @Override
     protected void initView() {
