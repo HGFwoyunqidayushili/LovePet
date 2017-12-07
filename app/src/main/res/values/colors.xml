@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorLightGray">#DCDCDC</color>
     <color name="transparent">#00000000</color> <!-- 透明 -->
+    <color name="black">#353535</color>
+    <color name="orange">#FFD600</color>
+    <color name="white">#FFFFFF</color>
 </resources>

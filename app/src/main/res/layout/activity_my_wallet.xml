@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    tools:context="jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity">
+    <jiyun.com.lovepet.utils.CustomTextLayout
+        app:leftImgWight="30px"
+        app:leftImgHeight="30px"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:id="@+id/App_title"
+        app:centerTvSize="25px"
+        app:rightTvSize="20px"
+        app:leftImgMarginleft="5px"
+        app:rightTvMarginright="30px"
+        ></jiyun.com.lovepet.utils.CustomTextLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.1px"
+        android:background="@color/colorLightGray"
+        />
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+          android:orientation="vertical"
+        android:background="@color/white"
+        >
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+           android:text="钱包余额"
+          android:textSize="30px"
+         android:layout_gravity="center_horizontal"
+         android:layout_marginTop="50px"
+
+         />
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+          android:id="@+id/tv_Balance"
+           android:textSize="40px"
+          android:text="160.00元"
+           android:textColor="@color/orange"
+         android:layout_gravity="center_horizontal"
+          android:layout_marginTop="25px"
+         />
+
+     <LinearLayout
+         android:background="@color/white"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+          android:layout_marginTop="30px"
+         android:gravity="center_horizontal"
+         >
+         <TextView
+             android:layout_width="180px"
+              android:layout_height="70px"
+               android:layout_marginLeft="80px"
+               android:layout_marginRight="20px"
+              android:text="充值"
+             android:gravity="center"
+              android:textSize="30px"
+              android:background="@drawable/textviewshape"
+             />
+         <TextView
+             android:layout_width="180px"
+             android:layout_height="70px"
+             android:layout_marginRight="80px"
+            android:layout_marginLeft="20px"
+             android:text="提现"
+             android:gravity="center"
+             android:textSize="30px"
+             android:background="@drawable/tixian"
+             />
+
+     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30px"
+             android:background="@color/white"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70px"
+         android:background="@color/white"
+          android:layout_marginTop="40px"
+
+        >
+        <TextView
+            android:layout_width="50px"
+            android:layout_height="50px"
+              android:background="@mipmap/alipay"
+             android:layout_marginLeft="20px"
+              android:id="@+id/zhifubao"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+               android:layout_toRightOf="@+id/zhifubao"
+            android:text="我的支付宝"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50px"
+            android:textColor="@color/black"
+
+
+            />
+        <TextView
+            android:layout_width="30px"
+            android:layout_height="30px"
+             android:background="@mipmap/enter"
+             android:layout_alignParentRight="true"
+              android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLightGray"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70px"
+        android:background="@color/white"
+
+
+        >
+        <TextView
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:background="@mipmap/coupon"
+            android:layout_marginLeft="20px"
+            android:id="@+id/youhuijquan"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/youhuijquan"
+            android:text="我的优惠券"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50px"
+            android:textColor="@color/black"
+
+
+            />
+        <TextView
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:background="@mipmap/enter"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLightGray"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70px"
+        android:background="@color/white"
+
+
+        >
+        <TextView
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:background="@mipmap/integral"
+            android:layout_marginLeft="20px"
+            android:id="@+id/jifen"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/jifen"
+            android:text="我的积分"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50px"
+            android:textColor="@color/black"
+
+
+            />
+        <TextView
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:background="@mipmap/enter"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
