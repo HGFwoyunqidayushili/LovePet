@@ -7,7 +7,7 @@
     android:background="@color/colorBlue"
     android:orientation="vertical"
     tools:context="jiyun.com.lovepet.ui.pet.activity.BingPhoneActivity">
-
+//hhhh
     <include
         android:id="@+id/bindphone"
         layout="@layout/activity_toolbar" />
