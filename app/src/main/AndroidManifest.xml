@@ -11,6 +11,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+ 
+        <activity android:name=".ui.pet.activity.LoginActivity">
+
         <activity android:name=".ui.HomeActivity">
         <activity android:name=".ui.BaseActivity" />
         <activity android:name=".ui.pet.activity.MyPetActivity" />
@@ -22,6 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.pet.activity.BingPhoneActivity" />
+        <activity android:name=".ui.pet.activity.ToolbarActivity" />
+        <activity android:name=".ui.pet.activity.WeChatActivity" />
+        <activity android:name=".ui.pet.activity.RegisterActivity"></activity>
     </application>
 
 </manifest>
