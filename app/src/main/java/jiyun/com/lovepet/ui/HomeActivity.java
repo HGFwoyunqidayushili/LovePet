@@ -69,6 +69,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        //跳转到各个页面!
        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(MenuItem item) {
@@ -101,7 +102,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_home;
     }
 
 

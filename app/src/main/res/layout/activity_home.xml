@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.HomeActivity"
     android:orientation="vertical">
+    <!--主体部分-->
     <include
         android:id="@+id/queView"
         layout="@layout/homeiteam"
