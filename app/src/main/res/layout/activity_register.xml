@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="jiyun.com.lovepet.ui.pet.activity.RegisterActivity">
 
     <include
         android:id="@+id/title"
@@ -25,39 +25,45 @@
             android:textColor="@color/colorLightGray"
             android:textSize="30sp" />
 
-        <EditText
-            android:id="@+id/et_login_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:hint="@string/login_hint_phone"
-            android:textColor="@color/white"
-            android:textColorHint="@color/colorFont" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
             <EditText
-                android:id="@+id/et_login_pass"
+                android:id="@+id/et_bind_phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/login_hint_pass"
-                android:inputType="textPassword"
-                android:textColor="@color/white"
-                android:textColorHint="@color/colorFont" />
+                android:hint="@string/bind_phone" />
 
             <TextView
-                android:id="@+id/tv_forget_password"
+                android:id="@+id/hqyzm"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:gravity="center_vertical"
-                android:text="@string/login_forget_password"
-                android:textColor="@color/orange" />
-
-
+                android:layout_centerVertical="true"
+                android:background="@drawable/hqyzm"
+                android:padding="5dp"
+                android:text="@string/bind_hqyzm" />
         </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_yanzhengma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/bind_et_yanzhengma" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/bind_et_name" />
+
+
+        <EditText
+            android:id="@+id/et_num_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/bind_et_num_pass" />
 
         <Button
             android:id="@+id/btn_login"
@@ -65,7 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/login_shap"
-            android:text="@string/login_btn_login" />
+            android:text="@string/login_tv_registered"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -87,7 +94,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:text="@string/login_tv_text"
+                android:text="@string/register_tv_text"
                 android:textColor="@color/colorFont" />
 
             <View
@@ -130,4 +137,5 @@
         </RelativeLayout>
 
     </LinearLayout>
+
 </LinearLayout>

@@ -32,16 +32,10 @@ public class LoginActivity extends BaseActivity {
     TextView tvChart;
     @Bind(R.id.tv_qq)
     TextView tvQq;
-//111
+
 
     @Override
     protected void initView() {
-        //沉浸式状态栏
-//        View decorView = getWindow().getDecorView();
-//        int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
-//        decorView.setSystemUiVisibility(option);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.hide();
 
 
     }
@@ -57,7 +51,7 @@ public class LoginActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.tv_chart, R.id.tv_qq, R.id.tv_back})
+    @OnClick({R.id.tv_chart, R.id.tv_qq, R.id.tv_back, R.id.rv_registered})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_chart:
@@ -68,6 +62,9 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.tv_back:
                 finish();
+                break;
+            case R.id.rv_registered:
+              
                 break;
         }
     }
