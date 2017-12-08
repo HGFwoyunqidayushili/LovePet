@@ -9,5 +9,4 @@ import jiyun.com.lovepet.bean.HomeBean;
  */
 public interface Callbacks {
     void  setData(ArrayList<String> arrayList,ArrayList<String> arrayList2);
-
 }

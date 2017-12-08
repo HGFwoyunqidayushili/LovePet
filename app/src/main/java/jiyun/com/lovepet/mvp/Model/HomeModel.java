@@ -18,7 +18,6 @@ public class HomeModel implements InfHomeModel {
         ArrayList<String> strings2 = new ArrayList<>();
         strings2.add("好评优先");
         strings2.add("附近优先");
-
         strings2.add("订单优先");
         strings2.add("价格从低到高");
         strings2.add("价格从高到底");

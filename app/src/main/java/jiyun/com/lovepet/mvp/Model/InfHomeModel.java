@@ -5,6 +5,8 @@ package jiyun.com.lovepet.mvp.Model;
  */
 public interface InfHomeModel {
     void setDatafromPresenter(Callbacks callbacks);
+
+
 }
 
 
