@@ -13,7 +13,7 @@ import android.widget.Toast;
 import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.utils.CustomTextLayout;
 
-public class MainActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity {
 
     private NavigationView nav_view;
     private EditText editText;
@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "点击事件!用户换取图片!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "点击事件!用户换取图片!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "用户登录界面", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "用户登录界面", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -74,22 +74,22 @@ public class MainActivity extends BaseActivity {
            public boolean onNavigationItemSelected(MenuItem item) {
                switch (item.getItemId()){
                    case R.id.messages:
-                       Toast.makeText(MainActivity.this, "消息", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.pet:
-                       Toast.makeText(MainActivity.this, "宠物", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.order_details:
-                       Toast.makeText(MainActivity.this, "订单", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.collection_account:
-                       Toast.makeText(MainActivity.this, "钱包", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(HomeActivity.this, "钱包", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.about:
-                       Toast.makeText(MainActivity.this, "需知", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(HomeActivity.this, "需知", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.perfect_information:
-                       Toast.makeText(MainActivity.this, "设置", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
                        break;
 
                }

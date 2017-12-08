@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/draw"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.MainActivity"
+    tools:context=".ui.HomeActivity"
     android:orientation="vertical">
     <include
         android:id="@+id/queView"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity = "left"
-        app:menu="@menu/main">
+        app:menu="@menu/sideslip">
         <Button
             android:text="申请成为寄养家庭"
             android:background="#e59707"
