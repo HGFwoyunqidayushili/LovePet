@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!--主体内容-->
   <LinearLayout
@@ -18,7 +19,7 @@
     android:layout_height="wrap_content">
 
     <EditText
-          android:layout_width="wrap_content"
+          android:layout_width="300dp"
           android:layout_height="50dp"
           android:background="@drawable/rounded_edittext"
           android:hint="       地区/街道/小区"
@@ -40,47 +41,87 @@
           android:src="@mipmap/map"/>
 
   </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
         >
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/fuJin"
+    android:layout_weight="1"
+    android:text="附  近  优  先"
+    />
         <ToggleButton
+            android:id="@+id/shaixuan1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/a"
-            android:textOff="附近优先"
-            android:textOn="附近优先"
+            android:textOff=""
+            android:textOn=""
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/jiaGe"
+            android:text="宠  物  类  型"
+            />
+        <ToggleButton
+            android:id="@+id/shaixuan2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:drawableRight="@drawable/a"
+            android:textOff=""
+            android:textOn=""
 
-
+            />
+        <TextView
+            android:textSize="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="好  评  优  先"
             />
         <ToggleButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:drawableRight="@drawable/a"
-            android:textOff="附近优先"
-            android:textOn="附近优先"
+            android:layout_weight="3"
 
-            />
-        <ToggleButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/a"
-            android:textOff="附近优先"
-            android:textOn="附近优先"
+            android:textOff=""
+            android:textOn=""
             />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/colorLightGray"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <ListView
+        android:layout_width="388px"
+        android:layout_height="579px"
+        android:visibility="gone"
+        android:background="#6C6C6C"
+        android:id="@+id/listView1"></ListView>
+    <ListView
+        android:layout_width="388px"
+        android:layout_height="579px"
+        android:visibility="gone"
+        android:background="#6C6C6C"
+        android:id="@+id/listView2"></ListView>
+    </LinearLayout>
 </LinearLayout>
