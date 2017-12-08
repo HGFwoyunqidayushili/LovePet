@@ -21,6 +21,8 @@ public class HomeAdapter extends BaseAdapter {
     public HomeAdapter(ArrayList<String> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
+
+
     }
 
     @Override

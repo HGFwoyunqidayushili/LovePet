@@ -23,6 +23,8 @@ public class HomePresenter {
             @Override
             public void setData(ArrayList<String> arrayList, ArrayList<String> arrayList2) {
                 homeView.getData(arrayList,arrayList2);
+
+
             }
         });
     }

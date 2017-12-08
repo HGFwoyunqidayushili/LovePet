@@ -138,6 +138,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
             }
         });
 
+
+
     }
 
     @Override

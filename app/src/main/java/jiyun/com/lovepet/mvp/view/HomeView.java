@@ -7,4 +7,7 @@ import java.util.ArrayList;
  */
 public interface HomeView {
     void getData(ArrayList<String> arrayList, ArrayList<String> arrayList2);
+
+
+
 }

@@ -81,7 +81,6 @@
             android:drawableRight="@drawable/a"
             android:textOff=""
             android:textOn=""
-
             />
         <TextView
             android:textSize="15dp"
