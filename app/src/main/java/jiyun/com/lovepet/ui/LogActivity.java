@@ -3,14 +3,11 @@ package jiyun.com.lovepet.ui;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import jiyun.com.lovepet.R;
-
-public class liuActivity extends AppCompatActivity {
+public class LogActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liu);
-        //再次提交----z
+//        setContentView(R.layout.activity_main);
     }
 }
