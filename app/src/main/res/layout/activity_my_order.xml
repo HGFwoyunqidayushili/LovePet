@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="jiyun.com.lovepet.ui.order.activity.MyOrderActivity"
-      android:orientation="vertical"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="jiyun.com.lovepet.ui.order.activity.MyOrderActivity"
+    android:orientation="vertical">
+  <jiyun.com.lovepet.utils.CustomTextLayout
+      android:layout_width="match_parent"
+      android:layout_height="100px"
+      android:id="@+id/App_title"
+      app:centerTvSize="15dp"
+      ></jiyun.com.lovepet.utils.CustomTextLayout>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="0.1dp"
+      android:background="@color/colorLightGray"
+
+      />
   <android.support.design.widget.TabLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
        android:id="@+id/Tab_order"
+      app:tabIndicatorColor="@color/black"
       >
   </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager
