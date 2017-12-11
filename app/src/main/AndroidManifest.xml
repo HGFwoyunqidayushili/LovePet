@@ -11,24 +11,28 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
- 
-        <activity android:name=".ui.pet.activity.LoginActivity">
-
         <activity android:name=".ui.HomeActivity">
-        <activity android:name=".ui.BaseActivity" />
-        <activity android:name=".ui.pet.activity.MyPetActivity" />
-        <activity android:name=".ui.wallet.activity.MyWalletActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.pet.activity.BingPhoneActivity" />
-        <activity android:name=".ui.pet.activity.ToolbarActivity" />
-        <activity android:name=".ui.pet.activity.WeChatActivity" />
-        <activity android:name=".ui.pet.activity.RegisterActivity"></activity>
+        <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".ui.wallet.activity.MyWalletActivity" />
+        //个人信息
+        <activity android:name=".ui.personal.activity.BingPhoneActivity" />
+        <activity android:name=".ui.personal.activity.LoginActivity" />
+        <activity android:name=".ui.personal.activity.RegisterActivity" />
+        <activity android:name=".ui.personal.activity.ToolbarActivity" />
+        <activity android:name=".ui.personal.activity.WeChatActivity" />
+        <activity android:name=".ui.personal.activity.PersinalInfoActivity" />
+        //我的宠物
+        <activity android:name=".ui.pet.activity.MyPetActivity" />
+        <activity android:name=".ui.pet.activity.AddPetActivity" />
+        <activity android:name=".ui.pet.activity.PetkindActivity"></activity>
+        <activity android:name=".ui.order.activity.MyOrderActivity"></activity>
+        <activity android:name=".ui.pet.activity.NickNameActivity"></activity>
     </application>
 
 </manifest>

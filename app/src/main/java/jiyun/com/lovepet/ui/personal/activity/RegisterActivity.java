@@ -1,4 +1,4 @@
-package jiyun.com.lovepet.ui.pet.activity;
+package jiyun.com.lovepet.ui.personal.activity;
 
 import android.widget.Button;
 import android.widget.EditText;

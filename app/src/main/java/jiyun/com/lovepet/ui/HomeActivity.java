@@ -1,5 +1,6 @@
 package jiyun.com.lovepet.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -10,15 +11,25 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import jiyun.com.lovepet.Demo;
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.mvp.contract.Contract;
+import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
+import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
+import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
+import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements Contract.Views<Demo> {
 
     private NavigationView nav_view;
     private EditText editText;
     private ImageView imageView;
     private DrawerLayout draw;
+    private String URL_String="http://123.56.150.230:8885/dog_family/user/updateUserInfo.jhtml";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +62,8 @@ public class HomeActivity extends BaseActivity {
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "点击事件!用户换取图片!", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -62,15 +74,26 @@ public class HomeActivity extends BaseActivity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "用户登录界面", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
     @Override
     protected void initData() {
+        InfoPresenter infoPresenter=new InfoPresenter(this,this);
+        Map<String,String> map=new HashMap<>();
+        map.put("page","1");
+        map.put("code","news");
+        map.put("pageSize","20");
+        map.put("parentid","0");
+        map.put("type","1");
+
+          infoPresenter.getPostData(URL_String,map);
         //跳转到各个页面!
        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+           public Intent intent;
+
            @Override
            public boolean onNavigationItemSelected(MenuItem item) {
                switch (item.getItemId()){
@@ -78,12 +101,16 @@ public class HomeActivity extends BaseActivity {
                        Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.pet:
+                       intent=new Intent(HomeActivity.this, MyPetActivity.class);
+                       startActivity(intent);
                        Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.order_details:
-                       Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.collection_account:
+                       intent=new Intent(HomeActivity.this, MyWalletActivity.class);
+                       startActivity(intent);
+
                        Toast.makeText(HomeActivity.this, "钱包", Toast.LENGTH_SHORT).show();
                        break;
                    case R.id.about:
@@ -106,4 +133,14 @@ public class HomeActivity extends BaseActivity {
     }
 
 
+
+    @Override
+    public void success(Demo demo) {
+
+    }
+
+    @Override
+    public void failure(Throwable e) {
+
+    }
 }

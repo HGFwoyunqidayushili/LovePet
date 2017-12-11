@@ -20,4 +20,11 @@
       android:layout_height="0.1dp"
         android:background="@color/colorLightGray"
       />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+           android:id="@+id/add_pet"
+         android:text="添加宠物"
+        />
+
 </LinearLayout>

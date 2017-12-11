@@ -6,9 +6,9 @@
     <color name="black">#353535</color>
     <color name="orange">#FFD600</color>
     <color name="white">#FFFFFF</color>
-
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="qianhei">#4F4F4F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorKhaki">#FFD600</color>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="jiyun.com.lovepet.ui.pet.activity.PetkindActivity">
+   <jiyun.com.lovepet.utils.CustomTextLayout
+       android:layout_width="match_parent"
+       android:layout_height="100px"
+       android:id="@+id/App_title"
+       app:centerTvSize="15dp"
+       >
+ 
+   </jiyun.com.lovepet.utils.CustomTextLayout>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="60dp"
+       android:background="@color/colorFont"
+       >
+    <jiyun.com.lovepet.view.ClearEditText
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+
+         android:background="@drawable/editexit"
+          android:layout_centerInParent="true"
+         android:layout_marginRight="10px"
+          android:layout_marginLeft="10px"
+           android:hint="输入宠物品种查找"
+
+        android:gravity="center"
+        />
+   </RelativeLayout>
+  <android.support.design.widget.TabLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/Tab_layout"
+      app:tabIndicatorColor="@color/black"
+      >
+
+  </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+         android:layout_weight="1"
+         android:id="@+id/view_Pager"
+        ></android.support.v4.view.ViewPager>
+</LinearLayout>

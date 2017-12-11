@@ -3,6 +3,7 @@ package jiyun.com.lovepet.http.product;
 import android.content.Context;
 
 import java.lang.reflect.Type;
+import java.util.Map;
 
 import jiyun.com.lovepet.http.Callback.HttpCallBack;
 
@@ -12,4 +13,5 @@ import jiyun.com.lovepet.http.Callback.HttpCallBack;
 public abstract class RequestProduct<T> {
     public abstract void get(Context context, String page, Type type, HttpCallBack<T> httpCallBack);
     public abstract void post(Context context,String page, Type type , HttpCallBack<T> httpCallBack);
+    public abstract void post(Context context, String page, Map<String,String> map,Type type , HttpCallBack<T> httpCallBack);
 }
