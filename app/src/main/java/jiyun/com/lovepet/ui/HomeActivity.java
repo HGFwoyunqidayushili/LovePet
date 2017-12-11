@@ -11,19 +11,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import jiyun.com.lovepet.Demo;
 import jiyun.com.lovepet.R;
-import jiyun.com.lovepet.mvp.contract.Contract;
-import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
 
-public class HomeActivity extends BaseActivity implements Contract.Views<Demo> {
+public class HomeActivity extends BaseActivity  {
 
     private NavigationView nav_view;
     private EditText editText;
@@ -81,15 +75,8 @@ public class HomeActivity extends BaseActivity implements Contract.Views<Demo> {
 
     @Override
     protected void initData() {
-        InfoPresenter infoPresenter=new InfoPresenter(this,this);
-        Map<String,String> map=new HashMap<>();
-        map.put("page","1");
-        map.put("code","news");
-        map.put("pageSize","20");
-        map.put("parentid","0");
-        map.put("type","1");
 
-          infoPresenter.getPostData(URL_String,map);
+
         //跳转到各个页面!
        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
            public Intent intent;
@@ -134,13 +121,5 @@ public class HomeActivity extends BaseActivity implements Contract.Views<Demo> {
 
 
 
-    @Override
-    public void success(Demo demo) {
 
-    }
-
-    @Override
-    public void failure(Throwable e) {
-
-    }
 }

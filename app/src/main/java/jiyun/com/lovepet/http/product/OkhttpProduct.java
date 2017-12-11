@@ -33,7 +33,7 @@ public class OkhttpProduct<T> extends RequestProduct<T> {
             switch (msg.what){
                 case SUCCESS:
 
-                        httpCallBack.success((T) msg.obj);
+//                        httpCallBack.success((T) msg.obj);
 
                     break;
                 case FAILURE:
