@@ -1,16 +1,44 @@
 package jiyun.com.lovepet.ui.pet.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.route.RouteSearch;
 
 import jiyun.com.lovepet.R;
 //这个界面是向用户展示地图界面
 public class MapActivity extends AppCompatActivity {
 
     private MapView map;
+    private static final int BAIDU_READ_PHONE_STATE =100;
+    private MyLocationStyle myLocationStyle;
+
+    public void showContacts(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplicationContext(),"没有权限,请手动开启定位权限", Toast.LENGTH_SHORT).show();
+            // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
+            ActivityCompat.requestPermissions(MapActivity.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE}, BAIDU_READ_PHONE_STATE);
+        }else{
+            // init();
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +46,37 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         initView();
         map.onCreate(savedInstanceState);
-        AMap map = this.map.getMap();
+        final AMap aMap = this.map.getMap();
+        myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
+        myLocationStyle.interval(20000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
+        aMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
+        aMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示，非必需设置。
+        aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER);
+        myLocationStyle.showMyLocation(true);
+        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                RouteSearch routeSearch = new RouteSearch(MapActivity.this);
+                routeSearch.setRouteSearchListener((RouteSearch.OnRouteSearchListener) MapActivity.this);
+                //获取起点经纬度
+                Location myLocation = aMap.getMyLocation();
+                double latitude = myLocation.getLatitude();
+                double longitude = myLocation.getLongitude();
+                LatLonPoint latLonPoint = new LatLonPoint(latitude,longitude);
+
+                //获取终点的经纬度
+                LatLng position = marker.getPosition();
+                double latitude1 = position.latitude;
+                double longitude1 = position.longitude;
+                LatLonPoint latLonPoint1 = new LatLonPoint(latitude1,longitude1);
+                RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(latLonPoint,latLonPoint1);
+                RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DRIVING_MULTI_CHOICE_NO_HIGHWAY,null,null,"");
+                //发起请求
+                routeSearch.calculateDriveRouteAsyn(query);
+                return true;
+            }
+        });
 
 //
     }
@@ -49,7 +107,6 @@ public class MapActivity extends AppCompatActivity {
         map.onSaveInstanceState(outState);
     }
 
-//、、、、、、、、、、
     private void initView() {
         map = (MapView) findViewById(R.id.map);
     }
