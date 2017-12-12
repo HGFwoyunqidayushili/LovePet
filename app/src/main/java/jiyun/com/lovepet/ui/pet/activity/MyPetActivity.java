@@ -16,7 +16,7 @@ public class MyPetActivity extends BaseActivity {
         setContentView(R.layout.activity_my_pet);
         initView();
     }
-
+//
     @Override
     protected void initView() {
 
