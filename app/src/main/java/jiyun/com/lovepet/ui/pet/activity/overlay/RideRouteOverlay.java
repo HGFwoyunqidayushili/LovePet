@@ -11,13 +11,12 @@ import com.amap.api.maps.model.PolylineOptions;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.route.RidePath;
 import com.amap.api.services.route.RideStep;
-import com.jiyun.lenovo.gaodeditu.R;
-import com.jiyun.lenovo.gaodeditu.map.AMapUtil;
+
 
 import java.util.List;
 
-
-
+import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.ui.pet.activity.utils.AMapUtil;
 
 
 /**
@@ -29,7 +28,7 @@ public class RideRouteOverlay extends RouteOverlay {
 	private PolylineOptions mPolylineOptions;
 	
 	private BitmapDescriptor walkStationDescriptor= null;
-
+//
 	private RidePath ridePath;
 	/**
 	 * 通过此构造函数创建骑行路线图层。

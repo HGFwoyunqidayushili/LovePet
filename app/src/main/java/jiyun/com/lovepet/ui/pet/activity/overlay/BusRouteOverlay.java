@@ -137,6 +137,7 @@ public class BusRouteOverlay extends RouteOverlay {
 						addWalkPolyline(AMapUtil.convertToLatLng(getLastBuslinePoint(busStep)), endPoint);
 					}
 				}
+//
 				if (busStep.getRailway() != null) {
 					addRailwayStep(busStep.getRailway());
 					addRailwayMarkers(busStep.getRailway());

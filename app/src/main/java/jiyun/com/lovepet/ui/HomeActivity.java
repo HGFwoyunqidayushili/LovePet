@@ -41,7 +41,7 @@ public class HomeActivity extends BaseActivity  {
     private ToggleButton shaixuan3;
     private PopupWindow popupWindow3;
     private ImageView imagetIntentToMap;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

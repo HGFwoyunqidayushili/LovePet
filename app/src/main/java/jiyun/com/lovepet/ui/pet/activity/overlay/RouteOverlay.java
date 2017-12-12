@@ -93,6 +93,7 @@ public class RouteOverlay {
 	 * 给终点Marker设置图标，并返回更换图标的图片。如不用默认图片，需要重写此方法。
 	 * @return 更换的Marker图片。
 	 * @since V2.1.0
+//	 *
 	 */
 	protected BitmapDescriptor getEndBitmapDescriptor() {
 		return BitmapDescriptorFactory.fromResource(R.drawable.amap_end);

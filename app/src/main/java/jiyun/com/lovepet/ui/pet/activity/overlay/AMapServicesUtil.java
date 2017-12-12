@@ -43,6 +43,7 @@ class AMapServicesUtil {
 		}
 		return lineShapes;
 	}
+//
 	public static Bitmap zoomBitmap(Bitmap bitmap, float res) {
 		if (bitmap == null) {
 			return null;

@@ -35,7 +35,7 @@ public class AMapUtil {
 			return "";
 		}
 	}
-
+//
 	public static Spanned stringToSpan(String src) {
 		return src == null ? null : Html.fromHtml(src.replace("\n", "<br />"));
 	}

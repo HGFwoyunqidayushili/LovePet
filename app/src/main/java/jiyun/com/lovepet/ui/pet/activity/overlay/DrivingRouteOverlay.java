@@ -260,7 +260,7 @@ public class DrivingRouteOverlay extends RouteOverlay{
             }
         }
     }
-    
+//
     private BitmapDescriptor getThroughPointBitDes() {
     	return BitmapDescriptorFactory.fromResource(R.drawable.amap_through);
        

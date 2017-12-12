@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 import jiyun.com.lovepet.R;
-
+//
 public class AMapUtil {
 	/**
 	 * 判断edittext是否null

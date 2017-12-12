@@ -28,6 +28,7 @@ public class MapActivity extends AppCompatActivity {
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         map.onDestroy();
     }
+//
     @Override
     protected void onResume() {
         super.onResume();

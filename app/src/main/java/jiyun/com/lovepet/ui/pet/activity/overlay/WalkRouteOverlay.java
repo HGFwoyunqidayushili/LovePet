@@ -22,7 +22,7 @@ public class WalkRouteOverlay extends RouteOverlay {
     private PolylineOptions mPolylineOptions;
 
     private BitmapDescriptor walkStationDescriptor= null;
-
+//
     private WalkPath walkPath;
 	/**
 	 * 通过此构造函数创建步行路线图层。

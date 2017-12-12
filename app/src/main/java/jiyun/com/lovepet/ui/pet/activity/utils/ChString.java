@@ -10,7 +10,7 @@ public class ChString {
 	public static final String StartPlace = "\u51fa\u53d1\u5730";// "出发地";
 	public static final String About = "\u5927\u7ea6";// "大约";
 	public static final String Direction = "\u65b9\u5411";// "方向";
-
+//
 	public static final String GetOn = "\u4e0a\u8f66";// "上车";
 	public static final String GetOff = "\u4e0b\u8f66";// "下车";
 	public static final String Zhan = "\u7ad9";// "站";

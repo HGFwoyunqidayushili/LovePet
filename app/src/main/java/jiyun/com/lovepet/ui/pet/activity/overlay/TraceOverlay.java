@@ -21,7 +21,7 @@ public class TraceOverlay {
 	public static final int TRACE_STATUS_FINISH = 2;
 	public static final int TRACE_STATUS_FAILURE = 3;
 	public static final int TRACE_STATUS_PREPARE = 4;
-
+//
 	private int mTraceStatus = TRACE_STATUS_PREPARE;
 	private int mDistance;
 	private int mWaitTime;

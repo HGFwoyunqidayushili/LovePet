@@ -171,7 +171,7 @@ public class BusLineOverlay {
         endBit = BitmapDescriptorFactory.fromResource(R.drawable.amap_end);
         return endBit;
     }
-
+//
     protected BitmapDescriptor getBusBitmapDescriptor() {
         busBit = BitmapDescriptorFactory.fromResource(R.drawable.amap_bus);
         return busBit;
