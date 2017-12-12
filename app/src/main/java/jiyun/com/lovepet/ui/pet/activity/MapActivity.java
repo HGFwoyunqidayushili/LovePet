@@ -29,6 +29,7 @@ public class MapActivity extends AppCompatActivity {
         map.onDestroy();
     }
 //
+//
     @Override
     protected void onResume() {
         super.onResume();
@@ -48,7 +49,7 @@ public class MapActivity extends AppCompatActivity {
         map.onSaveInstanceState(outState);
     }
 
-
+//、、、、、、、、、、
     private void initView() {
         map = (MapView) findViewById(R.id.map);
     }
