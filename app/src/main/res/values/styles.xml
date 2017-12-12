@@ -21,4 +21,8 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 设置屏幕变暗 -->
     </style>
+    <style name="mypopupwindow">
+        <item name="android:windowEnterAnimation">@anim/enter</item>
+        <item name="android:windowExitAnimation">@anim/exit</item>
+    </style>
 </resources>

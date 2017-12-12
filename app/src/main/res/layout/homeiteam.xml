@@ -11,7 +11,7 @@
 <ImageView
     android:id="@+id/userXinXi"
     android:layout_width="0dp"
-    android:layout_weight="0.5"
+    android:layout_weight="0.44"
     android:layout_height="wrap_content"
     android:src="@mipmap/my"/>
 <RelativeLayout
@@ -19,30 +19,25 @@
     android:layout_height="wrap_content">
 
     <EditText
-          android:layout_width="300dp"
+          android:layout_width="200dp"
           android:layout_height="50dp"
           android:background="@drawable/rounded_edittext"
-          android:hint="       地区/街道/小区"
+          android:hint="地区/街道/小区"
           android:id="@+id/editText" />
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@mipmap/search"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/imageView" />
+
 </RelativeLayout>
       <ImageView
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:layout_weight="0.5"
+          android:id="@+id/intentTo_Map"
+          android:layout_weight="0.45"
           android:src="@mipmap/map"/>
 
   </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_home"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -52,14 +47,15 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/fuJin"
-    android:layout_weight="1"
-    android:text="附  近  优  先"
+    android:textSize="20dp"
+    android:layout_weight="0.2"
+    android:text="宠  物  类  型"
     />
         <ToggleButton
             android:id="@+id/shaixuan1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_height="30dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/a"
             android:textOff=""
@@ -68,32 +64,35 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.2"
+            android:textSize="20dp"
             android:id="@+id/jiaGe"
-            android:text="宠  物  类  型"
+            android:text="附  近  优  先"
             />
+
         <ToggleButton
             android:id="@+id/shaixuan2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_height="30dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/a"
             android:textOff=""
             android:textOn=""
             />
+
         <TextView
-            android:textSize="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="好  评  优  先"
+            android:textSize="20dp"
+            android:layout_weight="0.2"
+            android:text="筛   选"
             />
         <ToggleButton
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:id="@+id/shaixuan3"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/a"
             android:textOff=""
@@ -110,17 +109,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <ListView
-        android:layout_width="388px"
-        android:layout_height="579px"
-        android:visibility="gone"
-        android:background="#6C6C6C"
-        android:id="@+id/listView1"></ListView>
-    <ListView
-        android:layout_width="388px"
-        android:layout_height="579px"
-        android:visibility="gone"
-        android:background="#6C6C6C"
-        android:id="@+id/listView2"></ListView>
     </LinearLayout>
 </LinearLayout>

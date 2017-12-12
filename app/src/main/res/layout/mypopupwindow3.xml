@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="所在地" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/enter" />
+
+        <TextView
+            android:id="@+id/intent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="33dp"
+            android:layout_marginRight="33dp"
+            android:gravity="center"
+            android:text="选择其他城市" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/current_city"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:background="@drawable/checkbox"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="北京" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C2C3C6"></View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="其他服务" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/take_a_bath"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="洗澡" />
+
+        <CheckBox
+            android:id="@+id/pick_up"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="接/送" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="节假日筛选" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/new_Year_s_Day"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="元旦可接单" />
+
+        <CheckBox
+            android:id="@+id/chinese_New_Year"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="春节可接单" />
+
+        <CheckBox
+
+            android:id="@+id/ching_Ming_Festival"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="清明节可接单" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/labor_day"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="劳动节可接单" />
+
+        <CheckBox
+            android:id="@+id/dragon_Boat_Festival"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="端午节可接单" />
+
+        <CheckBox
+            android:id="@+id/mid_Autumn_Festival"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/checkbox"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="中秋节可接单" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/national_Day"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/checkbox"
+        android:button="@null"
+        android:checked="true"
+        android:gravity="center"
+        android:text="国庆节可接单" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="#fff"
+        android:gravity="center"
+        android:text="重置" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="#FFD600"
+            android:text="确定" />
+    </RelativeLayout>
+</LinearLayout>
