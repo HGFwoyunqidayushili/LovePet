@@ -30,6 +30,7 @@ public class RideRouteOverlay extends RouteOverlay {
 	private BitmapDescriptor walkStationDescriptor= null;
 //
 //
+	//
 	private RidePath ridePath;
 	/**
 	 * 通过此构造函数创建骑行路线图层。

@@ -35,7 +35,8 @@ class AMapServicesUtil {
 	public static LatLng convertToLatLng(LatLonPoint latLonPoint) {
 		return new LatLng(latLonPoint.getLatitude(), latLonPoint.getLongitude());
 	}
-//
+
+	//
 	public static ArrayList<LatLng> convertArrList(List<LatLonPoint> shapes) {
 		ArrayList<LatLng> lineShapes = new ArrayList<LatLng>();
 		for (LatLonPoint point : shapes) {

@@ -16,6 +16,7 @@ public class ChString {
 	public static final String Zhan = "\u7ad9";// "站";
 //
 //
+	//
 	public static final String cross = "\u4ea4\u53c9\u8def\u53e3"; // 交叉路口
 	public static final String type = "\u7c7b\u522b"; // 类别
 	public static final String address = "\u5730\u5740"; // 地址

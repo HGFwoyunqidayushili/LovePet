@@ -139,6 +139,7 @@ public class BusRouteOverlay extends RouteOverlay {
 				}
 //
 //
+				//
 				if (busStep.getRailway() != null) {
 					addRailwayStep(busStep.getRailway());
 					addRailwayMarkers(busStep.getRailway());

@@ -87,7 +87,7 @@ public class MapActivity extends AppCompatActivity {
         map.onDestroy();
     }
 //
-//
+
     @Override
     protected void onResume() {
         super.onResume();
