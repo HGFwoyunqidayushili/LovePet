@@ -88,6 +88,7 @@ public class MapActivity extends AppCompatActivity {
     }
 //
 //
+//
     @Override
     protected void onResume() {
         super.onResume();
