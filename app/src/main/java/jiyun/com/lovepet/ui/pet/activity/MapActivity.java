@@ -20,7 +20,7 @@ public class MapActivity extends AppCompatActivity {
         map.onCreate(savedInstanceState);
         AMap map = this.map.getMap();
 
-
+//
     }
     @Override
     protected void onDestroy() {
