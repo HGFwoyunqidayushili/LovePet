@@ -52,9 +52,6 @@ public class HomeActivity extends BaseActivity  {
 
     }
 
-    private void initPopupOne() {
-
-    }
 
     private void initLinnser() {
 

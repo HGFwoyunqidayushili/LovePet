@@ -95,6 +95,8 @@ public class RouteOverlay {
 	 * @since V2.1.0
 //	 *
 	 */
+//
+//
 	protected BitmapDescriptor getEndBitmapDescriptor() {
 		return BitmapDescriptorFactory.fromResource(R.drawable.amap_end);
 	}
