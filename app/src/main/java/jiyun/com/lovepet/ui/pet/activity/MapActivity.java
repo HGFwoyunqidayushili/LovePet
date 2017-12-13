@@ -103,7 +103,8 @@ public class MapActivity extends AppCompatActivity {
     }
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+        super.onSaveInstanceState
+                (outState);
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         map.onSaveInstanceState(outState);
     }
