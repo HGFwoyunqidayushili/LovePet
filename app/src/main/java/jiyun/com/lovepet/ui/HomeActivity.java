@@ -149,6 +149,8 @@ public class HomeActivity extends BaseActivity  {
             }
         });
     }
+//
+//
 
     private void initLogin() {
         viewById1 = findViewById(R.id.queView);
