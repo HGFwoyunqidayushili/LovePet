@@ -1,6 +1,7 @@
 package jiyun.com.lovepet.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,28 +20,26 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import java.util.ArrayList;
 
 import jiyun.com.lovepet.R;
 
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
+import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
 
 public class HomeActivity extends BaseActivity  {
-    private ArrayList<String> strings = new ArrayList<>();
-    private ArrayList<String> strings1 = new ArrayList<>();
+
 
     private NavigationView nav_view;
     private EditText editText;
     private ImageView imageView;
     private DrawerLayout draw;
-    private ToggleButton shaixuan1;
-    private ToggleButton shaixuan2;
+    private CheckBox shaixuan1;
+    private CheckBox shaixuan2;
     private View viewById1;
     private LinearLayout linearLayout;
-    private ToggleButton shaixuan3;
+    private CheckBox shaixuan3;
     private PopupWindow popupWindow3;
     private ImageView imagetIntentToMap;
 //
@@ -64,11 +65,9 @@ public class HomeActivity extends BaseActivity  {
                 if (shaixuan1.isChecked()){
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
                     popupWindow = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                    popupWindow.setFocusable(true);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
-
-
                     popupWindow.showAsDropDown(linearLayout);
+
                 }else {
                     popupWindow.dismiss();
                 }
@@ -84,7 +83,6 @@ public class HomeActivity extends BaseActivity  {
                         View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow2, null);
                         popupWindow2 = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                         //设置pop是否获取焦点
-                        popupWindow2.setFocusable(true);
                         popupWindow2.setBackgroundDrawable(new BitmapDrawable());
 //http://123.56.150.230:8885/dog_family/t_user_info
 
@@ -103,19 +101,26 @@ public class HomeActivity extends BaseActivity  {
                 if (shaixuan3.isChecked()){
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow3, null);
                     popupWindow3 = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                    popupWindow3.setFocusable(true);
                     popupWindow3.setBackgroundDrawable(new BitmapDrawable());
 
 
                     popupWindow3.showAsDropDown(linearLayout);
                     intentText = popupview.findViewById(R.id.intent);
+                    final CheckBox check_box = popupview.findViewById(R.id.take_a_bath);
 
+                    Button reset = popupview.findViewById(R.id.reset);
+                    reset.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                        }
+                    });
                     intentText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(HomeActivity.this, "跳转到筛选界面", Toast.LENGTH_SHORT).show();
                         }
                     });
+
                 }else {
                     popupWindow3.dismiss();
                 }
@@ -149,8 +154,7 @@ public class HomeActivity extends BaseActivity  {
             }
         });
     }
-//
-//
+
 
     private void initLogin() {
         viewById1 = findViewById(R.id.queView);
@@ -175,7 +179,6 @@ public class HomeActivity extends BaseActivity  {
                  startActivity(new Intent(HomeActivity.this, MapActivity.class));
             }
         });
-
 
 
 
@@ -207,6 +210,9 @@ public class HomeActivity extends BaseActivity  {
                         Toast.makeText(HomeActivity.this, "需知", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.perfect_information:
+                        //跳转到设置界面
+                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
+                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
                         break;
 
