@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical">
+        <RadioButton
+            android:text="附近优先"
+            android:id="@+id/nearby_First"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ischecked"
+            android:button="@null"
+            android:textColor="#000" />
+        <RadioButton
+            android:text="好评优先"
+            android:id="@+id/praise_First"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ischecked"
+            android:button="@null"
+            android:textColor="#000" />
+        <RadioButton
+            android:text="订单优先"
+             android:id="@+id/order_First"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ischecked"
+            android:button="@null"
+            android:textColor="#000" />
+        <RadioButton
+            android:text="价格从低到高"
+            android:id="@+id/price_low_to_high"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ischecked"
+            android:button="@null"
+            android:textColor="#000" />
+        <RadioButton
+            android:text="价格从高到底"
+            android:id="@+id/price_high_to_low"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ischecked"
+            android:button="@null"
+            android:textColor="#000" />
+    </RadioGroup>
+</LinearLayout>

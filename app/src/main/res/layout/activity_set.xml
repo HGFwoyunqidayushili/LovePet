@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_set"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="jiyun.com.lovepet.ui.pet.activity.SetActivity">
+
+
+    <jiyun.com.lovepet.utils.CustomTextLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@color/colorGray"
+        app:leftImgHeight="40px"
+        app:leftImgMarginleft="5px"
+        app:leftImgWight="40px"
+        app:leftImg="@mipmap/back"
+        app:centerTvColor="#000"
+        app:centerTvSize="25px"
+        app:centerTvString="设置" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes" />
+
+    <LinearLayout
+        android:id="@+id/suggest"
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:layout_marginTop="15px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15px"
+            android:drawableLeft="@mipmap/suggest"
+            android:drawablePadding="15px"
+            android:gravity="center_vertical"
+            android:text="产品建议" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15px"
+                android:src="@mipmap/right"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:layout_gravity="center_vertical"
+            android:drawableLeft="@mipmap/new_function"
+            android:drawablePadding="15px"
+            android:gravity="center_vertical"
+            android:text="新功能介绍" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15px"
+                android:src="@mipmap/right"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15px"
+            android:drawableLeft="@mipmap/score"
+            android:drawablePadding="15px"
+            android:gravity="center_vertical"
+            android:text="去评分" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15px"
+                android:src="@mipmap/right"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15px"
+            android:drawableLeft="@mipmap/about"
+            android:drawablePadding="15px"
+            android:gravity="center_vertical"
+            android:text="关于欢欢" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15px"
+                android:src="@mipmap/right"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:layout_marginTop="15px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:layout_gravity="center_vertical"
+            android:drawableLeft="@mipmap/picture_wifi"
+            android:drawablePadding="15px"
+            android:text="仅WiFi下显示图片" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@drawable/bs_button_style"
+                android:checked="false"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
+                android:layout_alignParentRight="true"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:drawableLeft="@mipmap/loading"
+            android:layout_gravity="center_vertical"
+            android:drawablePadding="15px"
+            android:gravity="center_vertical"
+            android:text="图片缓存 文件大小" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/right"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:layout_marginRight="15px"
+                android:text="0.0MB" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlackes"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:drawableLeft="@mipmap/clear"
+            android:layout_gravity="center_vertical"
+            android:drawablePadding="15px"
+            android:gravity="center_vertical"
+            android:text="清除缓存" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15px"
+                android:src="@mipmap/right"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:layout_marginTop="15px"
+        android:text="退出登录"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:background="@drawable/bg_style"
+        android:textColor="@color/colorAccent" />
+
+</LinearLayout>

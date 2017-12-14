@@ -1,9 +1,9 @@
 package jiyun.com.lovepet.ui.pet.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.ui.BaseActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
@@ -13,6 +13,15 @@ public class MyPetActivity extends BaseActivity implements View.OnClickListener{
     private CustomTextLayout App_title;
     private Button add_pet;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_my_pet);
+        initView();
+    }
+//
+//
+//
 
     @Override
     protected void initView() {

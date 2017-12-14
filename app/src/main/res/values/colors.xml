@@ -10,6 +10,14 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="qianhei">#4F4F4F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorText">#EF9966</color>
+    <color name="colorback">#393939</color>
+    <color name="colorbacks">#ffffff</color>
+    <color name="colorYellow">#FFD600</color>
+    <color name="colorBlackF">#F0F1F5</color>
+    <color name="colorGray">#F5F5F5</color>
+    <color name="colorBlackes">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorKhaki">#FFD600</color>
     <color name="colorFont">#878683</color>
