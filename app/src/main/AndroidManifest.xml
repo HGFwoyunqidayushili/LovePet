@@ -52,8 +52,17 @@
         //我的宠物
         <activity android:name=".ui.pet.activity.MyPetActivity" />
         <activity android:name=".ui.pet.activity.MapActivity"></activity>
+        <activity android:name=".ui.pet.activity.SetActivity"/>
+        <activity android:name=".ui.pet.activity.PsActivity"/>
+
+        <activity
+            android:name="com.zaaach.citypicker.CityPickerActivity"
+            android:theme="@style/CityPicker.NoActionBar"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <meta-data android:name="com.amap.api.v2.apikey" android:value="0307826752ac91c535c98381942d74aa">//开发者申请的key
         </meta-data>
     </application>
-    <!--  -->
+
 </manifest>

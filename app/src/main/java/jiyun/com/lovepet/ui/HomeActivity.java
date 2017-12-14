@@ -1,7 +1,6 @@
 package jiyun.com.lovepet.ui;
 
 import android.content.Intent;
-
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -22,20 +21,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.zaaach.citypicker.CityPickerActivity;
 
 import jiyun.com.lovepet.R;
-
+import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
-import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
-import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
-import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
-
 import jiyun.com.lovepet.utils.CustomTextLayout;
 
-public class HomeActivity extends BaseActivity  {
+//主页面
+public class HomeActivity extends BaseActivity {
 
     private static final int REQUEST_CODE_PICK_CITY = 233;
     private NavigationView nav_view;
@@ -51,7 +46,8 @@ public class HomeActivity extends BaseActivity  {
     private ImageView imagetIntentToMap;
     private CheckBox current_city;
 
-    private String URL_String="http://123.56.150.230:8885/dog_family/user/updateUserInfo.jhtml";
+    private String URL_String = "http://123.56.150.230:8885/dog_family/user/updateUserInfo.jhtml";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,14 +55,10 @@ public class HomeActivity extends BaseActivity  {
         initView();//寻找控件
         initData();//点击跳转到各个界面
         initLinnser();//用户点击listView事件
-
     }
 
-
     private void initLinnser() {
-
         shaixuan1.setOnClickListener(new View.OnClickListener() {
-
             private PopupWindow popupWindow;
 
             @Override
@@ -77,7 +69,6 @@ public class HomeActivity extends BaseActivity  {
                     popupWindow.setFocusable(true);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
                     popupWindow.showAsDropDown(linearLayout);
-
                 } else {
                     popupWindow.dismiss();
                 }
@@ -95,7 +86,7 @@ public class HomeActivity extends BaseActivity  {
                     //设置pop是否获取焦点
                     popupWindow2.setFocusable(true);
                     popupWindow2.setBackgroundDrawable(new BitmapDrawable());
-//http://123.56.150.230:8885/dog_family/t_user_info
+                    //http://123.56.150.230:8885/dog_family/t_user_info
 
                     popupWindow2.showAsDropDown(linearLayout);
                 } else {
@@ -155,7 +146,8 @@ public class HomeActivity extends BaseActivity  {
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                //跳转到个人信息
+                Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
                 startActivity(intent);
             }
         });
@@ -184,74 +176,75 @@ public class HomeActivity extends BaseActivity  {
                 Toast.makeText(HomeActivity.this, "打开", Toast.LENGTH_SHORT).show();
             }
         });
-      
+        //跳转到地图界面
+        imagetIntentToMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, MapActivity.class));
+            }
+        });
+    }
+
+    //城市筛选的回传
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK) {
+            if (data != null) {
+                String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+                Log.e("TAG", city);
+                current_city.setText(city);
+            }
+        }
+
+    }
+
+    @Override
+    protected void initData() {
+        //跳转到各个页面!
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.messages:
+                        Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.pet:
+                        Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.order_details:
+                        Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.collection_account:
+                        Toast.makeText(HomeActivity.this, "钱包", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.about:
+                        Toast.makeText(HomeActivity.this, "需知", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.perfect_information:
+                        //跳转到设置界面
+                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
+                        startActivity(intent);
+                        draw.closeDrawer(GravityCompat.START);
+                        Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+                return false;
             }
         });
 
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
-            if (data != null){
-                String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
-                Log.e("TAG",city);
-                current_city.setText(city);
-            }
-        }
-
-        }
-        @Override
-        protected void initData () {
-            //跳转到各个页面!
-            nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.messages:
-                            Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
-                            draw.closeDrawer(GravityCompat.START);
-                            break;
-                        case R.id.pet:
-                            Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
-                            draw.closeDrawer(GravityCompat.START);
-                            break;
-                        case R.id.order_details:
-                            Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
-                            draw.closeDrawer(GravityCompat.START);
-                            break;
-                        case R.id.collection_account:
-                            Toast.makeText(HomeActivity.this, "钱包", Toast.LENGTH_SHORT).show();
-                            draw.closeDrawer(GravityCompat.START);
-                            break;
-                        case R.id.about:
-                            Toast.makeText(HomeActivity.this, "需知", Toast.LENGTH_SHORT).show();
-                            draw.closeDrawer(GravityCompat.START);
-                            break;
-                        case R.id.perfect_information:
-                            //跳转到设置界面
-                            Intent intent = new Intent(HomeActivity.this, SetActivity.class);
-                            startActivity(intent);
-                            draw.closeDrawer(GravityCompat.START);
-                            Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
-                            break;
-
-                    }
-                    return false;
-                }
-            });
-
-        }
-
-        @Override
-        protected int getLayoutId () {
-            return R.layout.activity_home;
-        }
-
-
+    protected int getLayoutId() {
+        return R.layout.activity_home;
     }
 
 
-
-
 }
+

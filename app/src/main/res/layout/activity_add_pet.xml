@@ -1,181 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="jiyun.com.lovepet.ui.pet.activity.AddPetActivity"
-    >
-    <include
-        layout="@layout/apptitle"
-        ></include>
+    tools:context="jiyun.com.lovepet.ui.pet.activity.AddPetActivity">
+
+    <include layout="@layout/apptitle"></include>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
+        android:id="@+id/pet_icon"
         android:layout_width="match_parent"
         android:layout_height="100px"
-        android:background="@color/white"
         android:layout_marginTop="20px"
-         android:id="@+id/pet_icon"
+        android:background="@color/white"
 
         >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="头像"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="头像"
+            android:textColor="@color/black" />
+
         <ImageView
             android:id="@+id/img"
             android:layout_width="80px"
             android:layout_height="80px"
-            android:src="@mipmap/user_defaults"
-            android:layout_toLeftOf="@+id/fan_hui"
             android:layout_centerVertical="true"
             android:layout_marginRight="20px"
-            />
+            android:layout_toLeftOf="@+id/fan_hui"
+            android:src="@mipmap/user_defaults" />
+
         <TextView
             android:id="@+id/fan_hui"
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:id="@+id/pet_name"
         android:layout_width="match_parent"
         android:layout_height="80px"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="昵称"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="昵称"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:id="@+id/pet_kind"
         android:layout_width="match_parent"
         android:layout_height="80px"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="宠物类型"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="宠物类型"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:id="@+id/pet_yes"
         android:layout_width="match_parent"
         android:layout_height="80px"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="是否绝育"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="是否绝育"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:id="@+id/pet_Dateofbirth"
         android:layout_width="match_parent"
         android:layout_height="80px"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="出生日期"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="出生日期"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:id="@+id/pet_weight"
         android:layout_width="match_parent"
@@ -183,98 +179,94 @@
         android:background="@color/white"
 
         >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="体重"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="体重"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:id="@+id/pet_sick"
         android:layout_width="match_parent"
         android:layout_height="80px"
-        android:background="@color/white"
-        >
+        android:background="@color/white">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/zhifubao"
-            android:text="免疫情况"
             android:layout_centerVertical="true"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            />
+            android:layout_toRightOf="@+id/zhifubao"
+            android:text="免疫情况"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
-            android:background="@mipmap/enter"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10px"
-            />
+            android:background="@mipmap/enter" />
     </RelativeLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLightGray" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:layout_marginTop="20px"
-        >
+        android:background="@color/white">
+
         <TextView
+            android:id="@+id/jianjie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+
             android:layout_toRightOf="@+id/zhifubao"
             android:text="宠物简介"
+            android:textColor="@color/black" />
 
+        <EditText
+            android:id="@+id/pet_info"
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:layout_below="@+id/jianjie"
             android:layout_marginLeft="50px"
-            android:textColor="@color/black"
-            android:id="@+id/jianjie"
-            />
-
-       <EditText
-           android:id="@+id/pet_info"
-           android:layout_width="match_parent"
-           android:layout_height="150px"
-           android:layout_below="@+id/jianjie"
-           android:layout_marginLeft="50px"
-           android:layout_marginTop="1px"
             android:layout_marginRight="10px"
-           android:background="@drawable/editexit"
-           android:gravity="top"
-           />
+            android:layout_marginTop="1px"
+            android:background="@drawable/editexit"
+            android:gravity="top" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorLightGray"
-        />
+        android:background="@color/colorLightGray" />
 </LinearLayout>
