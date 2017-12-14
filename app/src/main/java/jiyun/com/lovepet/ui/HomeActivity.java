@@ -1,6 +1,7 @@
 package jiyun.com.lovepet.ui;
 
 import android.content.Intent;
+
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -28,9 +29,13 @@ import jiyun.com.lovepet.R;
 
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
+import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
+import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
+import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
+
 import jiyun.com.lovepet.utils.CustomTextLayout;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity  {
 
     private static final int REQUEST_CODE_PICK_CITY = 233;
     private NavigationView nav_view;
@@ -46,7 +51,7 @@ public class HomeActivity extends BaseActivity {
     private ImageView imagetIntentToMap;
     private CheckBox current_city;
 
-    //
+    private String URL_String="http://123.56.150.230:8885/dog_family/user/updateUserInfo.jhtml";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,7 +155,8 @@ public class HomeActivity extends BaseActivity {
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(HomeActivity.this, "点击事件!用户换取图片!", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -169,6 +175,7 @@ public class HomeActivity extends BaseActivity {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (draw.isDrawerOpen(Gravity.LEFT)) {
                     draw.closeDrawer(Gravity.LEFT);
                 } else {
@@ -177,11 +184,7 @@ public class HomeActivity extends BaseActivity {
                 Toast.makeText(HomeActivity.this, "打开", Toast.LENGTH_SHORT).show();
             }
         });
-        //跳转到地图界面
-        imagetIntentToMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, MapActivity.class));
+      
             }
         });
 
@@ -248,3 +251,7 @@ public class HomeActivity extends BaseActivity {
 
     }
 
+
+
+
+}

@@ -1,4 +1,4 @@
-package jiyun.com.lovepet.fragment;
+package jiyun.com.lovepet.ui.pet.fragment;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import jiyun.com.lovepet.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AllorderFragment extends Fragment {
+public class SmallPetFragment extends Fragment {
 
 
-    public AllorderFragment() {
+    public SmallPetFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class AllorderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_allorder, container, false);
+        return inflater.inflate(R.layout.fragment_small_pet, container, false);
     }
 
 }

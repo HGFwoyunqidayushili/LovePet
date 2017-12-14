@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <jiyun.com.lovepet.utils.CustomTextLayout
+        app:leftImgWight="30px"
+        app:leftImgHeight="30px"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:id="@+id/App_title"
+        app:centerTvSize="25px"
+        app:rightTvSize="20px"
+        app:leftImgMarginleft="5px"
+        app:rightTvMarginright="30px"
+        >
+    </jiyun.com.lovepet.utils.CustomTextLayout>
+</LinearLayout>

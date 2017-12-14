@@ -1,4 +1,4 @@
-package jiyun.com.lovepet.fragment;
+package jiyun.com.lovepet.ui.pet.fragment;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import jiyun.com.lovepet.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WaitEvaluatedFragment extends Fragment {
+public class CatFragment extends Fragment {
 
 
-    public WaitEvaluatedFragment() {
+    public CatFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class WaitEvaluatedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wait_evaluated, container, false);
+        return inflater.inflate(R.layout.fragment_cat, container, false);
     }
 
 }

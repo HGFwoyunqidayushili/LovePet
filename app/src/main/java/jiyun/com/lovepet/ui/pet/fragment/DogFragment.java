@@ -1,4 +1,4 @@
-package jiyun.com.lovepet.fragment;
+package jiyun.com.lovepet.ui.pet.fragment;
 
 
 import android.os.Bundle;
@@ -11,10 +11,11 @@ import jiyun.com.lovepet.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * 待评价
  */
-public class WaitConfirmFragment extends Fragment {
-    public WaitConfirmFragment() {
+public class DogFragment extends Fragment {
+
+
+    public DogFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +24,7 @@ public class WaitConfirmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wait_confirm, container, false);
+        return inflater.inflate(R.layout.fragment_dog, container, false);
     }
 
 }

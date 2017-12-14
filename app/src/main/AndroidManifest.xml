@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jiyun.com.lovepet">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <service android:name="com.amap.api.location.APSService"></service>
     <!--用于进行网络定位-->
@@ -39,13 +40,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.order.activity.MyOrderActivity" />
         <activity android:name=".ui.BaseActivity" />
+        <activity android:name=".ui.wallet.activity.MyWalletActivity" />
+        //个人信息
+        <activity android:name=".ui.personal.activity.BingPhoneActivity" />
+        <activity android:name=".ui.personal.activity.LoginActivity" />
+        <activity android:name=".ui.personal.activity.RegisterActivity" />
+        <activity android:name=".ui.personal.activity.ToolbarActivity" />
+        <activity android:name=".ui.personal.activity.WeChatActivity" />
+        <activity android:name=".ui.personal.activity.PersinalInfoActivity" />
+        //我的宠物
         <activity android:name=".ui.pet.activity.MyPetActivity" />
         <activity android:name=".ui.pet.activity.MapActivity"></activity>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="0307826752ac91c535c98381942d74aa">//开发者申请的key
         </meta-data>
     </application>
-<!--&lt;!&ndash; -->
     <!--  -->
 </manifest>
