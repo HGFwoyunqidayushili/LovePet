@@ -71,7 +71,13 @@
             android:layout_marginLeft="50px"
             android:textColor="@color/black"
             />
-
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+               android:text=""
+             android:layout_centerInParent="true"
+               android:id="@+id/mTV_pet_name"
+              />
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
@@ -101,7 +107,13 @@
             android:layout_marginLeft="50px"
             android:textColor="@color/black"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:id="@+id/mTV_pet_kind"
+            />
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
@@ -131,7 +143,13 @@
             android:layout_marginLeft="50px"
             android:textColor="@color/black"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:id="@+id/mTV_pet_sterilization"
+            />
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
@@ -161,7 +179,13 @@
             android:layout_marginLeft="50px"
             android:textColor="@color/black"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:id="@+id/mTV_pet_birthDate"
+            />
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
@@ -192,7 +216,13 @@
             android:layout_marginLeft="50px"
             android:textColor="@color/black"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:id="@+id/mTV_pet_Weigth"
+            />
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"
@@ -222,7 +252,13 @@
             android:layout_marginLeft="50px"
             android:textColor="@color/black"
             />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:id="@+id/mTV_pet_Immune"
+            />
         <TextView
             android:layout_width="30px"
             android:layout_height="30px"

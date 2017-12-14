@@ -11,7 +11,6 @@ public class PetkindActivity extends BaseActivity {
      private CustomTextLayout App_title;
      private TabLayout tabLayout;
      private ViewPager viewPager;
-
     @Override
     protected void initView() {
 

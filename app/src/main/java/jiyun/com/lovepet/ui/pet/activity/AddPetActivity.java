@@ -51,7 +51,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     private static final int CODE_RESULT_REQUEST = 2;
     //是否绝育
      private boolean issterilization=false;
-    private TextView mTV_pet_name,mTV_pet_kind,mTV_pet_sterilization,mTV_pet_birthDate,mTV_pet_WeigthEE,mTV_pet_Immune;
+    private TextView mTV_pet_name,mTV_pet_kind,mTV_pet_sterilization,mTV_pet_birthDate,mTV_pet_Weigth,mTV_pet_Immune;
     private String petDate;
 
     @Override
@@ -62,7 +62,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         mTV_pet_kind= (TextView) findViewById(R.id.mTV_pet_kind);
         mTV_pet_sterilization= (TextView) findViewById(R.id.mTV_pet_sterilization);
         mTV_pet_birthDate= (TextView) findViewById(R.id.mTV_pet_birthDate);
-        mTV_pet_WeigthEE= (TextView) findViewById(R.id.mTV_pet_WeigthEE);
+        mTV_pet_Weigth= (TextView) findViewById(R.id.mTV_pet_Weigth);
         mTV_pet_Immune= (TextView) findViewById(R.id.mTV_pet_Immune);
 
         //相册
@@ -82,7 +82,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         pet_icon = (RelativeLayout) findViewById(R.id.pet_icon);
         pet_name = (RelativeLayout) findViewById(R.id.pet_name);
         pet_kind = (RelativeLayout) findViewById(R.id.pet_kind);
-        sterilization = (RelativeLayout) findViewById(R.id.sterilization);
+        sterilization = (RelativeLayout) findViewById(R.id.pet_yes);
         pet_Dateofbirth = (RelativeLayout) findViewById(R.id.pet_Dateofbirth);
         pet_weight = (RelativeLayout) findViewById(R.id.pet_weight);
         pet_sick = (RelativeLayout) findViewById(R.id.pet_sick);
@@ -130,7 +130,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                 intent=new Intent(this,PetkindActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.sterilization:
+            case R.id.pet_yes:
                 //是否绝育
                addisSterilization();
                 break;
