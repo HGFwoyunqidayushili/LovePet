@@ -43,60 +43,40 @@
         android:orientation="horizontal"
         android:gravity="center"
         >
-<TextView
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:id="@+id/fuJin"
-    android:textSize="20dp"
-    android:layout_weight="0.7"
-    android:text="宠物类型"
-    />
-        <ToggleButton
-            android:id="@+id/shaixuan1"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.4"
-            android:background="@android:color/transparent"
-            android:drawableRight="@drawable/a"
-            android:textOff=""
-            android:textOn=""
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:textSize="20dp"
-            android:id="@+id/jiaGe"
-            android:text="附近优先"
-            />
 
-        <ToggleButton
+       <CheckBox
+           android:id="@+id/shaixuan1"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:drawableRight="@drawable/a"
+           android:layout_marginRight="18dp"
+           android:text="宠物类型"
+           android:textSize="18dp"
+           android:button="@null"></CheckBox>
+
+
+        <CheckBox
             android:id="@+id/shaixuan2"
             android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.4"
-            android:background="@android:color/transparent"
-            android:drawableRight="@drawable/a"
-            android:textOff=""
-            android:textOn=""
-            />
-
-        <TextView
-            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_weight="0.4"
-            android:text="筛选"
-            />
-        <ToggleButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.4"
-            android:id="@+id/shaixuan3"
-            android:background="@android:color/transparent"
             android:drawableRight="@drawable/a"
-            android:textOff=""
-            android:textOn=""
+            android:layout_marginRight="18dp"
+            android:textSize="18dp"
+            android:text="宠物类型"
+            android:button="@null"
+            />
+        <CheckBox
+            android:id="@+id/shaixuan3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="18dp"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:drawableRight="@drawable/a"
+            android:text="宠物类型"
+            android:button="@null"
             />
     </LinearLayout>
 

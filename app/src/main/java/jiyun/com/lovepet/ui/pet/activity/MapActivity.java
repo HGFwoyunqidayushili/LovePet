@@ -6,35 +6,39 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MyLocationStyle;
-import com.amap.api.maps.AMap;
-import com.amap.api.maps.MapView;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.route.RouteSearch;
 
 import jiyun.com.lovepet.R;
+
 //这个界面是向用户展示地图界面
 public class MapActivity extends AppCompatActivity {
 
     private MapView map;
-    private static final int BAIDU_READ_PHONE_STATE =100;
+    private static final int BAIDU_READ_PHONE_STATE = 100;
     private MyLocationStyle myLocationStyle;
+    private ImageView finssh_Image;
 
-    public void showContacts(){
+    public void showContacts() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
                 != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplicationContext(),"没有权限,请手动开启定位权限", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "没有权限,请手动开启定位权限", Toast.LENGTH_SHORT).show();
             // 申请一个（或多个）权限，并提供用于回调返回的获取码（用户定义）
-            ActivityCompat.requestPermissions(MapActivity.this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE}, BAIDU_READ_PHONE_STATE);
-        }else{
+            ActivityCompat.requestPermissions(MapActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE}, BAIDU_READ_PHONE_STATE);
+        } else {
             // init();
         }
 
@@ -63,15 +67,15 @@ public class MapActivity extends AppCompatActivity {
                 Location myLocation = aMap.getMyLocation();
                 double latitude = myLocation.getLatitude();
                 double longitude = myLocation.getLongitude();
-                LatLonPoint latLonPoint = new LatLonPoint(latitude,longitude);
+                LatLonPoint latLonPoint = new LatLonPoint(latitude, longitude);
 
                 //获取终点的经纬度
                 LatLng position = marker.getPosition();
                 double latitude1 = position.latitude;
                 double longitude1 = position.longitude;
-                LatLonPoint latLonPoint1 = new LatLonPoint(latitude1,longitude1);
-                RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(latLonPoint,latLonPoint1);
-                RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo,RouteSearch.DRIVING_MULTI_CHOICE_NO_HIGHWAY,null,null,"");
+                LatLonPoint latLonPoint1 = new LatLonPoint(latitude1, longitude1);
+                RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(latLonPoint, latLonPoint1);
+                RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, RouteSearch.DRIVING_MULTI_CHOICE_NO_HIGHWAY, null, null, "");
                 //发起请求
                 routeSearch.calculateDriveRouteAsyn(query);
                 return true;
@@ -80,13 +84,15 @@ public class MapActivity extends AppCompatActivity {
 
 //
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，销毁地图
         map.onDestroy();
     }
-//
+
+    //
 //
 //
     @Override
@@ -95,12 +101,14 @@ public class MapActivity extends AppCompatActivity {
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         map.onResume();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView.onPause ()，暂停地图的绘制
         map.onPause();
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState
@@ -111,5 +119,6 @@ public class MapActivity extends AppCompatActivity {
 
     private void initView() {
         map = (MapView) findViewById(R.id.map);
+
     }
 }

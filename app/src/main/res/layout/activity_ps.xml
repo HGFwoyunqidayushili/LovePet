@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <jiyun.com.lovepet.utils.CustomTextLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@color/colorGray"
+        app:leftImgHeight="40px"
+        app:leftImgMarginleft="5dp"
+        app:leftImgWight="40px"
+        app:leftImg="@mipmap/back"
+        app:centerTvColor="#000"
+        app:centerTvSize="25px"
+        app:centerTvString="产品建议"
+        app:rightTvString="发送"
+        app:rightTvMarginright="30px"
+        app:rightTvSize="20px"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlack" />
+
+    <RelativeLayout
+        android:layout_marginTop="40px"
+        android:layout_width="match_parent"
+        android:layout_height="460px"
+        >
+
+        <EditText
+            android:maxLength="200"
+            android:id="@+id/scanner_suggest"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/et_bg"
+            android:gravity="top"
+            android:hint="写下你的建议让我们会做的更好"
+            android:layout_width="670px"
+            android:layout_height="460px" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="20px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/textjia"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_height="wrap_content"
+            android:text="0/200"
+            android:layout_marginEnd="58dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="58dp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

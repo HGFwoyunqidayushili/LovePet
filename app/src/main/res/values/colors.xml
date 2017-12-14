@@ -10,6 +10,8 @@
     <color name="colorYellow">#FFD600</color>
     <color name="colorBlack">#F0F1F5</color>
     <color name="transparent">#00000000</color> <!-- 透明 -->
-
+    <color name="colorGray">#F5F5F5</color>
+    <color name="colorBlackes">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
 
 </resources>
