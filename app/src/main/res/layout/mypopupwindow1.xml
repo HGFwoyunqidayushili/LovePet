@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+    <RadioButton
+    android:text="小型犬"
+        android:id="@+id/smallDog"
+    android:layout_width="match_parent"
+        android:gravity="center_vertical"
+    android:layout_gravity="right"
+    android:layout_alignParentRight="true"
+    android:layout_height="wrap_content"
+    android:drawableRight="@drawable/ischecked"
+    android:button="@null"
+    android:textColor="#000" />
+    <RadioButton
+        android:text="中型犬"
+        android:id="@+id/inDog"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ischecked"
+        android:button="@null"
+        android:textColor="#000" />
+    <RadioButton
+        android:text="大型犬"
+        android:id="@+id/bigDog"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ischecked"
+        android:button="@null"
+        android:textColor="#000" />
+    <RadioButton
+        android:text="猫"
+        android:id="@+id/animal_Cat"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ischecked"
+        android:button="@null"
+        android:textColor="#000" />
+    <RadioButton
+        android:text="幼犬"
+        android:id="@+id/Puppies"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ischecked"
+        android:button="@null"
+        android:textColor="#000" />
+</RadioGroup>
+</LinearLayout>

@@ -17,6 +17,8 @@ public class InfoPresenter implements Contract.Presenter {
 
      public InfoPresenter(Contract.Views views, Context context){
      model=new InfoModel();
+
+
      this.views=views;
      this.context=context;
 

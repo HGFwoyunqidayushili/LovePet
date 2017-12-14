@@ -13,6 +13,15 @@ public class MyPetActivity extends BaseActivity implements View.OnClickListener{
     private CustomTextLayout App_title;
     private Button add_pet;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_my_pet);
+        initView();
+    }
+//
+//
+//
 
     @Override
     protected void initView() {
