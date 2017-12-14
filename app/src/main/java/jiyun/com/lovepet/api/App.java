@@ -15,6 +15,7 @@ public class App extends Application {
     public static App mApplication;
     private SharePreferenceUtil mSpUtil;
 
+
     public synchronized static App getInstance() {
         return mApplication;
     }

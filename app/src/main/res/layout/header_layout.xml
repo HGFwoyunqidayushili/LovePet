@@ -4,43 +4,85 @@
     android:id="@+id/intentUserchangeImage"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!---->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:id="@+id/userImages"
-        android:src="@mipmap/ic_launcher"
-        android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户名称"
-        android:textColor="#000"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/userImages"
-        android:layout_toEndOf="@+id/userImages"
-        android:id="@+id/userName" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户ID"
-        android:layout_alignBottom="@+id/userImages"
-        android:layout_toRightOf="@+id/userImages"
-        android:layout_toEndOf="@+id/userImages"
-        android:id="@+id/userId" />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/img_go"
-        android:layout_alignParentRight="true"/>
-
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#F5F5F6"
-        android:layout_below="@+id/userImages"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/view"></View>
+        android:layout_height="wrap_content"
+        android:id="@+id/img_ago"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/userImages"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户名称"
+            android:textColor="#000"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/userImages"
+            android:layout_toEndOf="@+id/userImages"
+            android:id="@+id/userName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户ID"
+            android:layout_alignBottom="@+id/userImages"
+            android:layout_toRightOf="@+id/userImages"
+            android:layout_toEndOf="@+id/userImages"
+            android:id="@+id/userId" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_go"
+            android:layout_alignParentRight="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#F5F5F6"
+            android:layout_below="@+id/userImages"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/view">
+
+        </View>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+          android:id="@+id/user"
+          android:visibility="gone"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/img_icon"
+             android:background="@drawable/down_arrow"
+          />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户名称"
+            android:textColor="#000"
+            android:layout_alignParentTop="true"
+           android:layout_toRightOf="@+id/img_icon"
+            android:layout_toEndOf="@+id/img_icon"
+            android:id="@+id/userNames" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户ID"
+            android:layout_alignBottom="@+id/img_icon"
+            android:layout_toRightOf="@+id/img_icon"
+            android:layout_toEndOf="@+id/img_icon"
+            android:id="@+id/userIds" />
+    </RelativeLayout>
 </RelativeLayout>

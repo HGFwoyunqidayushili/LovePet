@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.manager.UserManager;
+import jiyun.com.lovepet.ui.personal.activity.LoginActivity;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
@@ -24,6 +26,8 @@ public class HomeActivity extends BaseActivity  {
     private ImageView imageView;
     private DrawerLayout draw;
     private String URL_String="http://123.56.150.230:8885/dog_family/user/updateUserInfo.jhtml";
+    private RelativeLayout icon;
+    private RelativeLayout ago;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,28 +48,44 @@ public class HomeActivity extends BaseActivity  {
         draw = (DrawerLayout) findViewById(R.id.draw);
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.inflateHeaderView(R.layout.header_layout);
+
              //侧滑用户换头像和昵称
-             initChangedImage();
+               initChangedImage();
             //用户点击登录界面
                initLogin();
+
     }
 
     private void initChangedImage() {
         View headerView = nav_view.getHeaderView(0);
-        RelativeLayout viewById = headerView.findViewById(R.id.intentUserchangeImage);
-        viewById.setOnClickListener(new View.OnClickListener() {
+        icon=(RelativeLayout)headerView.findViewById(R.id.user);
+        ago=(RelativeLayout)headerView.findViewById(R.id.img_ago);
+        icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(HomeActivity.this, PersinalInfoActivity.class));
             }
         });
+        ago.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            }
+        });
+
     }
 
     private void initLogin() {
         View viewById1 = findViewById(R.id.queView);
-        ImageView image = viewById1.findViewById(R.id.userXinXi);
+        ImageView image = (ImageView) viewById1.findViewById(R.id.userXinXi);
+        ImageView intent_image_map = (ImageView) viewById1.findViewById(R.id.intent_image_map);
         image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        intent_image_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -119,7 +139,19 @@ public class HomeActivity extends BaseActivity  {
         return R.layout.activity_home;
     }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isLogin();
+    }
+    public void isLogin(){
+        if(UserManager.getIntance().isLogin()){
+            icon.setVisibility(View.VISIBLE);
+            ago.setVisibility(View.GONE);
+        }
+        else {
+            icon.setVisibility(View.GONE);
+            ago.setVisibility(View.VISIBLE);
+        }
+    }
 }

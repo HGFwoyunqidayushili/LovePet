@@ -32,18 +32,65 @@
         android:gravity="center"
         />
    </RelativeLayout>
-  <android.support.design.widget.TabLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/Tab_layout"
-      app:tabIndicatorColor="@color/black"
-      >
-
-  </android.support.design.widget.TabLayout>
-    <android.support.v4.view.ViewPager
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-         android:layout_weight="1"
-         android:id="@+id/view_Pager"
-        ></android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+          android:background="@color/white"
+        >
+
+        <Button
+            android:id="@+id/pet_type_dog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/typebutton"
+            android:text="狗" />
+
+        <Button
+            android:id="@+id/pet_type_cat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/typebutton"
+            android:layout_weight="1"
+
+            android:text="猫" />
+
+        <Button
+            android:id="@+id/pet_type_pet"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/typebutton"
+            android:text="小宠" />
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ListView
+            android:id="@+id/country_lvcountry"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:divider="@null"
+            android:scrollbars="none" />
+
+        <TextView
+            android:id="@+id/dialog"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/show_head_toast_bg"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="30dp"
+            android:visibility="invisible" />
+
+        <com.huanchong.pet.tools.SideBar
+            android:id="@+id/sidrbar"
+            android:layout_width="30dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center" />
+    </FrameLayout>
 </LinearLayout>

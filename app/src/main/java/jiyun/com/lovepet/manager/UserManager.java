@@ -24,6 +24,7 @@ public class UserManager {
     }
     public UserManager(){
         sharedPreferences= App.getInstance().getSharedPreferences("user_info",0);
+
     }
 
     //保存当前用户
@@ -33,6 +34,7 @@ public class UserManager {
          }
          this.userInfo=userInfo;
          sharedPreferences.edit().putString("user",userInfo.toString());
+         sharedPreferences.edit().putString("userId",userInfo.getUserId());
      }
     public UserInfo getUserInfo(){
         return userInfo;
@@ -43,9 +45,9 @@ public class UserManager {
         String userId= sharedPreferences.getString("userId",null);
          return !TextUtils.isEmpty(userId);
      }
-     public void saceLogin(){
-         sharedPreferences.edit().putString("userId",userInfo.getUserId());
-     }
+//     public void saveLogin(){
+//
+//     }
 
     //清除用户信息
     public void clearUser(){
@@ -60,5 +62,6 @@ public class UserManager {
     public String getToken(){
         String token=sharedPreferences.getString("token",null);
         return token;
+
     }
 }

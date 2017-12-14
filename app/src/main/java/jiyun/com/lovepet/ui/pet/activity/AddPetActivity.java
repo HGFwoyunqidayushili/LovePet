@@ -29,6 +29,7 @@ import jiyun.com.lovepet.utils.ImageUtils;
 public class AddPetActivity extends BaseActivity implements View.OnClickListener {
 
     private PopupWindow popupWindow;
+
     private View Mypup;
     private TextView phono_Album;
     private TextView take_photo;
@@ -37,24 +38,38 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     private RelativeLayout pet_icon;
     private RelativeLayout pet_name;
     private RelativeLayout pet_kind;
-    private RelativeLayout pet_yes;
+    private RelativeLayout sterilization;
     private RelativeLayout pet_Dateofbirth;
     private RelativeLayout pet_weight;
     private RelativeLayout pet_sick;
     private EditText pet_info;
     private ImageView imageView;
+    private View sexpup;
     /* 请求识别码 */
     private static final int CODE_GALLERY_REQUEST = 0;
     private static final int CODE_CAMERA_REQUEST = 1;
     private static final int CODE_RESULT_REQUEST = 2;
+    //是否绝育
+     private boolean issterilization=false;
+    private TextView mTV_pet_name,mTV_pet_kind,mTV_pet_sterilization,mTV_pet_birthDate,mTV_pet_WeigthEE,mTV_pet_Immune;
+    private String petDate;
 
     @Override
     protected void initView() {
-        //相册
         Mypup = LayoutInflater.from(this).inflate(R.layout.popupwindow, null);
-        phono_Album = Mypup.findViewById(R.id.phono_Album);
-        take_photo = Mypup.findViewById(R.id.take_photo);
-        dismiss = Mypup.findViewById(R.id.bt_cancel);
+        sexpup=LayoutInflater.from(this).inflate(R.layout.sexpopupwindow,null);
+        mTV_pet_name= (TextView) findViewById(R.id.mTV_pet_name);
+        mTV_pet_kind= (TextView) findViewById(R.id.mTV_pet_kind);
+        mTV_pet_sterilization= (TextView) findViewById(R.id.mTV_pet_sterilization);
+        mTV_pet_birthDate= (TextView) findViewById(R.id.mTV_pet_birthDate);
+        mTV_pet_WeigthEE= (TextView) findViewById(R.id.mTV_pet_WeigthEE);
+        mTV_pet_Immune= (TextView) findViewById(R.id.mTV_pet_Immune);
+
+        //相册
+
+        phono_Album = (TextView) Mypup.findViewById(R.id.phono_Album);
+        take_photo = (TextView) Mypup.findViewById(R.id.take_photo);
+        dismiss = (Button) Mypup.findViewById(R.id.bt_cancel);
         phono_Album.setOnClickListener(this);
         take_photo.setOnClickListener(this);
         dismiss.setOnClickListener(this);
@@ -67,7 +82,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         pet_icon = (RelativeLayout) findViewById(R.id.pet_icon);
         pet_name = (RelativeLayout) findViewById(R.id.pet_name);
         pet_kind = (RelativeLayout) findViewById(R.id.pet_kind);
-        pet_yes = (RelativeLayout) findViewById(R.id.pet_yes);
+        sterilization = (RelativeLayout) findViewById(R.id.sterilization);
         pet_Dateofbirth = (RelativeLayout) findViewById(R.id.pet_Dateofbirth);
         pet_weight = (RelativeLayout) findViewById(R.id.pet_weight);
         pet_sick = (RelativeLayout) findViewById(R.id.pet_sick);
@@ -76,7 +91,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         pet_icon.setOnClickListener(this);
         pet_name.setOnClickListener(this);
         pet_kind.setOnClickListener(this);
-        pet_yes.setOnClickListener(this);
+        sterilization.setOnClickListener(this);
         pet_Dateofbirth.setOnClickListener(this);
         pet_weight.setOnClickListener(this);
         pet_sick.setOnClickListener(this);
@@ -105,19 +120,33 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                 popupWindow.setBackgroundDrawable(dw);
                 popupWindow.showAtLocation(Mypup, Gravity.BOTTOM, 0, 0);
                 break;
+
             case R.id.pet_name:
                 intent=new Intent(this,NickNameActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,3);
                 break;
+
             case R.id.pet_kind:
                 intent=new Intent(this,PetkindActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.pet_yes:
+            case R.id.sterilization:
+                //是否绝育
+               addisSterilization();
                 break;
             case R.id.pet_Dateofbirth:
+                showToast("黄国峰");
+                SeclectorDateActivity.startActivity(this, "选择日期",
+                        new SeclectorDateActivity.OnGetDateListener() {
+                            @Override
+                            public void dateChange(String date) {
+                                petDate = date;
+                                mTV_pet_birthDate.setText(petDate);
+                            }
+                        });
                 break;
             case R.id.pet_weight:
+                add_pet_weight();
                 break;
             case R.id.pet_sick:
                 break;
@@ -143,6 +172,44 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
 
         }
     }
+    /*
+       添加体重
+     */
+    private void add_pet_weight() {
+
+    }
+
+    /*
+       是否绝育
+     */
+    private void addisSterilization() {
+       popupWindow = new PopupWindow(sexpup, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+        popupWindow.setFocusable(true);
+        ColorDrawable dw = new ColorDrawable(0xb0000000);
+        // 设置弹出窗体的背景
+        popupWindow.setBackgroundDrawable(dw);
+        popupWindow.showAtLocation(Mypup, Gravity.BOTTOM, 0, 0);
+        TextView yes= (TextView) sexpup.findViewById(R.id.yes);
+        TextView no= (TextView) sexpup.findViewById(R.id.no);
+          yes.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  issterilization=true;
+                  mTV_pet_sterilization.setText("是");
+                 popupWindow.dismiss();
+              }
+          });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                issterilization=false;
+                mTV_pet_sterilization.setText("否");
+                popupWindow.dismiss();
+            }
+        });
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -169,6 +236,10 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                     }
                     break;
             }
+        }
+        if(requestCode==3&&resultCode==RESULT_OK){
+              String name=data.getStringExtra("name");
+              mTV_pet_name.setText(name);
         }
     }
 

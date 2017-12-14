@@ -5,12 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="jiyun.com.lovepet.ui.pet.activity.RegisterActivity">
+    >
 
     <include
-        android:id="@+id/title"
-        layout="@layout/activity_toolbar" />
 
+        layout="@layout/apptitle" />
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="0.1dp"
+      android:background="@color/colorLightGray"
+    />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,13 +34,15 @@
             android:layout_height="50dp">
 
             <EditText
-                android:id="@+id/et_bind_phone"
+                android:id="@+id/user_phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/bind_phone" />
+                android:hint="@string/bind_phone"
+
+                />
 
             <TextView
-                android:id="@+id/hqyzm"
+                android:id="@+id/Tv_yanzhengma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -53,20 +59,20 @@
             android:hint="@string/bind_et_yanzhengma" />
 
         <EditText
-            android:id="@+id/et_name"
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/bind_et_name" />
 
 
         <EditText
-            android:id="@+id/et_num_pass"
+            android:id="@+id/user_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/bind_et_num_pass" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

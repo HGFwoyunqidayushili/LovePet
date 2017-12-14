@@ -24,4 +24,8 @@
     <!--Toolbar-->
     <string name="login_tv_registered">注册</string>
     <string name="register_tv_text">使用第三方账号注册</string>
+
+    //时间
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
 </resources>

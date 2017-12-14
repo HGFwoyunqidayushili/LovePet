@@ -34,6 +34,7 @@
         android:id="@+id/imageView" />
 </RelativeLayout>
       <ImageView
+          android:id="@+id/intent_image_map"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="0.5"

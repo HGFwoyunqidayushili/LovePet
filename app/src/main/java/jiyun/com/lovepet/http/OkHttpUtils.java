@@ -28,4 +28,5 @@ public class OkHttpUtils {
     public Call newsCall(Request request){
         return okHttpClient.newCall(request);
     }
+
 }

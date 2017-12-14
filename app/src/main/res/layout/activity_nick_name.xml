@@ -16,6 +16,7 @@
          android:background="@color/colorLightGray"
        />
    <EditText
+       android:id="@+id/pet_name"
        android:layout_width="match_parent"
        android:layout_height="60dp"
         android:background="@drawable/editexit"

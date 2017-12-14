@@ -10,7 +10,7 @@ import java.util.Map;
 import android.util.Log;
 
 /**
- * 
+ *
  * @Description:(签名工具�?)
  * @ClassName: SignUtil
  * @author maorw maorw@tctogether.com

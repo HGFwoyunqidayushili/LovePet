@@ -31,9 +31,17 @@
         //我的宠物
         <activity android:name=".ui.pet.activity.MyPetActivity" />
         <activity android:name=".ui.pet.activity.AddPetActivity" />
-        <activity android:name=".ui.pet.activity.PetkindActivity"></activity>
-        <activity android:name=".ui.order.activity.MyOrderActivity"></activity>
-        <activity android:name=".ui.pet.activity.NickNameActivity"></activity>
+        <activity android:name=".ui.pet.activity.PetkindActivity" />
+        <activity android:name=".ui.order.activity.MyOrderActivity" />
+        <activity android:name=".ui.pet.activity.NickNameActivity" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="0307826752ac91c535c98381942d74aa">
+            //开发者申请的key</meta-data>
+
+        <activity android:name=".ui.pet.activity.PetWeigthActivity" />
+        <activity android:name=".ui.pet.activity.SeclectorDateActivity"></activity>
     </application>
 
 </manifest>

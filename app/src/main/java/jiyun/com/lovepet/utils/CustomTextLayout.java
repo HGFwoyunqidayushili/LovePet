@@ -81,6 +81,7 @@ public class CustomTextLayout extends RelativeLayout {
 
     private OnTextViewClickListener OnTextViewClickListener;
 
+
     public CustomTextLayout setOnTextViewClickListener(OnTextViewClickListener listener) {
         this.OnTextViewClickListener = listener;
         return this;
@@ -395,6 +396,16 @@ public class CustomTextLayout extends RelativeLayout {
         leftTv.setId(R.id.leftTv);
         leftTv.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTvSize);
         leftTv.setText(leftTvString);
+
+        leftTv.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (OnTextViewClickListener != null) {
+                    OnTextViewClickListener.OnLeftTvClick();
+                }
+
+            }
+        });
         addView(leftTv);
     }
 
@@ -505,7 +516,9 @@ public class CustomTextLayout extends RelativeLayout {
 
 
         }
+        public void OnLeftTvClick(){
 
+        }
 
     }
 

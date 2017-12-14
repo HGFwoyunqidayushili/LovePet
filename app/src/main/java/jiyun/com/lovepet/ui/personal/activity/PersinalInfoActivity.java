@@ -51,5 +51,6 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
                 popupWindow.showAtLocation(Mypup, Gravity.BOTTOM,0,0);
                 break;
         }
+
     }
 }

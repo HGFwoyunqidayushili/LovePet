@@ -2,6 +2,7 @@ package jiyun.com.lovepet.entity.user;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -9,54 +10,92 @@ import java.util.Date;
  * //用户的实体类信息
  */
 public class UserInfo implements Serializable{
-   private String UserId;  //用户的id
-   private String UserName; //用户名称
-   private String UserSex;  //用户性别
-   private Date UserData;   //用户出生日期
-   private String UserPhone;  //用户手机号
-   private String address;    //用户地址
-   private String UserImgage;   //用户头像
-   private String UserPassword; //用户密码
+    private static final long serialVersionUID = 45615615515151L;
+    private int id;
+    private String userId;// 用户id
+    private String userName;// 用户�??
+    private String password;// 密码
+    private long userPhone;// 手机�??
+    private int position;// 用户身份
+    private String address;// 用户地址
+    private String identify;// 地图标识
+    private BigDecimal userPrice;// 帐号金额
+    private Date createTime;// 创建时间
+    private Date updateTime;// 修改时间
+    private long qq;// QQ
+    private String realName;// 真实姓名
+    private String family;// 寄养家庭
+    private String identityCard;// 身份证号
+    private String identityImage;// 身份证照�??
+    private Date lastRegisterTime;// �??后登录时�??
+    private String threeId;// 第三方登录标�??
+    private String userImage;// 用户图片
+    private int userSex;// 用户年龄
+    private Date birthday;// 出生日期
+    private int isUse;// 是否启用
+    private String token;
+    private String cityId;
+    private String openTime;// 寄养师服务开始时�??
+    private String endTime;// 寄养师服务结束时�??
+    private String openBeginTime;// 寄养师服务开始时�??
+    private String openEndTime;// 寄养师服务结束时�??
+    private String wechat;// 微信
+    private String coordX;// 横坐�??
+    private String coordY;// 纵坐�??
+    private String intro;// �??�??
+    private int state; // 标识是否审核通过
 
 
     public String getUserId() {
-        return UserId;
+        return userId;
     }
 
-    public void setUserId(String userIdl) {
-        UserId = userIdl;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
-    public String getUserSex() {
-        return UserSex;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserSex(String userSex) {
-        UserSex = userSex;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Date getUserData() {
-        return UserData;
+    public long getUserPhone() {
+        return userPhone;
     }
 
-    public void setUserData(Date userData) {
-        UserData = userData;
+    public void setUserPhone(long userPhone) {
+        this.userPhone = userPhone;
     }
 
-    public String getUserPhone() {
-        return UserPhone;
+    public int getPosition() {
+        return position;
     }
 
-    public void setUserPhone(String userPhone) {
-        UserPhone = userPhone;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public String getAddress() {
@@ -67,33 +106,250 @@ public class UserInfo implements Serializable{
         this.address = address;
     }
 
-    public String getUserImgage() {
-        return UserImgage;
+    public String getIdentify() {
+        return identify;
     }
 
-    public void setUserImgage(String userImgage) {
-        UserImgage = userImgage;
+    public void setIdentify(String identify) {
+        this.identify = identify;
     }
 
-    public String getUserPassword() {
-        return UserPassword;
+    public BigDecimal getUserPrice() {
+        return userPrice;
     }
 
-    public void setUserPassword(String userPassword) {
-        UserPassword = userPassword;
+    public void setUserPrice(BigDecimal userPrice) {
+        this.userPrice = userPrice;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public long getQq() {
+        return qq;
+    }
+
+    public void setQq(long qq) {
+        this.qq = qq;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    public String getIdentityCard() {
+        return identityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
+    }
+
+    public String getIdentityImage() {
+        return identityImage;
+    }
+
+    public void setIdentityImage(String identityImage) {
+        this.identityImage = identityImage;
+    }
+
+    public Date getLastRegisterTime() {
+        return lastRegisterTime;
+    }
+
+    public void setLastRegisterTime(Date lastRegisterTime) {
+        this.lastRegisterTime = lastRegisterTime;
+    }
+
+    public String getThreeId() {
+        return threeId;
+    }
+
+    public void setThreeId(String threeId) {
+        this.threeId = threeId;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
+    }
+
+    public int getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(int userSex) {
+        this.userSex = userSex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getIsUse() {
+        return isUse;
+    }
+
+    public void setIsUse(int isUse) {
+        this.isUse = isUse;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getOpenTime() {
+        return openTime;
+    }
+
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getOpenBeginTime() {
+        return openBeginTime;
+    }
+
+    public void setOpenBeginTime(String openBeginTime) {
+        this.openBeginTime = openBeginTime;
+    }
+
+    public String getOpenEndTime() {
+        return openEndTime;
+    }
+
+    public void setOpenEndTime(String openEndTime) {
+        this.openEndTime = openEndTime;
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
+
+    public String getCoordX() {
+        return coordX;
+    }
+
+    public void setCoordX(String coordX) {
+        this.coordX = coordX;
+    }
+
+    public String getCoordY() {
+        return coordY;
+    }
+
+    public void setCoordY(String coordY) {
+        this.coordY = coordY;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     @Override
     public String toString() {
         return "UserInfo{" +
-                "UserId='" + UserId + '\'' +
-                ", UserName='" + UserName + '\'' +
-                ", UserSex='" + UserSex + '\'' +
-                ", UserData=" + UserData +
-                ", UserPhone='" + UserPhone + '\'' +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", userPhone=" + userPhone +
+                ", position=" + position +
                 ", address='" + address + '\'' +
-                ", UserImgage='" + UserImgage + '\'' +
-                ", UserPassword='" + UserPassword + '\'' +
+                ", identify='" + identify + '\'' +
+                ", userPrice=" + userPrice +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", qq=" + qq +
+                ", realName='" + realName + '\'' +
+                ", family='" + family + '\'' +
+                ", identityCard='" + identityCard + '\'' +
+                ", identityImage='" + identityImage + '\'' +
+                ", lastRegisterTime=" + lastRegisterTime +
+                ", threeId='" + threeId + '\'' +
+                ", userImage='" + userImage + '\'' +
+                ", userSex=" + userSex +
+                ", birthday=" + birthday +
+                ", isUse=" + isUse +
+                ", token='" + token + '\'' +
+                ", cityId='" + cityId + '\'' +
+                ", openTime='" + openTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", openBeginTime='" + openBeginTime + '\'' +
+                ", openEndTime='" + openEndTime + '\'' +
+                ", wechat='" + wechat + '\'' +
+                ", coordX='" + coordX + '\'' +
+                ", coordY='" + coordY + '\'' +
+                ", intro='" + intro + '\'' +
+                ", state=" + state +
                 '}';
     }
 }
