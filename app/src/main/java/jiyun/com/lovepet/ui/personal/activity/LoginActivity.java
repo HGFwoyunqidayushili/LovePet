@@ -60,6 +60,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         userManager=UserManager.getIntance();
 
         listener = new BaseUiListener();
+        qq.setOnClickListener(this);
     }
 
     @Override
