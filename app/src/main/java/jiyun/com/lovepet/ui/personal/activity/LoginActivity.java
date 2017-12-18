@@ -6,6 +6,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,6 +19,7 @@ import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.entity.user.UserInfo;
 import jiyun.com.lovepet.manager.UserManager;
+import jiyun.com.lovepet.qq.BaseUiListener;
 import jiyun.com.lovepet.ui.BaseActivity;
 import jiyun.com.lovepet.ui.HomeActivity;
 import jiyun.com.lovepet.utils.CJSON;
@@ -38,15 +43,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private String User_Password;
     private UserManager userManager;
     private UserInfo userInfo;
+    private Object SCOPE = "all";
+    private Tencent mTencent;
+    private IUiListener listener;
+    private String Scope = "all";
+    private TextView qq;
     //
 
     @Override
     protected void initView() {
         user_Phono= (EditText) findViewById(R.id.et_login_phone);
         ussr_password= (EditText) findViewById(R.id.et_login_pass);
+        qq = (TextView) findViewById(R.id.tv_qq);
         login= (Button) findViewById(R.id.btn_login);
         login.setOnClickListener(this);
         userManager=UserManager.getIntance();
+
+        listener = new BaseUiListener();
     }
 
     @Override
@@ -68,8 +81,29 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                sendUserLogin();
              }
                 break;
+
+            case R.id.tv_qq:
+                login();
+                break;
         }
     }
+
+
+    public void login() {
+//                                   在腾讯开放平台获取的APPID
+        mTencent = Tencent.createInstance("1106541335", this.getApplicationContext());
+        if (!mTencent.isSessionValid()) {
+            mTencent.login(this, Scope, listener);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Tencent.onActivityResultData(requestCode, resultCode, data, listener);
+    }
+
+
+
     //检查手机号和密码
         public boolean   checkUserNameUserPhoo(){
             User_Phono=user_Phono.getText().toString().trim();
