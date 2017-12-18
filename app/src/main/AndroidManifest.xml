@@ -33,7 +33,6 @@
         <activity android:name=".ui.personal.activity.LoginActivity" >
 
 
-
         </activity>
         <activity android:name=".ui.personal.activity.RegisterActivity" />
         <activity android:name=".ui.personal.activity.ToolbarActivity" />
@@ -68,6 +67,39 @@
         <activity android:name=".ui.pet.activity.PetWeigthActivity" />
         <activity android:name=".ui.pet.activity.SeclectorDateActivity" />
         <activity android:name=".ui.pet.activity.Pet_MianYiActivity" />
+
+
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1106541335" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+
+
+        <application>
+            <activity android:name="com.tencent.plus.ImageActivity" />
+        </application>
+
+
+
+
+
+
     </application>
 
 </manifest>
