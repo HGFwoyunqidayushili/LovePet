@@ -12,7 +12,7 @@ import jiyun.com.lovepet.http.Callback.HttpCallBack;
 public interface Contract {
     interface Model  {
         void requestNewsData(Context context, String url, HttpCallBack httpCallBack);
-        void requestNewsDatas(Context context, String url, Map<String,String> map,HttpCallBack httpCallBack);
+        void requestNewsDatas(Context context, String url, Map<String, Object> map, HttpCallBack httpCallBack);
     }
 
     interface Views<T>  extends HttpCallBack<T>{
@@ -21,6 +21,6 @@ public interface Contract {
 
     interface Presenter {
         void getNewsData(String page);
-        void getPostData(String url,Map<String,String> map);
+        void getPostData(String url,Map<String,Object> map);
     }
 }

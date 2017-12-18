@@ -13,5 +13,5 @@ import jiyun.com.lovepet.http.Callback.HttpCallBack;
 public abstract class RequestProduct<T> {
     public abstract void get(Context context, String page, Type type, HttpCallBack<T> httpCallBack);
     public abstract void post(Context context,String page, Type type , HttpCallBack<T> httpCallBack);
-    public abstract void post(Context context, String page, Map<String,String> map,Type type , HttpCallBack<T> httpCallBack);
+    public abstract void post(Context context, String page, Map<String,Object> map,Type type , HttpCallBack<T> httpCallBack);
 }

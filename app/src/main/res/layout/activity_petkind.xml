@@ -22,7 +22,7 @@
     <jiyun.com.lovepet.view.ClearEditText
         android:layout_width="match_parent"
         android:layout_height="50px"
-
+         android:id="@+id/search"
          android:background="@drawable/editexit"
           android:layout_centerInParent="true"
          android:layout_marginRight="10px"
@@ -87,7 +87,7 @@
             android:textSize="30dp"
             android:visibility="invisible" />
 
-        <com.huanchong.pet.tools.SideBar
+        <jiyun.com.lovepet.view.SideBar
             android:id="@+id/sidrbar"
             android:layout_width="30dp"
             android:layout_height="fill_parent"

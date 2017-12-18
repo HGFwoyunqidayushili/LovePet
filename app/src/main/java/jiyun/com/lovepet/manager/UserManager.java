@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import jiyun.com.lovepet.api.App;
+import jiyun.com.lovepet.entity.pet.PetInfo;
 import jiyun.com.lovepet.entity.user.UserInfo;
 import jiyun.com.lovepet.utils.TokenUtil;
 
@@ -13,7 +14,8 @@ import jiyun.com.lovepet.utils.TokenUtil;
 public class UserManager {
 
   private static UserManager userManager;
-  private UserInfo userInfo;
+  public UserInfo userInfo;
+  private PetInfo petInfo;
   private SharedPreferences sharedPreferences;
     public synchronized static UserManager getIntance(){
         if(userManager==null){
@@ -35,8 +37,11 @@ public class UserManager {
          this.userInfo=userInfo;
          sharedPreferences.edit().putString("user",userInfo.toString());
          sharedPreferences.edit().putString("userId",userInfo.getUserId());
+         sharedPreferences.edit().putString("usetName",userInfo.getUserName());
+         sharedPreferences.edit().commit();
      }
     public UserInfo getUserInfo(){
+
         return userInfo;
     }
 
@@ -63,5 +68,26 @@ public class UserManager {
         String token=sharedPreferences.getString("token",null);
         return token;
 
+    }
+    //存储宠物信息
+    public  void  savePetInfo(PetInfo petInfo){
+        sharedPreferences.edit().putString("petInfo",petInfo.toString());
+        this.petInfo=petInfo;
+    }
+    public PetInfo getPetInfo(){
+        if(userInfo.getUserId()==null){
+            return null;
+        }
+        return  petInfo;
+    }
+    //获取id
+    public  String getUserId(){
+        String id=sharedPreferences.getString("userId",null);
+        return id;
+    }
+    //湖区用户名
+    public  String getUserName(){
+        String name=sharedPreferences.getString("usetName",null);
+        return name;
     }
 }

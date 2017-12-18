@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,24 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.entity.Imm;
+import jiyun.com.lovepet.entity.pet.PetInfo;
+import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.ui.BaseActivity;
+import jiyun.com.lovepet.utils.CJSON;
 import jiyun.com.lovepet.utils.CustomTextLayout;
 import jiyun.com.lovepet.utils.ImageUtils;
+import jiyun.com.lovepet.utils.TableUtils;
+import jiyun.com.lovepet.utils.UploadUtil;
 
 public class AddPetActivity extends BaseActivity implements View.OnClickListener {
 
@@ -44,6 +55,9 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     private RelativeLayout pet_sick;
     private EditText pet_info;
     private ImageView imageView;
+    private UserManager userManager;
+    //宠物头像路径
+
     private View sexpup;
     /* 请求识别码 */
     private static final int CODE_GALLERY_REQUEST = 0;
@@ -51,11 +65,28 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     private static final int CODE_RESULT_REQUEST = 2;
     //是否绝育
      private boolean issterilization=false;
+     private boolean mmune;
     private TextView mTV_pet_name,mTV_pet_kind,mTV_pet_sterilization,mTV_pet_birthDate,mTV_pet_Weigth,mTV_pet_Immune;
     private String petDate;
 
+
+    //宠物信息
+      private String petname;
+      private String pettype;
+      private String petimage;
+      private String petweigth;
+      private String petbirthDate;
+      private String typename;
+     //上传文件
+      private Map<String,Object> map=new HashMap<>();
+      private Map<String,File> iconMap;
+    private String path;
+
+
     @Override
     protected void initView() {
+        userManager=UserManager.getIntance();
+          iconMap=new HashMap<>();
         Mypup = LayoutInflater.from(this).inflate(R.layout.popupwindow, null);
         sexpup=LayoutInflater.from(this).inflate(R.layout.sexpopupwindow,null);
         mTV_pet_name= (TextView) findViewById(R.id.mTV_pet_name);
@@ -95,12 +126,58 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         pet_Dateofbirth.setOnClickListener(this);
         pet_weight.setOnClickListener(this);
         pet_sick.setOnClickListener(this);
+        initListener();
 
+
+    }
+
+    private void initListener() {
+        App_title.setOnTextViewClickListener(new CustomTextLayout.OnTextViewClickListener(){
+
+            @Override
+            public void OnRightTvClick() {
+                super.OnRightTvClick();
+                PetInfo petinfo=new PetInfo();
+                  petinfo.setPetName(petname);
+                  petinfo.setBrithDate(petbirthDate);
+                  petinfo.setPetType(pettype);
+                  petinfo.setWeigth(Double.parseDouble(petweigth));
+                  petinfo.setPetInfo(pet_info.getText().toString().trim());
+                  petinfo.setPetTypename(typename);
+                  petinfo.setSterilization(issterilization?1:2);
+                  petinfo.setImmune(
+                          mmune?1:0);
+                petinfo.setCreatTime(new SimpleDateFormat("yyyy-MM-dd")
+                        .format(new Date()));
+                  petinfo.setUserId(userManager.getUserId());
+                  petinfo.setUserName(userManager.getUserName());
+                  map.put("petInfo-" +userManager.getUserId(),petinfo);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String string = UploadUtil.uploadFile(iconMap,
+                               CJSON.URL_STRING
+                                        + "petInfo/savePetInfo.jhtml", map);
+                        Log.e("TAG",string);
+                    }
+                }).start();
+
+
+
+
+            }
+        });
     }
 
     @Override
     protected void initData() {
-
+        String str=mTV_pet_Immune.getText().toString().trim();
+        if(str==null){
+            mmune=false;
+        }
+        else {
+            mmune=true;
+        }
     }
 
     @Override
@@ -128,7 +205,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
 
             case R.id.pet_kind:
                 intent=new Intent(this,PetkindActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,4);
                 break;
             case R.id.pet_yes:
                 //是否绝育
@@ -142,6 +219,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                             public void dateChange(String date) {
                                 petDate = date;
                                 mTV_pet_birthDate.setText(petDate);
+                                 petbirthDate=petDate;
                             }
                         });
                 break;
@@ -149,6 +227,8 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                 add_pet_weight();
                 break;
             case R.id.pet_sick:
+                intent=new Intent(AddPetActivity.this,Pet_MianYiActivity.class);
+                startActivityForResult(intent,6);
                 break;
             case R.id.phono_Album:
                 Intent intentFromGallery = new Intent(Intent.ACTION_PICK, null);
@@ -163,7 +243,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                 intent1.putExtra(MediaStore.EXTRA_OUTPUT, Uri
                         .fromFile(new File(Environment
                                 .getExternalStorageDirectory(),
-                                "Love_pet.jpg")));
+                                "Lovepet.jpg")));
                 startActivityForResult(intent1, CODE_CAMERA_REQUEST);
                 break;
             case R.id.bt_cancel:
@@ -176,7 +256,8 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
        添加体重
      */
     private void add_pet_weight() {
-
+          Intent intent=new Intent(this,PetWeigthActivity.class);
+        startActivityForResult(intent,5);
     }
 
     /*
@@ -210,7 +291,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     }
 
 
-
+//上传头像
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -223,7 +304,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                     break;
                 case CODE_CAMERA_REQUEST:
                     File temp = new File(Environment.getExternalStorageDirectory()
-                            + "/xiaoma.jpg");
+                            + "/huanhuan.jpg");
 
                     startPhotoZoom(Uri.fromFile(temp));
 
@@ -232,7 +313,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                     if (data != null) {
                         // 让刚才选择裁剪得到的图片显示在界面上
                         setPicToView(data);
-                        Toast.makeText(AddPetActivity.this, "214142", Toast.LENGTH_SHORT).show();
+
                     }
                     break;
             }
@@ -240,6 +321,41 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         if(requestCode==3&&resultCode==RESULT_OK){
               String name=data.getStringExtra("name");
               mTV_pet_name.setText(name);
+              petname=name;
+        }
+        if(requestCode==4&&resultCode==RESULT_OK){
+            typename=data.getStringExtra(TableUtils.PetInfo.PETNAME);
+            pettype=data.getStringExtra(TableUtils.PetInfo.PETTYPE);
+            mTV_pet_kind.setText(typename);
+
+        }
+        if(requestCode==5&&resultCode==RESULT_OK){
+            petweigth=data.getStringExtra("name");
+             mTV_pet_Weigth.setText(petweigth);
+        }
+        if(requestCode==6&&resultCode==RESULT_OK){
+            String list=data.getStringExtra("list");
+            List<Imm> list1=CJSON.parseArray(list, Imm.class);
+            if(list1!=null){
+                for(Imm imm:list1){
+                    iconMap=new HashMap<>();
+                    iconMap.put(imm.getImmuneCode() + "-"
+                                    + userManager.getUserId(),
+                            new File(path));
+
+                    imm.setUserId(userManager.getUserId());
+                    imm.setPetName(mTV_pet_name.getText().toString().trim());
+                    imm.setUserName(userManager.getUserName());
+                    if (map == null) {
+                        map = new HashMap<>();
+                    }
+                    map.put(imm.getImmuneCode() + "-"
+                            + userManager.getUserId(), imm);
+                }
+
+
+            }
+            mTV_pet_Immune.setText("以免疫");
         }
     }
 
@@ -266,7 +382,12 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
             //图片路径
             Bitmap bitmap = ImageUtils.toRoundBitmap(photo);
             imageView.setImageBitmap(bitmap);
+          path=ImageUtils.savePhoto(photo, Environment
+                    .getExternalStorageDirectory().getAbsolutePath(), String
+                    .valueOf(System.currentTimeMillis()));
+                File file=new File(path);
 
+            iconMap.put("petInfo-" +userManager.getUserId(), file);
 
         }
     }
