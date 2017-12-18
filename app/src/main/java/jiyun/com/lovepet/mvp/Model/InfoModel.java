@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 import jiyun.com.lovepet.http.Callback.HttpCallBack;
+import jiyun.com.lovepet.http.OkHttpUtils;
 import jiyun.com.lovepet.http.factory.RequestFactory;
 import jiyun.com.lovepet.http.factory.RequestFactoryProduct;
 import jiyun.com.lovepet.http.product.OkhttpProduct;
@@ -33,9 +34,10 @@ public class InfoModel implements Contract.Model {
     }
 
     @Override
-    public void requestNewsDatas(Context context, String url, Map<String, String> map, HttpCallBack httpCallBack) {
+    public void requestNewsDatas(Context context, String url, Map<String, Object> map, HttpCallBack httpCallBack) {
         RequestFactory requestFactory=new RequestFactoryProduct();
         RequestProduct requestProduct = requestFactory.create(OkhttpProduct.class);
+
         Type[] genericInterfaces = httpCallBack.getClass().getGenericInterfaces();
         Type[] actualTypeArguments = null;
         for(int i = 0; i < genericInterfaces.length; i++){
@@ -46,4 +48,6 @@ public class InfoModel implements Contract.Model {
         Type type = actualTypeArguments[0];
         requestProduct.post(context,url,map,type, httpCallBack);
     }
+
+
 }

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,19 +23,32 @@ import android.widget.Toast;
 
 import com.zaaach.citypicker.CityPickerActivity;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import jiyun.com.lovepet.Demo;
 import jiyun.com.lovepet.R;
-import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
+import jiyun.com.lovepet.bean.HomeBean;
+import jiyun.com.lovepet.mvp.contract.Contract;
+import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
+import jiyun.com.lovepet.ui.adapter.ListViewHomeAdapter;
+import jiyun.com.lovepet.ui.personal.activity.LoginActivity;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
+import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
+import okhttp3.FormBody;
 
-public class HomeActivity extends BaseActivity  {
+public class HomeActivity extends BaseActivity implements Contract.Views<HomeBean>{
     private static final int REQUEST_CODE_PICK_CITY = 233;
     private NavigationView nav_view;
     private EditText editText;
     private ImageView imageView;
     private DrawerLayout draw;
-    private String URL_String="http://123.56.150.230:8885/dog_family/user/updateUserInfo.jhtml";
+
+    private final String HTTPURL1 = "http://123.56.150.230:8885/dog_family/users/getUsersInfoByVO.jhtml";
+    private final String HTTPURL2 = "http://123.56.150.230:8885/dog_family/petType/getPetTypesByVO.jhtml";
     private View viewById1;
     private CheckBox shaixuan1;
     private CheckBox shaixuan2;
@@ -43,18 +57,22 @@ public class HomeActivity extends BaseActivity  {
     private View imagetIntentToMap;
     private PopupWindow popupWindow3;
     private CheckBox current_city;
+    private ListView listVirew;
+    private HashMap<String, Object> mMap;
+    private InfoPresenter infoPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());//加载布局
-        initView();//寻找控件
-        initData();//点击跳转到各个界面
-        //分支
-        //继续上传
-        //再次急=进行上传
-        //fffffffffffff
-        //33333333333'
+        initView();
+
+        //寻找控件
+        initData();
+        infoPresenter = new InfoPresenter(this,this);
+
+
+        //点击跳转到各个界面
         initListener();
     }
     @Override
@@ -79,12 +97,16 @@ public class HomeActivity extends BaseActivity  {
             @Override
             public void onClick(View view) {
                 if (shaixuan1.isChecked()) {
+                    infoPresenter.getPostData(HTTPURL1,mMap);
+                    Log.e("TAG",infoPresenter+"-----------------");
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
                     popupWindow = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     popupWindow.setFocusable(true);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
                     popupWindow.showAsDropDown(linearLayout);
                 } else {
+                    infoPresenter.getPostData(HTTPURL2,mMap);
+                    Log.e("TAG",infoPresenter+"-----------------");
                     popupWindow.dismiss();
                 }
             }
@@ -145,7 +167,7 @@ public class HomeActivity extends BaseActivity  {
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                Intent intent=new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -157,6 +179,7 @@ public class HomeActivity extends BaseActivity  {
         shaixuan1 = (CheckBox) viewById1.findViewById(R.id.shaixuan1);
         shaixuan2 = (CheckBox) viewById1.findViewById(R.id.shaixuan2);
         shaixuan3 = (CheckBox) viewById1.findViewById(R.id.shaixuan3);
+        listVirew = (ListView) viewById1.findViewById(R.id.listView_Screening);
         linearLayout = viewById1.findViewById(R.id.ll_home);
         imagetIntentToMap = viewById1.findViewById(R.id.intentTo_Map);
 
@@ -197,6 +220,12 @@ public class HomeActivity extends BaseActivity  {
 
     @Override
     protected void initData() {
+        mMap = new HashMap<>();
+        mMap.put("beginIndex", 0);
+        mMap.put("endIndex", 2);
+        mMap.put("coordX", 40.116384);
+        mMap.put("coordY", 116.250374);
+        mMap.put("orderBy", "distance asc");
 
 
         //跳转到各个页面!
@@ -217,7 +246,7 @@ public class HomeActivity extends BaseActivity  {
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.collection_account:
-                        Toast.makeText(HomeActivity.this, "钱包", Toast.LENGTH_SHORT).show();
+                       startActivity(new Intent(HomeActivity.this, MyWalletActivity.class));
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.about:
@@ -247,7 +276,18 @@ public class HomeActivity extends BaseActivity  {
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
+
+    @Override
+    public void success(HomeBean demo) {
+        List<HomeBean.DescBean> desc = demo.getDesc();
+        ListViewHomeAdapter listViewHomeAdapter = new ListViewHomeAdapter(desc, HomeActivity.this);
+         listVirew.setAdapter(listViewHomeAdapter);
+    }
+
+    @Override
+    public void failure(Throwable e) {
+
+    }
 }

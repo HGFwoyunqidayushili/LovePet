@@ -23,15 +23,15 @@ public class InfoPresenter implements Contract.Presenter {
      this.context=context;
 
      }
+
+
     @Override
-    public void getNewsData(String url) {
-      model.requestNewsData(context,url,views);
+    public void getNewsData(String page) {
+        model.requestNewsData(context,page,views);
     }
 
     @Override
-    public void getPostData(String url, Map<String, String> map) {
+    public void getPostData(String url, Map<String, Object> map) {
         model.requestNewsDatas(context,url,map,views);
     }
-
-
 }
