@@ -1,13 +1,17 @@
 package jiyun.com.lovepet.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,15 +30,18 @@ import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jiyun.com.lovepet.ListViewHomeAdapter;
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.bean.HomeBean;
+import jiyun.com.lovepet.bean.PetBean;
 import jiyun.com.lovepet.mvp.contract.Contract;
 import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
 import jiyun.com.lovepet.ui.order.activity.MyOrderActivity;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
-import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
+import jiyun.com.lovepet.ui.pet.activity.Need_to_knowActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
@@ -58,18 +66,17 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private ListView listVirew;
     private HashMap<String, Object> mMap;
     private InfoPresenter infoPresenter;
-
+    private Map<String,Object> petMap =new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(getLayoutId());//加载布局
         initView();
-
+        initData("price asc");
         //寻找控件
-        initData();
         infoPresenter = new InfoPresenter(this,this);
-
-
+       infoPresenter.getPostData(HTTPURL1,mMap);
         //点击跳转到各个界面
         initListener();
     }
@@ -85,7 +92,45 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
              initChangedImage();
             //用户点击登录界面
                initLogin();
+        //跳转到各个页面!
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.messages:
+                        Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.pet:
+                        Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.order_details:
+                        Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.collection_account:
+                        //钱包页面
+                        startActivity(new Intent(HomeActivity.this, MyWalletActivity.class));
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.about:
+                        //需知
+                      startActivity(new Intent(HomeActivity.this, Need_to_knowActivity.class));
+                        draw.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.perfect_information:
+                        //跳转到设置界面
+                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
+                        startActivity(intent);
+                        draw.closeDrawer(GravityCompat.START);
+                        Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
+                        break;
 
+                }
+                return false;
+            }
+        });
     }
 
     private void initListener() {
@@ -95,16 +140,16 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
             @Override
             public void onClick(View view) {
                 if (shaixuan1.isChecked()) {
-                    infoPresenter.getPostData(HTTPURL1,mMap);
-                    Log.e("TAG",infoPresenter+"-----------------");
-                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
+                    listVirew.setBackgroundColor(Color.BLACK);
+                    listVirew.setVisibility(View.GONE);
+                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow2, null);
                     popupWindow = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    popupWindow.setFocusable(true);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
                     popupWindow.showAsDropDown(linearLayout);
                 } else {
-                    infoPresenter.getPostData(HTTPURL2,mMap);
-                    Log.e("TAG",infoPresenter+"-----------------");
+                    infoPresenter.getPostData(HTTPURL2,petMap);
+                    listVirew.setBackgroundColor(Color.WHITE);
+                    listVirew.setVisibility(View.VISIBLE);
                     popupWindow.dismiss();
                 }
             }
@@ -112,18 +157,96 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         shaixuan2.setOnClickListener(new View.OnClickListener() {
 
             private PopupWindow popupWindow2;
-
+//
             @Override
             public void onClick(View view) {
                 if (shaixuan2.isChecked()) {
-                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow2, null);
+                    listVirew.setVisibility(View.GONE);
+                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
                     popupWindow2 = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     //设置pop是否获取焦点
-                    popupWindow2.setFocusable(true);
                     popupWindow2.setBackgroundDrawable(new BitmapDrawable());
                     //http://123.56.150.230:8885/dog_family/t_user_info
 
                     popupWindow2.showAsDropDown(linearLayout);
+                    final RadioButton smallDog = (RadioButton) popupview.findViewById(R.id.smallDog);
+                    final RadioButton inDog = (RadioButton) popupview.findViewById(R.id.inDog);
+                    final RadioButton bigDog = (RadioButton) popupview.findViewById(R.id.bigDog);
+                    final RadioButton Puppies = (RadioButton) popupview.findViewById(R.id.Puppies);
+                    //Puppies
+                    final RadioButton animal_Cat = (RadioButton) popupview.findViewById(R.id.animal_Cat);
+                    //animal_Cat
+                    smallDog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (smallDog.isChecked()){
+                                shaixuan2.setText("附近优先");
+                                initData("distance asc");
+                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                popupWindow2.dismiss();
+                                listVirew.setVisibility(View.VISIBLE);
+                            }else {
+
+                            }
+                        }
+                    });
+                    inDog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (inDog.isChecked()){
+                                shaixuan2.setText("好评优先");
+                                initData("score desc");
+                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                popupWindow2.dismiss();
+                                listVirew.setVisibility(View.VISIBLE);
+                            }else {
+
+
+                            }
+                        }
+                    });
+                    bigDog.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (bigDog.isChecked()){
+                                shaixuan2.setText("订单优先");
+                                initData("orderCount desc");
+                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                popupWindow2.dismiss();
+                                listVirew.setVisibility(View.VISIBLE);
+                            }else {
+                            }
+                        }
+                    });
+                    animal_Cat.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (animal_Cat.isChecked()){
+                                shaixuan2.setText("价格从高到低");
+                                initData("price desc");
+                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                popupWindow2.dismiss();
+                                listVirew.setVisibility(View.VISIBLE);
+                            }else {
+
+                            }
+                        }
+                    });
+                    Puppies.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (Puppies
+                                    .isChecked()){
+                                shaixuan2.setText("价格从低到高");
+                                initData("price asc");
+                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                popupWindow2.dismiss();
+                                listVirew.setVisibility(View.VISIBLE);
+                            }else {
+                                popupWindow2.dismiss();
+                            }
+                        }
+                    });
                 } else {
                     popupWindow2.dismiss();
                 }
@@ -217,35 +340,32 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     }
 
     @Override
-    protected void initData() {
+    public void initData(String str) {
         mMap = new HashMap<>();
         mMap.put("beginIndex", 0);
-        mMap.put("endIndex", 2);
+        mMap.put("endIndex", 20);
         mMap.put("coordX", 40.116384);
         mMap.put("coordY", 116.250374);
-        mMap.put("orderBy", "distance asc");
-
+        mMap.put("orderBy", str);
+         petMap.put("beginIndex",0);
+         petMap.put("endIndex",10);
+         petMap.put("petTypeCode","daxingquan");
 
 
         //跳转到各个页面!
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                Intent intent;
                 switch (item.getItemId()) {
                     case R.id.messages:
                         Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.pet:
-                         intent=new Intent(HomeActivity.this, MyPetActivity.class);
-                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.order_details:
-                        intent=new Intent(HomeActivity.this, MyOrderActivity.class);
-                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
@@ -259,8 +379,8 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         break;
                     case R.id.perfect_information:
                         //跳转到设置界面
-                        Intent intent1 = new Intent(HomeActivity.this, SetActivity.class);
-                        startActivity(intent1);
+                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
+                        startActivity(intent);
                         draw.closeDrawer(GravityCompat.START);
                         Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
                         break;
@@ -289,5 +409,37 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     @Override
     public void failure(Throwable e) {
 
+    }
+
+    //返回键监听
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+            builder.setIcon(R.drawable.kawayi);
+
+            builder.setTitle("退出程序");
+            builder.setMessage("主人真的要退出吗?再考虑考虑....");
+            builder.setNegativeButton("残忍退出", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            builder.setPositiveButton("再玩一会", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    Toast.makeText(HomeActivity.this, "谢谢您喜欢我们的产品", Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.create();
+            builder.show();
+
+
+            return  false;
+        }else {
+            return super.onKeyDown(keyCode, event);
+        }
     }
 }
