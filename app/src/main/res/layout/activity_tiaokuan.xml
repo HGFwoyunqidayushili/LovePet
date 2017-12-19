@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_tiaokuan"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jiyun.com.lovepet.ui.pet.activity.TiaokuanActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp10" >
+
+        <ImageView
+            android:id="@+id/iv_backt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="条款协议"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="请务必认真阅读和理解本《软件许可使用协议》 （以下简称《协议》）中规定的所有权利和限制。 除非您接受本《协议》条款，否则您无权下载、安装或使用本“软件”及其相关服务。您一旦 安装、复制、下载、访问或以其它方式使用本 软件产品，将视为对本《协议》的接受，即表示您同意接受本《协议》各项条款的约束。如 果您不同意本《协议》中的条款，请不要安装、 复制或使用本软件。本《协议》是用户与北京欢宠科技有限公司（下称“欢宠”）之间关于 用户下载、安装、使用、复制随附本《协议》 的欢欢软件（以下简称“软件”）的法律协议。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="1.权利声明"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="1.1本“软件”的一切知识产权，以及与“软件”相关的所有信息内容，包括但不限于：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="文字表述及其组合、图标、图饰、图像、图表、色彩、界面设计、版面框架、有关数据、附加程序、印刷材料或电子文档等均为希望公司公司所有，受著作权法和国际著作权条约以及其 他知识产权法律法规的保护。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="2.许可范围"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="2.1下载、安装和使用：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="本软件为免费软件，用户可以非商业性、无限制数量地下载、安装及使用本软件。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="2.2复制、分发和传播：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="用户可以非商业性、无限制数量地复制、分发和传播本软件产品。但必须保证每一份复制、 分发和传播都是完整和真实的,包括所有有关本软件产品的软件、电子文档,版权和商标， 亦包括本协议。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="3.权利限制"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="3.1禁止反向工程、反向编译和反向汇编：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="用户不得对本软件产品进行反向工程(ReverseEngineer)、反向编译(Decompile)或反向汇编（Disassemble），同时不得改动编译在程序文件内部的任何资源。除法律、法规 明文规定允许上述活动外，用户必须遵守此协 议限制。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="3.2组件分割:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="本软件产品是作为一个单一产品而被授予许可使用,用户不得将各个部分拆分用于其它目的。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="3.3个别授权:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="如需进行商业性的销售、复制、分发，包括但不限于软件销售、预装、捆绑等，必须获得欢宠的书面授权和许可。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="3.4保留权利：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="本协议未明示授权的其他一切权利仍归欢宠所有，用户使用其他权利时必须获得欢宠的书面 同意。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.用户使用须知"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.1软件功能服务：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="本软件提供宠物的寄养匹配，寄养家庭申请等功能服务。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.2本软件仅适用于其官方网站公布支持的操作系统:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="软件可随操作系统启动而自动运行，以便随时提供所有功能服务并减少响应时间。如果用户在安装本软件后因任何原因欲放弃使用，可从程序管理中删除本软件。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.3本软件由欢宠提供产品支持。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.4软件的修改和升级：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="欢宠保留随时为用户提供本软件的修改、升级版本的权利。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.5本软件不含有任何旨:" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="在破坏用户数据和获取用户隐私信息的恶意代码，不含有任何跟踪、监视用户设备信息的功能代码，不会收集用户使用其它软件、文档等个人信息。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6用户应在遵守法律及本协议的前提下使用本软件。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="用户无权实施包括但不限于下列行为：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.1不得删除或者改变本软件上的所有权利管理电子信息；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.2不得故意避开或者破坏著作权人为保护本软件著作权而采取的技术措施；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.3用户不得虚构本软件功能误导、欺骗他人；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.4违反国家规定，对设备信息系统功能进行删除、修改、增加、干扰，造成设备信息系统不能正常运行；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.5未经允许，进入设备信息网络或者使用设备信息网络资源；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.6未经允许，对设备信息网络功能进行删除、修改或者增加的；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.7未经允许，对设备信息网络中存储、处理或者传输的数据和应用程序进行删除、修改或者增加。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.8破坏本软件系统或网站的正常运行，故意传播设备病毒等破坏性程序；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.6.9其他任何危害设备信息网络安全的行为。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.7对于从非欢宠指定站点下载的本软件产品以及从非欢宠发行的介质上获得的本软件产品" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="欢宠无法保证该软件是否感染设备病毒、是否隐藏有伪装的特洛伊木马程序或者黑客软件，使用此类软件，将可能导致不可预测的风险，建议用户不要轻易下载、安装、使用，欢宠不承担任何由此产生的一切法律责任。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.8隐私权保护" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.8.1为了更好地改进软件和服务，在用户安装、使用本软件时，本软件会向欢宠安全中心服务器报告以上行为的发生。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.8.2 欢宠是一个开放的宠物寄养平台，用户自行开放的个人信息部分，不受到平台的保护。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="4.8.3 寄养家庭的基本信息（包括但不限于手机号码，微信号，qq号码，邮箱等信息）属于寄养服务的组成部分，开放展示给使用者。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="5．免责与责任限制"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="5.1本软件经过详细的测试" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="但不能保证与所有的软硬件系统完全兼容，不能保证本软件完全没有错误。如果出现不兼容及软件错误的情况，用户可拨打技术支持电话将情况报告欢宠，获得技术支持。如果无法解决兼容性问题，用户可以删除本软件。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="5.2在适用法律允许的最大范围内：" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="对因使用或不能使用本软件所产生的损害及风险，包括但不限于直接或间接的个人损害、商业赢利的丧失、贸易中断、商业信息的丢失或任何其它经济损失，欢宠不承担任何责任。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="5.3对于因电信系统或互联网网络故障、设备故障或病毒、信息损坏或丢失、设备系统问题或其它任何不可抗力原因而产生损失，欢宠不承担任何责任。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="5.4用户违反本协议规定，对欢宠公司造成损害的。欢宠有权采取包括但不限于中断使用许可、停止提供服务、限制使用、法律追究等措施。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="6.法律及争议解决"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="6.1本协议适用中华人民共和国法律及国际著作权条约。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="6.2因本协议引起的或与本协议有关的任何争议，各方应友好协商解决；" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="协商不成的，任何一方均可将有关争议提交至北京仲裁委员会并按照其届时有效的仲裁规则仲裁；仲裁裁决是终局的，对各方均有约束力。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="7.其他条款"
+                android:textColor="#FF0000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="7.1如果本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="或违反任何适用的法律，则该条款被视为删除，但本协议的其余条款仍应有效并且有约束力。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="7.2欢宠有权随时根据有关法律、法规的变化以及公司经营状况和经营策略的调整等修改本协议。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="修改后的协议会在欢宠网站（www.imhuan.com）上公布，并随附于新版本软件。当发生有关争议时，以最新的协议文本为准。如果不同意改动的内容，用户可以自行删除本软件。如果用户继续使用本软件，则视为您接受本协议的变动。" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="7.3本协议的一切解释权与修改权归欢宠。" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

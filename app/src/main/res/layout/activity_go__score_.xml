@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_go__score_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="jiyun.com.lovepet.ui.Go_Score_Activity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="喜欢我们就给我们打高分吧"
+        android:layout_above="@+id/ratingBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="52dp"
+        android:id="@+id/textView2" />
+
+    <RatingBar
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:id="@+id/ratingBar"
+        style="@style/foodRatingBar"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="39dp" />
+</RelativeLayout>
