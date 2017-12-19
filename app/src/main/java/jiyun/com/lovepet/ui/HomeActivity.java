@@ -178,10 +178,12 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
 //                    Glide.with(HomeActivity.this).load(UserManager.getIntance().getUserInfo().getUserImage()).into(imgphone);
                     userName.setText(UserManager.getIntance().getUserName());
-                    userId.setText(UserManager.getIntance().getUserInfo().getUserPhone()+"");
+                    userId.setText(UserManager.getIntance().getUsetPhono() + "");
 
 
                     Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                    intent.putExtra("username", UserManager.getIntance().getUserName());
+                    intent.putExtra("phone", UserManager.getIntance().getUsetPhono() + "");
                     startActivity(intent);
                 } else {
 
@@ -193,9 +195,6 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
             }
         });
-
-
-
 
 
     }
