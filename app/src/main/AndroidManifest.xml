@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jiyun.com.lovepet">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -30,7 +31,7 @@
         <activity android:name=".ui.wallet.activity.MyWalletActivity" />
         //个人信息
         <activity android:name=".ui.personal.activity.BingPhoneActivity" />
-        <activity android:name=".ui.personal.activity.LoginActivity" >
+        <activity android:name=".ui.personal.activity.LoginActivity">
 
 
         </activity>
@@ -90,13 +91,20 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
 
-
         <application>
             <activity android:name="com.tencent.plus.ImageActivity" />
         </application>
 
 
-
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.zz.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
 
 
