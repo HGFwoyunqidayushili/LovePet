@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import jiyun.com.lovepet.entity.user.UserInfo;
 import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.qq.bean.QQ;
 import jiyun.com.lovepet.qq.bean.QQphoto;
@@ -31,6 +32,7 @@ public class BaseUiListener implements IUiListener {
     private Object oauth_consumer_key;
     private String openid1;
     private String format;
+    private UserInfo userInfo;
 
     @Override
     public void onComplete(Object o) {
@@ -61,8 +63,14 @@ public class BaseUiListener implements IUiListener {
         String openid = qq.getOpenid();
 
         //保存token和id
-        UserManager.getInstance().saveUser_info(access_token, openid);
+//        UserManager.getInstance().saveUser_info(access_token, openid);
 //        edit.putString("openid", openid);
+        userInfo = new UserInfo();
+        userInfo.setUserId(openid);
+        userInfo.setToken(access_token);
+
+
+        UserManager.getIntance().saveUser(userInfo);
 
 
         String pay_token = qq.getPay_token();
@@ -183,8 +191,12 @@ public class BaseUiListener implements IUiListener {
 
 
                     //保存城市、头像、性别、昵称
-                    UserManager.getInstance().saveUserPhotos(city, figureurl_qq_1, gender, nickname);
+//                    UserManager.getInstance().saveUserPhotos(city, figureurl_qq_1, gender, nickname);
 
+                    //昵称
+                    userInfo.setUserName(nickname);
+                    //头像
+                    userInfo.setUserImage(figureurl_qq_1);
                 }
             }
         });
