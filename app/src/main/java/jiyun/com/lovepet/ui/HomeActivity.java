@@ -28,9 +28,11 @@ import java.util.List;
 
 import jiyun.com.lovepet.ListViewHomeAdapter;
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.mvp.contract.Contract;
 import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
 import jiyun.com.lovepet.ui.order.activity.MyOrderActivity;
+import jiyun.com.lovepet.ui.personal.activity.LoginActivity;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
 import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
@@ -67,12 +69,13 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
         //寻找控件
         initData();
-        infoPresenter = new InfoPresenter(this,this);
+        infoPresenter = new InfoPresenter(this, this);
 
 
         //点击跳转到各个界面
         initListener();
     }
+
     @Override
     protected void initView() {
         CustomTextLayout customTextLayout = (CustomTextLayout) findViewById(R.id.App_title);
@@ -81,10 +84,10 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         draw = (DrawerLayout) findViewById(R.id.draw);
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.inflateHeaderView(R.layout.header_layout);
-             //侧滑用户换头像和昵称
-             initChangedImage();
-            //用户点击登录界面
-               initLogin();
+        //侧滑用户换头像和昵称
+        initChangedImage();
+        //用户点击登录界面
+        initLogin();
 
     }
 
@@ -95,16 +98,16 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
             @Override
             public void onClick(View view) {
                 if (shaixuan1.isChecked()) {
-                    infoPresenter.getPostData(HTTPURL1,mMap);
-                    Log.e("TAG",infoPresenter+"-----------------");
+                    infoPresenter.getPostData(HTTPURL1, mMap);
+                    Log.e("TAG", infoPresenter + "-----------------");
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
                     popupWindow = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     popupWindow.setFocusable(true);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
                     popupWindow.showAsDropDown(linearLayout);
                 } else {
-                    infoPresenter.getPostData(HTTPURL2,mMap);
-                    Log.e("TAG",infoPresenter+"-----------------");
+                    infoPresenter.getPostData(HTTPURL2, mMap);
+                    Log.e("TAG", infoPresenter + "-----------------");
                     popupWindow.dismiss();
                 }
             }
@@ -162,13 +165,39 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private void initChangedImage() {
         View headerView = nav_view.getHeaderView(0);
         RelativeLayout viewById = (RelativeLayout) headerView.findViewById(R.id.intentUserchangeImage);
+
+        final ImageView imgphone = viewById.findViewById(R.id.userImages);
+        final TextView userName = viewById.findViewById(R.id.userName);
+        final TextView userId = viewById.findViewById(R.id.userId);
+
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
-                startActivity(intent);
+
+                if (UserManager.getIntance().isLogin()) {
+
+//                    Glide.with(HomeActivity.this).load(UserManager.getIntance().getUserInfo().getUserImage()).into(imgphone);
+                    userName.setText(UserManager.getIntance().getUserName());
+                    userId.setText(UserManager.getIntance().getUserInfo().getUserPhone()+"");
+
+
+                    Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                    startActivity(intent);
+                } else {
+
+                    Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent1);
+                    finish();
+                }
+
+
             }
         });
+
+
+
+
+
     }
 
     private void initLogin() {
@@ -181,7 +210,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         linearLayout = viewById1.findViewById(R.id.ll_home);
         imagetIntentToMap = viewById1.findViewById(R.id.intentTo_Map);
 
-        //跳转到用户登录界面
+
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -226,7 +255,6 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         mMap.put("orderBy", "distance asc");
 
 
-
         //跳转到各个页面!
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -238,19 +266,19 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.pet:
-                         intent=new Intent(HomeActivity.this, MyPetActivity.class);
+                        intent = new Intent(HomeActivity.this, MyPetActivity.class);
                         startActivity(intent);
                         Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.order_details:
-                        intent=new Intent(HomeActivity.this, MyOrderActivity.class);
+                        intent = new Intent(HomeActivity.this, MyOrderActivity.class);
                         startActivity(intent);
                         Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.collection_account:
-                       startActivity(new Intent(HomeActivity.this, MyWalletActivity.class));
+                        startActivity(new Intent(HomeActivity.this, MyWalletActivity.class));
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.about:
@@ -265,10 +293,10 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
                         break;
 
-               }
-               return false;
-           }
-       });
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -276,7 +304,6 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     protected int getLayoutId() {
         return R.layout.activity_home;
     }
-
 
 
     @Override
