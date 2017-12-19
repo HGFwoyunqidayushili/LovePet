@@ -4,6 +4,13 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".api.App"
@@ -30,18 +37,20 @@
         <activity android:name=".ui.personal.activity.PersinalInfoActivity" />
         //我的宠物
         <activity android:name=".ui.pet.activity.MyPetActivity" />
-        <activity android:name=".ui.pet.activity.MapActivity"></activity>
-        <activity android:name=".ui.pet.activity.SetActivity"/>
-        <activity android:name=".ui.pet.activity.PsActivity"/>
-
+        <activity android:name=".ui.pet.activity.MapActivity" />
+        <activity android:name=".ui.pet.activity.SetActivity" />
+        <activity android:name=".ui.pet.activity.PsActivity" />
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
-            android:theme="@style/CityPicker.NoActionBar"
             android:screenOrientation="portrait"
+            android:theme="@style/CityPicker.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <meta-data android:name="com.amap.api.v2.apikey" android:value="0307826752ac91c535c98381942d74aa">//开发者申请的key
-        </meta-data>
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="0307826752ac91c535c98381942d74aa">
+            //开发者申请的key</meta-data>
+
         <activity android:name=".ui.pet.activity.AddPetActivity" />
         <activity android:name=".ui.pet.activity.PetkindActivity" />
         <activity android:name=".ui.order.activity.MyOrderActivity" />
@@ -53,7 +62,8 @@
             //开发者申请的key</meta-data>
 
         <activity android:name=".ui.pet.activity.PetWeigthActivity" />
-        <activity android:name=".ui.pet.activity.SeclectorDateActivity"></activity>
+        <activity android:name=".ui.pet.activity.SeclectorDateActivity" />
+        <activity android:name=".ui.pet.activity.Pet_MianYiActivity" />
     </application>
 
 </manifest>

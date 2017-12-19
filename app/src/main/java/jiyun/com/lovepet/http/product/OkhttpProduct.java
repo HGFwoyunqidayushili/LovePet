@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.http.Callback.HttpCallBack;
+import jiyun.com.lovepet.utils.CJSON;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -33,7 +35,7 @@ public class OkhttpProduct<T> extends RequestProduct<T> {
             switch (msg.what){
                 case SUCCESS:
 
-//                        httpCallBack.success((T) msg.obj);
+
 
                     break;
                 case FAILURE:
@@ -70,11 +72,14 @@ public class OkhttpProduct<T> extends RequestProduct<T> {
     }
 
     @Override
-    public void post(Context context, String page, Map<String, String> map, final Type type, HttpCallBack<T> httpCallBack) {
+    public void post(Context context, String page, Map<String, Object> map, final Type type, final HttpCallBack<T> httpCallBack) {
         FormBody.Builder builder= new FormBody.Builder();
+
             for(String key:map.keySet()){
-                builder.add(key,map.get(key));
+                builder.add(key, String.valueOf(map.get(key)));
             }
+        String json= CJSON.toJSONMap(map);
+        builder.add(CJSON.DATA,json);
 
         Request request=new Request.Builder().url(page).post(builder.build()).build();
         OkHttpClient okHttpClient=new OkHttpClient();
@@ -89,12 +94,13 @@ public class OkhttpProduct<T> extends RequestProduct<T> {
                   String str=response.body().string();
                   Log.e("TAG",str);
                   Gson gson=new Gson();
-                  T o=gson.fromJson(str,type);
-
-                  Message message=handler.obtainMessage(SUCCESS);
-                  message.obj=o;
-
-                      handler.sendMessage(message);
+                  final T o=gson.fromJson(str,type);
+                  App.baseActivity.runOnUiThread(new Runnable() {
+                      @Override
+                      public void run() {
+                        httpCallBack.success(o);
+                      }
+                  });
 
               }
           });

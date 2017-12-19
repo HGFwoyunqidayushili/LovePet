@@ -37,6 +37,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private String User_Phono;
     private String User_Password;
     private UserManager userManager;
+    private UserInfo userInfo;
     //
 
     @Override
@@ -103,27 +104,34 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
               @Override
               public void onResponse(Call call, final Response response) throws IOException {
+                  String str = response.body().string();
+                  if(CJSON.getRET(str)){
+                     App.baseActivity.runOnUiThread(new Runnable() {
+                         @Override
+                         public void run() {
+                             showToast("登陆成功");
+                         }
+                     });
+                       userInfo=CJSON.parseObject(CJSON.getRESULT(str),UserInfo.class);
+
+                  }
+                  else {
+                      App.baseActivity.runOnUiThread(new Runnable() {
+                          @Override
+                          public void run() {
+                              showToast("登录失败");
+                          }
+                      });
+                  }
                   App.baseActivity.runOnUiThread(new Runnable() {
                       @Override
                       public void run() {
-                          try {
-                              String str = response.body().string();
-                                if(CJSON.getRET(str)){
-                                    showToast("登陆成功");
-                                    UserInfo userInfo=CJSON.parseObject(CJSON.getRESULT(str),UserInfo.class);
-                                   userManager.saveUser(userInfo);
-                                    Intent intent=new Intent(LoginActivity.this, HomeActivity.class);
-                                     intent.putExtra("userInfo",userInfo);
-                                    startActivity(intent);
-                                    finish();
+                          userManager.saveUser(userInfo);
+                          Intent intent=new Intent(LoginActivity.this, HomeActivity.class);
+                          intent.putExtra("userInfo",userInfo);
+                          startActivity(intent);
+                          finish();
 
-                                }
-                              else {
-                                 showToast(CJSON.getDESC(str));
-                                }
-                          } catch (IOException e) {
-                              e.printStackTrace();
-                          }
                       }
                   });
               }

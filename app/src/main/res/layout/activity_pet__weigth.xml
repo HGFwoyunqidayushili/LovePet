@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     android:orientation="vertical"
-    tools:context="jiyun.com.lovepet.ui.pet.activity.PetWeigthActivity">
-
+    android:orientation="vertical"
+    tools:context="jiyun.com.lovepet.ui.pet.activity.Pet_WeigthActivity">
     <include
         layout="@layout/apptitle"
         ></include>

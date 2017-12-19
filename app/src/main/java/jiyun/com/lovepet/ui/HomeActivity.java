@@ -25,22 +25,20 @@ import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import jiyun.com.lovepet.Demo;
+import jiyun.com.lovepet.ListViewHomeAdapter;
 import jiyun.com.lovepet.R;
-import jiyun.com.lovepet.bean.HomeBean;
 import jiyun.com.lovepet.mvp.contract.Contract;
 import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
-import jiyun.com.lovepet.ui.adapter.ListViewHomeAdapter;
-import jiyun.com.lovepet.ui.personal.activity.LoginActivity;
+import jiyun.com.lovepet.ui.order.activity.MyOrderActivity;
+import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
+import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
-import okhttp3.FormBody;
 
-public class HomeActivity extends BaseActivity implements Contract.Views<HomeBean>{
+public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.com.lovepet.HomeBean> {
     private static final int REQUEST_CODE_PICK_CITY = 233;
     private NavigationView nav_view;
     private EditText editText;
@@ -167,7 +165,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<HomeBea
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, LoginActivity.class);
+                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
                 startActivity(intent);
             }
         });
@@ -228,20 +226,26 @@ public class HomeActivity extends BaseActivity implements Contract.Views<HomeBea
         mMap.put("orderBy", "distance asc");
 
 
+
         //跳转到各个页面!
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                Intent intent;
                 switch (item.getItemId()) {
                     case R.id.messages:
                         Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.pet:
+                         intent=new Intent(HomeActivity.this, MyPetActivity.class);
+                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.order_details:
+                        intent=new Intent(HomeActivity.this, MyOrderActivity.class);
+                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
@@ -255,8 +259,8 @@ public class HomeActivity extends BaseActivity implements Contract.Views<HomeBea
                         break;
                     case R.id.perfect_information:
                         //跳转到设置界面
-                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
-                        startActivity(intent);
+                        Intent intent1 = new Intent(HomeActivity.this, SetActivity.class);
+                        startActivity(intent1);
                         draw.closeDrawer(GravityCompat.START);
                         Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
                         break;
@@ -273,17 +277,13 @@ public class HomeActivity extends BaseActivity implements Contract.Views<HomeBea
         return R.layout.activity_home;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
 
     @Override
-    public void success(HomeBean demo) {
-        List<HomeBean.DescBean> desc = demo.getDesc();
+    public void success(jiyun.com.lovepet.HomeBean homeBean) {
+        List<jiyun.com.lovepet.HomeBean.DescBean> desc = homeBean.getDesc();
         ListViewHomeAdapter listViewHomeAdapter = new ListViewHomeAdapter(desc, HomeActivity.this);
-         listVirew.setAdapter(listViewHomeAdapter);
+        listVirew.setAdapter(listViewHomeAdapter);
     }
 
     @Override

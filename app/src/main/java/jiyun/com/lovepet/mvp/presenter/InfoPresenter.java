@@ -34,4 +34,6 @@ public class InfoPresenter implements Contract.Presenter {
     public void getPostData(String url, Map<String, Object> map) {
         model.requestNewsDatas(context,url,map,views);
     }
+
+
 }
