@@ -21,11 +21,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import jiyun.com.lovepet.ListViewHomeAdapter;
 import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.manager.UserManager;
@@ -39,6 +41,7 @@ import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
+
 
 public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.com.lovepet.HomeBean> {
     private static final int REQUEST_CODE_PICK_CITY = 233;
@@ -60,6 +63,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private ListView listVirew;
     private HashMap<String, Object> mMap;
     private InfoPresenter infoPresenter;
+    private CircleImageView imgphone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,7 +170,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         View headerView = nav_view.getHeaderView(0);
         RelativeLayout viewById = (RelativeLayout) headerView.findViewById(R.id.intentUserchangeImage);
 
-        final ImageView imgphone = viewById.findViewById(R.id.userImages);
+        imgphone = (CircleImageView) viewById.findViewById(R.id.userImages);
         final TextView userName = viewById.findViewById(R.id.userName);
         final TextView userId = viewById.findViewById(R.id.userId);
 
@@ -175,13 +179,16 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
             public void onClick(View view) {
 
                 if (UserManager.getIntance().isLogin()) {
-
-//                    Glide.with(HomeActivity.this).load(UserManager.getIntance().getUserInfo().getUserImage()).into(imgphone);
+                    String usetPhotos = UserManager.getIntance().getUsetPhotos();
+                    Log.e("onClick:--------- ", usetPhotos);
+                    Glide.with(HomeActivity.this).load(UserManager.getIntance().getUsetPhotos()).into(imgphone);
                     userName.setText(UserManager.getIntance().getUserName());
                     userId.setText(UserManager.getIntance().getUsetPhono() + "");
 
 
                     Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
+
+                    intent.putExtra("userphotos", UserManager.getIntance().getUsetPhotos());
                     intent.putExtra("username", UserManager.getIntance().getUserName());
                     intent.putExtra("phone", UserManager.getIntance().getUsetPhono() + "");
                     startActivity(intent);
