@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jiyun.com.lovepet">
 
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -30,11 +31,15 @@
         <activity android:name=".ui.wallet.activity.MyWalletActivity" />
         //个人信息
         <activity android:name=".ui.personal.activity.BingPhoneActivity" />
+        <activity android:name=".ui.pet.activity.TiaokuanActivity" />
         <activity android:name=".ui.personal.activity.LoginActivity" />
         <activity android:name=".ui.personal.activity.RegisterActivity" />
         <activity android:name=".ui.personal.activity.ToolbarActivity" />
         <activity android:name=".ui.personal.activity.WeChatActivity" />
         <activity android:name=".ui.personal.activity.PersinalInfoActivity" />
+        <activity android:name=".ui.New_function_Activity" />
+        <activity android:name=".ui.pet.activity.AboutHuanHuan" />
+        <activity android:name=".ui.pet.activity.Need_to_knowActivity" />
         //我的宠物
         <activity android:name=".ui.pet.activity.MyPetActivity" />
         <activity android:name=".ui.pet.activity.MapActivity" />
@@ -63,7 +68,9 @@
 
         <activity android:name=".ui.pet.activity.PetWeigthActivity" />
         <activity android:name=".ui.pet.activity.SeclectorDateActivity" />
-        <activity android:name=".ui.pet.activity.Pet_MianYiActivity" />
+        <activity android:name=".ui.pet.activity.OrderActivity" />
+        <activity android:name=".ui.pet.activity.JiYangShiXiangQing" />
+        <activity android:name=".ui.YuYueSuccess"></activity>
     </application>
 
 </manifest>

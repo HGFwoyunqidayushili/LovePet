@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,20 +30,24 @@ import android.widget.Toast;
 
 import com.zaaach.citypicker.CityPickerActivity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jiyun.com.lovepet.Demo;
+import jiyun.com.lovepet.HomeBean;
 import jiyun.com.lovepet.ListViewHomeAdapter;
 import jiyun.com.lovepet.R;
-import jiyun.com.lovepet.bean.HomeBean;
 import jiyun.com.lovepet.bean.PetBean;
+import jiyun.com.lovepet.http.OkHttpUtils;
 import jiyun.com.lovepet.mvp.contract.Contract;
 import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
-import jiyun.com.lovepet.ui.order.activity.MyOrderActivity;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
+import jiyun.com.lovepet.ui.pet.activity.JiYangShiXiangQing;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
 import jiyun.com.lovepet.ui.pet.activity.Need_to_knowActivity;
+import jiyun.com.lovepet.ui.pet.activity.OrderActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
@@ -62,11 +68,15 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private View linearLayout;
     private View imagetIntentToMap;
     private PopupWindow popupWindow3;
+    private PopupWindow popupWindow2;
+    private PopupWindow popupWindow;
     private CheckBox current_city;
     private ListView listVirew;
     private HashMap<String, Object> mMap;
     private InfoPresenter infoPresenter;
     private Map<String,Object> petMap =new HashMap<>();
+    private List<jiyun.com.lovepet.HomeBean.DescBean> descBeen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +87,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         //寻找控件
         infoPresenter = new InfoPresenter(this,this);
        infoPresenter.getPostData(HTTPURL1,mMap);
-        //点击跳转到各个界面
+        //点击跳转到各个界面\
         initListener();
     }
     @Override
@@ -86,12 +96,14 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         editText = (EditText) findViewById(R.id.editText);
 
         draw = (DrawerLayout) findViewById(R.id.draw);
+
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.inflateHeaderView(R.layout.header_layout);
              //侧滑用户换头像和昵称
              initChangedImage();
             //用户点击登录界面
                initLogin();
+        IntentOrder();
         //跳转到各个页面!
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -135,28 +147,24 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
     private void initListener() {
         shaixuan1.setOnClickListener(new View.OnClickListener() {
-            private PopupWindow popupWindow;
+
 
             @Override
             public void onClick(View view) {
                 if (shaixuan1.isChecked()) {
-                    listVirew.setBackgroundColor(Color.BLACK);
                     listVirew.setVisibility(View.GONE);
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow2, null);
                     popupWindow = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
                     popupWindow.showAsDropDown(linearLayout);
                 } else {
-                    infoPresenter.getPostData(HTTPURL2,petMap);
-                    listVirew.setBackgroundColor(Color.WHITE);
-                    listVirew.setVisibility(View.VISIBLE);
                     popupWindow.dismiss();
                 }
             }
         });
         shaixuan2.setOnClickListener(new View.OnClickListener() {
 
-            private PopupWindow popupWindow2;
+
 //
             @Override
             public void onClick(View view) {
@@ -262,11 +270,33 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow3, null);
                     popupWindow3 = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     popupWindow3.setBackgroundDrawable(new BitmapDrawable());
-                    popupWindow3.setFocusable(true);
-
                     popupWindow3.showAsDropDown(linearLayout);
                     intentText = (TextView) popupview.findViewById(R.id.intent);
-                    final CheckBox check_box = (CheckBox) popupview.findViewById(R.id.take_a_bath);
+                    final CheckBox take_a_bath = (CheckBox) popupview.findViewById(R.id.take_a_bath);
+                    final CheckBox pick_up = (CheckBox) popupview.findViewById(R.id.pick_up);
+                    final CheckBox new_Year_s_Day = (CheckBox) popupview.findViewById(R.id.new_Year_s_Day);
+                    final CheckBox chinese_New_Year = (CheckBox) popupview.findViewById(R.id.chinese_New_Year);
+                    final CheckBox ching_Ming_Festival = (CheckBox) popupview.findViewById(R.id.ching_Ming_Festival);
+                    final CheckBox labor_day = (CheckBox) popupview.findViewById(R.id.labor_day);
+                    final CheckBox dragon_Boat_Festival = (CheckBox) popupview.findViewById(R.id.dragon_Boat_Festival);
+                    final CheckBox mid_Autumn_Festival = (CheckBox) popupview.findViewById(R.id.mid_Autumn_Festival);
+                    final CheckBox national_Day = (CheckBox) popupview.findViewById(R.id.national_Day);
+                    final Button reset = (Button) popupview.findViewById(R.id.reset);
+                    reset.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //重置按钮
+                            new_Year_s_Day.setChecked(false);
+                            chinese_New_Year.setChecked(false);
+                            ching_Ming_Festival.setChecked(false);
+                            labor_day.setChecked(false);
+                            dragon_Boat_Festival.setChecked(false);
+                            mid_Autumn_Festival.setChecked(false);
+                            national_Day.setChecked(false);
+                            take_a_bath.setChecked(false);
+                            pick_up.setChecked(false);
+                        }
+                    });
                     current_city = (CheckBox) popupview.findViewById(R.id.current_city);
                     intentText.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -280,6 +310,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                 }
             }
         });
+
     }
 
     private void initChangedImage() {
@@ -300,10 +331,20 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         shaixuan1 = (CheckBox) viewById1.findViewById(R.id.shaixuan1);
         shaixuan2 = (CheckBox) viewById1.findViewById(R.id.shaixuan2);
         shaixuan3 = (CheckBox) viewById1.findViewById(R.id.shaixuan3);
-        listVirew = (ListView) viewById1.findViewById(R.id.listView_Screening);
+        listVirew = (ListView) viewById1.findViewById(R.id.listView);
+
         linearLayout = viewById1.findViewById(R.id.ll_home);
         imagetIntentToMap = viewById1.findViewById(R.id.intentTo_Map);
-
+          listVirew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+              @Override
+              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                  Intent intent = new Intent(HomeActivity.this, JiYangShiXiangQing.class);
+                  intent.putExtra("image",descBeen.get(position).getUserImage());
+                  intent.putExtra("name",descBeen.get(position).getFamily());
+                  intent.putExtra("id",descBeen.get(position).getUsersId());
+                  startActivity(intent);
+              }
+          });
         //跳转到用户登录界面
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -343,7 +384,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     public void initData(String str) {
         mMap = new HashMap<>();
         mMap.put("beginIndex", 0);
-        mMap.put("endIndex", 20);
+        mMap.put("endIndex", 18);
         mMap.put("coordX", 40.116384);
         mMap.put("coordY", 116.250374);
         mMap.put("orderBy", str);
@@ -352,43 +393,6 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
          petMap.put("petTypeCode","daxingquan");
 
 
-        //跳转到各个页面!
-        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.messages:
-                        Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
-                        draw.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.pet:
-                        Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
-                        draw.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.order_details:
-                        Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
-                        draw.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.collection_account:
-                       startActivity(new Intent(HomeActivity.this, MyWalletActivity.class));
-                        draw.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.about:
-                        Toast.makeText(HomeActivity.this, "需知", Toast.LENGTH_SHORT).show();
-                        draw.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.perfect_information:
-                        //跳转到设置界面
-                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
-                        startActivity(intent);
-                        draw.closeDrawer(GravityCompat.START);
-                        Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
-                        break;
-
-               }
-               return false;
-           }
-       });
 
     }
 
@@ -401,13 +405,20 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
     @Override
     public void success(jiyun.com.lovepet.HomeBean homeBean) {
+        descBeen = new ArrayList<>();
         List<jiyun.com.lovepet.HomeBean.DescBean> desc = homeBean.getDesc();
+         descBeen.addAll(desc);
         ListViewHomeAdapter listViewHomeAdapter = new ListViewHomeAdapter(desc, HomeActivity.this);
         listVirew.setAdapter(listViewHomeAdapter);
     }
 
     @Override
     public void failure(Throwable e) {
+
+    }
+
+    @Override
+    public void success1(HomeBean homeBean) {
 
     }
 
@@ -441,5 +452,9 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         }else {
             return super.onKeyDown(keyCode, event);
         }
+    }
+
+    public  void  IntentOrder(){
+
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="1dp"
+         android:background="#ffffff"
+         android:paddingBottom="@dimen/dp10"
+         android:paddingLeft="@dimen/dp20"
+         android:paddingTop="@dimen/dp10" >
+
+         <TextView
+             android:id="@+id/order_server_name"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:text="接/送" />
+
+         <TextView
+             android:id="@+id/order_other_source"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center"
+             android:text="@string/Yuan_late" />
+
+         <TextView
+             android:id="@+id/order_other_num"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center" />
+
+         <TextView
+             android:id="@+id/order_other_total_money"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="center"
+             android:text="@string/money" />
+     </LinearLayout>
+
+</LinearLayout>

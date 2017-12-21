@@ -39,7 +39,7 @@ public class PetWeigthActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
 
     }
 

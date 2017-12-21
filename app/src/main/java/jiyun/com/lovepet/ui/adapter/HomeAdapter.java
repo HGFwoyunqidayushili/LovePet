@@ -53,6 +53,7 @@ public class HomeAdapter extends BaseAdapter {
         return view;
     }
 
+
     public static class ViewHolder {
         public View rootView;
         public TextView homeText;

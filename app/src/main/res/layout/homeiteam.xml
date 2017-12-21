@@ -3,6 +3,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue52">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="首页"
+            android:textSize="@dimen/dp30"
+            android:gravity="center"/>
+    </LinearLayout>
     <!--主体内容-->
   <LinearLayout
       android:layout_width="match_parent"
@@ -50,10 +62,10 @@
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
-           android:drawableRight="@drawable/a"
+           android:drawableRight="@drawable/shuaixuan"
            android:layout_marginRight="18dp"
            android:text="宠物类型"
-           android:textSize="18dp"
+           android:textSize="15dp"
            android:button="@null"></CheckBox>
 
 
@@ -62,10 +74,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/a"
+            android:drawableRight="@drawable/shuaixuan"
             android:layout_marginRight="18dp"
-            android:textSize="18dp"
-            android:text="宠物类型"
+            android:textSize="15dp"
+            android:text="附近优先"
             android:button="@null"
             />
         <CheckBox
@@ -74,9 +86,9 @@
             android:layout_weight="1"
             android:layout_marginRight="18dp"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:drawableRight="@drawable/a"
-            android:text="宠物类型"
+            android:textSize="15dp"
+            android:drawableRight="@drawable/shuaixuan"
+            android:text="筛选"
             android:button="@null"
             />
     </LinearLayout>
@@ -93,7 +105,7 @@
     </LinearLayout>
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-          android:id="@+id/listView_Screening"
-        ></ListView>
+        android:focusable="false"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"></ListView>
 </LinearLayout>

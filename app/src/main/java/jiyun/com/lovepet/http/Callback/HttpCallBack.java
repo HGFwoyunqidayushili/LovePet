@@ -7,4 +7,5 @@ public interface HttpCallBack<T> {
     void success(T t);
 
     void failure(Throwable e);
+    void success1(T t);
 }

@@ -30,7 +30,7 @@ public interface WheelAdapter {
 	public int getItemsCount();
 
 	/**
-	 * Gets a wheel item by index.
+	 * Gets shuaixuan wheel item by index.
 	 * 
 	 * @param index
 	 *            the item index

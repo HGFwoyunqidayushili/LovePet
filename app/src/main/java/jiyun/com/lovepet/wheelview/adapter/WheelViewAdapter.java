@@ -33,7 +33,7 @@ public interface WheelViewAdapter {
 	public int getItemsCount();
 
 	/**
-	 * Get a View that displays the data at the specified position in the data
+	 * Get shuaixuan View that displays the data at the specified position in the data
 	 * set
 	 * 
 	 * @param index
@@ -47,7 +47,7 @@ public interface WheelViewAdapter {
 	public View getItem(int index, View convertView, ViewGroup parent);
 
 	/**
-	 * Get a View that displays an empty wheel item placed before the first or
+	 * Get shuaixuan View that displays an empty wheel item placed before the first or
 	 * after the last wheel item.
 	 * 
 	 * @param convertView
