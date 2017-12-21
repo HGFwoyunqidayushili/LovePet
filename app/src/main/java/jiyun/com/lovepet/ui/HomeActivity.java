@@ -180,7 +180,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
                 if (UserManager.getIntance().isLogin()) {
                     String usetPhotos = UserManager.getIntance().getUsetPhotos();
-                    Log.e("onClick:--------- ", usetPhotos);
+//                    Log.e("onClick:--------- ", usetPhotos);
                     Glide.with(HomeActivity.this).load(UserManager.getIntance().getUsetPhotos()).into(imgphone);
                     userName.setText(UserManager.getIntance().getUserName());
                     userId.setText(UserManager.getIntance().getUsetPhono() + "");
