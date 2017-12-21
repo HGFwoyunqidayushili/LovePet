@@ -12,23 +12,46 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.api.App;
+import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.ui.BaseActivity;
+import jiyun.com.lovepet.utils.AppUtils;
+import jiyun.com.lovepet.utils.CJSON;
 import jiyun.com.lovepet.utils.CustomTextLayout;
+import jiyun.com.lovepet.utils.FileUtil;
+import jiyun.com.lovepet.utils.ImageUtils;
 import jiyun.com.lovepet.utils.PhotoUtils;
+import jiyun.com.lovepet.utils.TableUtils;
+import jiyun.com.lovepet.utils.ToastUtil;
 import jiyun.com.lovepet.utils.ToastUtils;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class PersinalInfoActivity extends BaseActivity implements View.OnClickListener {
 
@@ -46,7 +69,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     private RelativeLayout relativeLayout;
     private PopupWindow popupWindow;
     private View Mypup;
-    private TextView name;
+    private EditText name;
     private CircleImageView imgs;
 
     @Override
@@ -60,6 +83,11 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         TextView phonoAlbum = Mypup.findViewById(R.id.phono_Album);
         TextView takephoto = Mypup.findViewById(R.id.take_photo);
         Button btcancel = Mypup.findViewById(R.id.bt_cancel);
+//名称的布局
+        RelativeLayout parl = (RelativeLayout) findViewById(R.id.pa_rl);
+
+//        parl.setOnClickListener(this);
+
 
         //popupWindow 点击事件
         phonoAlbum.setOnClickListener(this);
@@ -70,7 +98,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         //圆形头像
         imgs = (CircleImageView) findViewById(R.id.civ);
 
-        name = (TextView) findViewById(R.id.name);
+        name = (EditText) findViewById(R.id.name);
 
 
     }
@@ -79,6 +107,9 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     protected void initData() {
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
+        String userphotos = intent.getStringExtra("userphotos");
+        String phone = intent.getStringExtra("phone");
+        Glide.with(PersinalInfoActivity.this).load(userphotos).into(imgs);
         name.setText(username);
     }
 
@@ -109,6 +140,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
             case R.id.bt_cancel:
                 popupWindow.dismiss();
                 break;
+
         }
 
     }
@@ -223,6 +255,9 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     private void showImages(Bitmap bitmap) {
         //往控件上设置图片的
         imgs.setImageBitmap(bitmap);
+
+        //上传头像
+        uploadPic(bitmap);
     }
 
     /**
@@ -233,6 +268,126 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         return state.equals(Environment.MEDIA_MOUNTED);
     }
 
+
+    //上传头像到服务器
+    private void uploadPic(Bitmap bitmap) {
+        // 上传至服务器
+        // ... 可以在这里把Bitmap转换成file，然后得到file的url，做文件上传操作
+        // 注意这里得到的图片已经是圆形图片了
+        // bitmap是没有做个圆形处理的，但已经被裁剪了
+
+        //保存头像
+        String imagePath = ImageUtils.savePhoto(bitmap, Environment
+                .getExternalStorageDirectory().getAbsolutePath(), String
+                .valueOf(System.currentTimeMillis()));
+        Log.e("imagePath", imagePath + "");
+        if (imagePath != null) {
+            // 拿着imagePath上传了
+
+            okhttp();
+        }
+    }
+
+    private void okhttp() {
+        String userId = UserManager.getIntance().getUserId();
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Map<String, Object> map = new HashMap<>();
+        map.put("userId", userId);
+        String json = CJSON.toJSONMap(map);
+        FormBody.Builder body = new FormBody.Builder();
+        body.add(CJSON.DATA, json);
+        Request request = new Request.Builder().url(CJSON.URL_STRING + "user/getUserInfoByVO.jhtml")
+                .post(body.build())
+                .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                String str = response.body().string();
+
+
+                Log.e("TAG", str);
+
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(str);
+                    final boolean ret = jsonObject.getBoolean("ret");
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("result");
+                    final String userId = jsonObject1.getString("userId");
+                    Log.e("TAG", "ID----------" + userId);
+                    final long userPhone = jsonObject1.getLong("userPhone");
+                    final String userName = jsonObject1.getString("userName");
+                    App.baseActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            if (ret) {
+                                showToast("上传成功");
+
+                            } else {
+                                showToast("上传失败");
+                            }
+                        }
+                    });
+                } catch (org.json.JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+    }
+
+
+    private void UpdateName() {
+
+        Map<String, Object> param = new HashMap<>();
+        param.put(TableUtils.UserInfo.USERID, AppUtils.userInfo.getUserId());
+        param.put(TableUtils.UserInfo.USERNAME, name.getText()
+                .toString().trim());
+        // 生成提交服务器的JSON字符串
+        String json = CJSON.toJSONMap(param);
+        // FileUtil.getToken();
+
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add(CJSON.DATA, json);
+        builder.build();
+
+        final Request request = new Request.Builder().post(builder.build()).url(AppUtils.REQUESTURL
+                + "user/updateUserInfo.jhtml").build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String string = response.body().string();
+
+
+                if (CJSON.getRET(string)) {
+                    AppUtils.userInfo.setUserName(name.getText()
+                            .toString());
+                    FileUtil.saveUser(AppUtils.userInfo);
+                    ToastUtil.show("修改成功!");
+                    finish();
+                } else {
+                    ToastUtil.show("修改失败");
+                }
+            }
+        });
+
+
+    }
 
 }
 

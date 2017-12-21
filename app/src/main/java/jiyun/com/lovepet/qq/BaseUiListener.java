@@ -1,9 +1,11 @@
 package jiyun.com.lovepet.qq;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
 import org.json.JSONObject;
@@ -12,12 +14,17 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.entity.user.UserInfo;
 import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.qq.bean.QQ;
 import jiyun.com.lovepet.qq.bean.QQphoto;
+import jiyun.com.lovepet.ui.HomeActivity;
+import jiyun.com.lovepet.ui.personal.activity.BingPhoneActivity;
+import jiyun.com.lovepet.utils.CJSON;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -33,6 +40,7 @@ public class BaseUiListener implements IUiListener {
     private String openid1;
     private String format;
     private UserInfo userInfo;
+    private Tencent mTencent;
 
     @Override
     public void onComplete(Object o) {
@@ -87,7 +95,7 @@ public class BaseUiListener implements IUiListener {
     }
 
 
-    public void getQQ(String access_token, String openid) {
+    public void getQQ(final String access_token, final String openid) {
 
         StringBuffer buffer = new StringBuffer("https://graph.qq.com/user/get_user_info");
         Map<String, Object> map = new HashMap<>();
@@ -152,6 +160,9 @@ public class BaseUiListener implements IUiListener {
                     String figureurl_qq_1 = qQphoto.getFigureurl_qq_1();
                     Log.e("QQ空间头像: ", figureurl_qq_1);
 
+                    userInfo.setUserImage(figureurl_qq_1);
+
+
 //                    大小为100×100像素的QQ头像URL。需要注意，不是所有的用户都拥有QQ的100x100的头像，但40x40像素则是一定会有
                     String figureurl_qq_2 = qQphoto.getFigureurl_qq_2();
 
@@ -197,10 +208,75 @@ public class BaseUiListener implements IUiListener {
                     userInfo.setUserName(nickname);
                     //头像
                     userInfo.setUserImage(figureurl_qq_1);
+
+                    Log.e("====: ",UserManager.getIntance().getUserInfo().getUserName() );
+
+
+                    //跳转到绑定手机页面
+                    Intent intent = new Intent(App.baseActivity, BingPhoneActivity.class);
+                    App.baseActivity.startActivity(intent);
+
+
+
+                    //发送登录请求
+//                    sendlogin(openid);
                 }
             }
         });
 
+    }
+
+
+    private void sendlogin(String openid) {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Map<String, Object> map = new HashMap<>();
+        map.put("threeId", openid);
+        String json = CJSON.toJSONMap(map);
+        FormBody.Builder body = new FormBody.Builder();
+        body.add(CJSON.DATA, json);
+        Request request = new Request.Builder().url(CJSON.URL_STRING + "user/login.jhtml")
+                .post(body.build())
+                .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                String str = response.body().string();
+                Log.e("onResponse: ", str);
+                if (CJSON.getRET(str)) {
+                    App.baseActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            App.baseActivity.showToast("登陆成功");
+                        }
+                    });
+                    userInfo = CJSON.parseObject(CJSON.getRESULT(str), UserInfo.class);
+
+                } else {
+                    App.baseActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            App.baseActivity.showToast("登录失败");
+                        }
+                    });
+                }
+                App.baseActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        UserManager.getIntance().saveUser(userInfo);
+                        Intent intent = new Intent(App.baseActivity, HomeActivity.class);
+                        intent.putExtra("userInfo", userInfo);
+                        App.baseActivity.startActivity(intent);
+                        App.baseActivity.finish();
+
+                    }
+                });
+            }
+        });
     }
 
     @Override

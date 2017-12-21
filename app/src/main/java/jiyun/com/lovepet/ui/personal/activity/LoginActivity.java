@@ -45,22 +45,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private String User_Password;
     private UserManager userManager;
     private UserInfo userInfo;
-    private Object SCOPE = "all";
     private Tencent mTencent;
     private IUiListener listener;
     private String Scope = "all";
     private TextView qq;
+    private TextView forgetpwd;
     //
 
     @Override
     protected void initView() {
         user_Phono = (EditText) findViewById(R.id.et_login_phone);
         ussr_password = (EditText) findViewById(R.id.et_login_pass);
+        forgetpwd = (TextView) findViewById(R.id.tv_forget_password);
+        forgetpwd.setOnClickListener(this);
         qq = (TextView) findViewById(R.id.tv_qq);
         login = (Button) findViewById(R.id.btn_login);
         login.setOnClickListener(this);
         userManager = UserManager.getIntance();
-        userInfo=new UserInfo();
+        userInfo = new UserInfo();
         listener = new BaseUiListener();
         qq.setOnClickListener(this);
     }
@@ -87,6 +89,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             case R.id.tv_qq:
                 login();
+
+                break;
+            case R.id.tv_forget_password:
+                Intent intent1 = new Intent(LoginActivity.this, ForgotPwdActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -103,6 +110,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Tencent.onActivityResultData(requestCode, resultCode, data, listener);
+
+
     }
 
 
