@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -158,7 +158,6 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                         String string = UploadUtil.uploadFile(iconMap,
                                CJSON.URL_STRING
                                         + "petInfo/savePetInfo.jhtml", map);
-                        Log.e("TAG",string);
                     }
                 }).start();
 
@@ -170,7 +169,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
         String str=mTV_pet_Immune.getText().toString().trim();
         if(str==null){
             mmune=false;
@@ -205,7 +204,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
 
             case R.id.pet_kind:
                 intent=new Intent(this,PetkindActivity.class);
-                startActivityForResult(intent,4);
+                startActivity(intent);
                 break;
             case R.id.pet_yes:
                 //是否绝育
@@ -313,7 +312,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                     if (data != null) {
                         // 让刚才选择裁剪得到的图片显示在界面上
                         setPicToView(data);
-
+                        Toast.makeText(AddPetActivity.this, "214142", Toast.LENGTH_SHORT).show();
                     }
                     break;
             }

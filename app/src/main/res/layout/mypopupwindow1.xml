@@ -9,7 +9,7 @@
     android:background="#fff"
     android:orientation="vertical">
     <RadioButton
-    android:text="小型犬"
+    android:text="附近优先"
         android:id="@+id/smallDog"
     android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -20,7 +20,7 @@
     android:button="@null"
     android:textColor="#000" />
     <RadioButton
-        android:text="中型犬"
+        android:text="好评优先"
         android:id="@+id/inDog"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -31,7 +31,7 @@
         android:button="@null"
         android:textColor="#000" />
     <RadioButton
-        android:text="大型犬"
+        android:text="订单优先"
         android:id="@+id/bigDog"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -42,7 +42,7 @@
         android:button="@null"
         android:textColor="#000" />
     <RadioButton
-        android:text="猫"
+        android:text="价格从高到低"
         android:id="@+id/animal_Cat"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -53,7 +53,7 @@
         android:button="@null"
         android:textColor="#000" />
     <RadioButton
-        android:text="幼犬"
+        android:text="价格从低到高"
         android:id="@+id/Puppies"
         android:layout_width="match_parent"
         android:gravity="center_vertical"

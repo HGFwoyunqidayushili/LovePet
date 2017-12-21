@@ -1,6 +1,7 @@
 package jiyun.com.lovepet.ui.personal.activity;
 
 import android.graphics.drawable.ColorDrawable;
+import android.icu.text.StringSearch;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
 
     }
 

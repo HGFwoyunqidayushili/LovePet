@@ -130,4 +130,8 @@
     <color name="pickerview_wheelview_textcolor_out">#a8a8a8</color>
     <color name="pickerview_wheelview_textcolor_center">#2a2a2a</color>
     <color name="pickerview_wheelview_textcolor_divider">#d5d5d5</color>
+    <color name="colorGreyLine">#F1F1F1</color>
+    <color name="colorGreyBottom">#E3E3E3</color>
+    <color name="colorGreyLight">#CCCCCC</color>
+    <color name="colorGreyDark">#999999</color>
 </resources>

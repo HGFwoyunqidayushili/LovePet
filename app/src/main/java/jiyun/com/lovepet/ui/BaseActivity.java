@@ -15,6 +15,7 @@ import jiyun.com.lovepet.utils.ConnectionUtils;
 
 public abstract class BaseActivity extends AppCompatActivity{
     private int dialog;
+    private String string;
     private Dialog loadDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +26,12 @@ public abstract class BaseActivity extends AppCompatActivity{
         ConnectionUtils.getIp(this);
         AppUtils.setAppContext(this);
         initView();
-        initData();
+        initData(string);
 
     }
 
     protected abstract  void  initView();
-    protected abstract  void  initData();
+    public abstract  void  initData(String str);
     protected abstract  int  getLayoutId();
 
     //正在加载的进度条

@@ -1,4 +1,4 @@
-package jiyun.com.lovepet.http.product;
+package jiyun.com.lovepet.mvp.Model;
 
 import android.content.Context;
 import android.os.Handler;
@@ -13,6 +13,7 @@ import java.util.Map;
 
 import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.http.Callback.HttpCallBack;
+import jiyun.com.lovepet.http.product.RequestProduct;
 import jiyun.com.lovepet.utils.CJSON;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -104,6 +105,41 @@ public class OkhttpProduct<T> extends RequestProduct<T> {
 
               }
           });
+    }
+
+    @Override
+    public void post1(Context context, String page, Map<String, Object> map, final Type type, final HttpCallBack<T> httpCallBack) {
+        FormBody.Builder builder= new FormBody.Builder();
+
+        for(String key:map.keySet()){
+            builder.add(key, String.valueOf(map.get(key)));
+        }
+        String json= CJSON.toJSONMap(map);
+        builder.add(CJSON.DATA,json);
+
+        Request request=new Request.Builder().url(page).post(builder.build()).build();
+        OkHttpClient okHttpClient=new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String str=response.body().string();
+                Log.e("TAG",str);
+                Gson gson=new Gson();
+                final T o=gson.fromJson(str,type);
+                App.baseActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        httpCallBack.success1(o);
+                    }
+                });
+
+            }
+        });
     }
 
     @Override

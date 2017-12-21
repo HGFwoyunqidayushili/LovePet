@@ -22,7 +22,6 @@
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:id="@+id/ratingBar"
-        style="@style/foodRatingBar"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="39dp" />

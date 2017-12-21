@@ -59,7 +59,7 @@ public class BingPhoneActivity extends BaseActivity implements View.OnClickListe
     }
 
     @Override
-    protected void initData() {
+    public void initData(String str) {
 
     }
 

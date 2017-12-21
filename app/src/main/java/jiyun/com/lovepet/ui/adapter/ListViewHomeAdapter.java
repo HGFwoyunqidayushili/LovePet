@@ -1,7 +1,6 @@
 package jiyun.com.lovepet.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,7 +14,6 @@ import java.util.List;
 import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.bean.HomeBean;
 import jiyun.com.lovepet.ui.CircleImageView;
-import jiyun.com.lovepet.ui.pet.activity.utils.Wofo;
 
 /**
  * 这个世界上没有天才和大神,只有不努力的笨蛋和菜鸟   ____刘荣斌_____
@@ -58,14 +56,14 @@ public class ListViewHomeAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        if (Wofo.isWiFiActive(context)){
+//        if (Wofo.isWiFiActive(context)){
             Glide.with(context).load(descBeanList.get(position)
                     .getUserImage())
 
                     .into(viewHolder.imageHome);
-        }else if (Wofo.iswifi==false){
-                     viewHolder.imageHome.setImageResource(R.drawable.jiazai);
-        }
+//        }else if (Wofo.iswifi==false){
+//                     viewHolder.imageHome.setImageResource(R.drawable.jiazai);
+//        }
 
         viewHolder.titleHome.setText(descBeanList.get(position).getFamily());
         viewHolder.contentHome.setText(descBeanList.get(position).getAddress());

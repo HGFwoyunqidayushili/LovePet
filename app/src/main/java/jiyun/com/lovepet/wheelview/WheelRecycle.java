@@ -109,7 +109,7 @@ public class WheelRecycle {
 	}
 
 	/**
-	 * Adds view to specified cache. Creates a cache list if it is null.
+	 * Adds view to specified cache. Creates shuaixuan cache list if it is null.
 	 * 
 	 * @param view
 	 *            the view to be cached
