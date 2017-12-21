@@ -209,17 +209,21 @@ public class BaseUiListener implements IUiListener {
                     //头像
                     userInfo.setUserImage(figureurl_qq_1);
 
-                    Log.e("====: ",UserManager.getIntance().getUserInfo().getUserName() );
+                    Log.e("====: ", UserManager.getIntance().getUserInfo().getUserName());
 
 
-                    //跳转到绑定手机页面
-                    Intent intent = new Intent(App.baseActivity, BingPhoneActivity.class);
-                    App.baseActivity.startActivity(intent);
+                    long usetPhono = UserManager.getIntance().getUsetPhono();
+                    String s = String.valueOf(usetPhono);
+                    if (s != null) {
+                        //发送登录请求
+                        sendlogin(openid);
+                    } else {
+                        //跳转到绑定手机页面
+                        Intent intent = new Intent(App.baseActivity, BingPhoneActivity.class);
+                        App.baseActivity.startActivity(intent);
+                    }
 
 
-
-                    //发送登录请求
-//                    sendlogin(openid);
                 }
             }
         });
