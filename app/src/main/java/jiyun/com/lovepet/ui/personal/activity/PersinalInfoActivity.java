@@ -18,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,14 +36,10 @@ import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.ui.BaseActivity;
-import jiyun.com.lovepet.utils.AppUtils;
 import jiyun.com.lovepet.utils.CJSON;
 import jiyun.com.lovepet.utils.CustomTextLayout;
-import jiyun.com.lovepet.utils.FileUtil;
 import jiyun.com.lovepet.utils.ImageUtils;
 import jiyun.com.lovepet.utils.PhotoUtils;
-import jiyun.com.lovepet.utils.TableUtils;
-import jiyun.com.lovepet.utils.ToastUtil;
 import jiyun.com.lovepet.utils.ToastUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -69,8 +64,16 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     private RelativeLayout relativeLayout;
     private PopupWindow popupWindow;
     private View Mypup;
-    private EditText name;
+    private TextView name;
     private CircleImageView imgs;
+    private TextView phone;
+    private View sex;
+    private TextView tv_sex;
+    private View calendar;
+    private Button mStartDateButton;
+    private Button mEndDateButton;
+    private Button mDateValidButton;
+    private TextView mShowContentTextView;
 
     @Override
     protected void initView() {
@@ -80,11 +83,29 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         relativeLayout = (RelativeLayout) findViewById(R.id.header_icon);
         relativeLayout.setOnClickListener(this);
         Mypup = LayoutInflater.from(this).inflate(R.layout.popupwindow, null);
+        sex = LayoutInflater.from(this).inflate(R.layout.popupwindow_sex, null);
+        calendar = LayoutInflater.from(this).inflate(R.layout.popupwindow_calendar, null);
         TextView phonoAlbum = Mypup.findViewById(R.id.phono_Album);
         TextView takephoto = Mypup.findViewById(R.id.take_photo);
         Button btcancel = Mypup.findViewById(R.id.bt_cancel);
+        //性别
+        tv_sex = (TextView) findViewById(R.id.tv_sex);
+
+
 //名称的布局
         RelativeLayout parl = (RelativeLayout) findViewById(R.id.pa_rl);
+        RelativeLayout rl_weichat = (RelativeLayout) findViewById(R.id.rl_weichat);
+        RelativeLayout rl_qq = (RelativeLayout) findViewById(R.id.rl_qq);
+        RelativeLayout rl_sex = (RelativeLayout) findViewById(R.id.rl_sex);
+        RelativeLayout data = (RelativeLayout) findViewById(R.id.rl_data);
+        RelativeLayout rl_con_add = (RelativeLayout) findViewById(R.id.rl_con_add);
+
+        parl.setOnClickListener(this);
+        rl_weichat.setOnClickListener(this);
+        rl_qq.setOnClickListener(this);
+        rl_sex.setOnClickListener(this);
+        data.setOnClickListener(this);
+        rl_con_add.setOnClickListener(this);
 
 //        parl.setOnClickListener(this);
 
@@ -98,9 +119,11 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         //圆形头像
         imgs = (CircleImageView) findViewById(R.id.civ);
 
-        name = (EditText) findViewById(R.id.name);
+        name = (TextView) findViewById(R.id.name);
 
-
+        //手机号
+        phone = (TextView) findViewById(R.id.pa_tv_phone);
+        phone.setText(UserManager.getIntance().getUsetPhono() + "");
     }
 
     @Override
@@ -111,6 +134,8 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         String phone = intent.getStringExtra("phone");
         Glide.with(PersinalInfoActivity.this).load(userphotos).into(imgs);
         name.setText(username);
+
+
     }
 
     @Override
@@ -121,6 +146,92 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.pa_rl:
+                Intent intent = new Intent(PersinalInfoActivity.this, NameActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rl_weichat:
+                Intent intent1 = new Intent(PersinalInfoActivity.this, WeiChatActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.rl_con_add:
+                Intent intent7 = new Intent(PersinalInfoActivity.this, ConAddActivity.class);
+                startActivity(intent7);
+                break;
+            case R.id.rl_qq:
+                Intent intent2 = new Intent(PersinalInfoActivity.this, QQActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.rl_data:
+                popupWindow = new PopupWindow(calendar, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+                popupWindow.setFocusable(true);
+                ColorDrawable dw2 = new ColorDrawable(0xb0000000);
+                // 设置弹出窗体的背景
+                popupWindow.setBackgroundDrawable(dw2);
+                popupWindow.showAtLocation(calendar, Gravity.BOTTOM, 0, 0);
+
+                mStartDateButton = (Button) calendar.findViewById(R.id.start_date_btn);
+                mEndDateButton = (Button) calendar.findViewById(R.id.end_date_btn);
+                mDateValidButton = (Button) calendar.findViewById(R.id.date_valid_btn);
+                mShowContentTextView = (TextView) calendar.findViewById(R.id.show_content_tv);
+
+                mStartDateButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DateChooseWheelViewDialog startDateChooseDialog = new DateChooseWheelViewDialog(PersinalInfoActivity.this, new DateChooseWheelViewDialog.DateChooseInterface() {
+                            @Override
+                            public void getDateTime(String time, boolean longTimeChecked) {
+                                mShowContentTextView.setText(time);
+                            }
+                        });
+                        startDateChooseDialog.setDateDialogTitle("开始时间");
+                        startDateChooseDialog.showDateChooseDialog();
+                    }
+                });
+
+
+                mEndDateButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DateChooseWheelViewDialog endDateChooseDialog = new DateChooseWheelViewDialog(PersinalInfoActivity.this,
+                                new DateChooseWheelViewDialog.DateChooseInterface() {
+                                    @Override
+                                    public void getDateTime(String time, boolean longTimeChecked) {
+                                        mShowContentTextView.setText(time);
+                                    }
+                                });
+                        endDateChooseDialog.setTimePickerGone(true);
+                        endDateChooseDialog.setDateDialogTitle("结束时间");
+                        endDateChooseDialog.showDateChooseDialog();
+                    }
+                });
+
+
+                break;
+            case R.id.rl_sex:
+                popupWindow = new PopupWindow(sex, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+                TextView nan = sex.findViewById(R.id.tv_nan);
+                final String trimnan = nan.getText().toString().trim();
+                nan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tv_sex.setText(trimnan);
+                    }
+                });
+                TextView nv = sex.findViewById(R.id.tv_nv);
+                final String trimnv = nv.getText().toString().trim();
+                nv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        tv_sex.setText(trimnv);
+                    }
+                });
+                popupWindow.setFocusable(true);
+                ColorDrawable dw1 = new ColorDrawable(0xb0000000);
+                // 设置弹出窗体的背景
+                popupWindow.setBackgroundDrawable(dw1);
+                popupWindow.showAtLocation(sex, Gravity.BOTTOM, 0, 0);
+                break;
             case R.id.header_icon:
                 popupWindow = new PopupWindow(Mypup, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
                 popupWindow.setFocusable(true);
@@ -343,51 +454,6 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         });
     }
 
-
-    private void UpdateName() {
-
-        Map<String, Object> param = new HashMap<>();
-        param.put(TableUtils.UserInfo.USERID, AppUtils.userInfo.getUserId());
-        param.put(TableUtils.UserInfo.USERNAME, name.getText()
-                .toString().trim());
-        // 生成提交服务器的JSON字符串
-        String json = CJSON.toJSONMap(param);
-        // FileUtil.getToken();
-
-
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-        FormBody.Builder builder = new FormBody.Builder();
-        builder.add(CJSON.DATA, json);
-        builder.build();
-
-        final Request request = new Request.Builder().post(builder.build()).url(AppUtils.REQUESTURL
-                + "user/updateUserInfo.jhtml").build();
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String string = response.body().string();
-
-
-                if (CJSON.getRET(string)) {
-                    AppUtils.userInfo.setUserName(name.getText()
-                            .toString());
-                    FileUtil.saveUser(AppUtils.userInfo);
-                    ToastUtil.show("修改成功!");
-                    finish();
-                } else {
-                    ToastUtil.show("修改失败");
-                }
-            }
-        });
-
-
-    }
 
 }
 

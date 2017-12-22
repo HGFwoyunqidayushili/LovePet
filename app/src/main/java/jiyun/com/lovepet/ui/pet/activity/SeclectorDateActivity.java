@@ -21,6 +21,7 @@ import jiyun.com.lovepet.wheelview.OnWheelScrollListener;
 import jiyun.com.lovepet.wheelview.WheelView;
 import jiyun.com.lovepet.wheelview.adapter.NumericWheelAdapter;
 
+
 public class SeclectorDateActivity extends AppCompatActivity implements View.OnClickListener{
     private WheelView year;
     private WheelView month;
@@ -66,7 +67,7 @@ public class SeclectorDateActivity extends AppCompatActivity implements View.OnC
         year = (WheelView) view.findViewById(R.id.year);
         NumericWheelAdapter numericWheelAdapter1 = new NumericWheelAdapter(
                 this, 1975, 2099);
-        numericWheelAdapter1.setLabel("年");
+//        numericWheelAdapter1.setLabel("年");
         year.setViewAdapter(numericWheelAdapter1);
         year.setCyclic(true);// 是否可循环滑动
         year.addScrollingListener(scrollListener);
@@ -75,7 +76,7 @@ public class SeclectorDateActivity extends AppCompatActivity implements View.OnC
         month = (WheelView) view.findViewById(R.id.month);
         NumericWheelAdapter numericWheelAdapter2 = new NumericWheelAdapter(
                 this, 1, 12, "%02d");
-        numericWheelAdapter2.setLabel("月");
+//        numericWheelAdapter2.setLabel("月");
         month.setViewAdapter(numericWheelAdapter2);
         month.setCyclic(true);
         month.addScrollingListener(scrollListener);
@@ -195,7 +196,7 @@ public class SeclectorDateActivity extends AppCompatActivity implements View.OnC
     private void initDay(int arg1, int arg2) {
         NumericWheelAdapter numericWheelAdapter = new NumericWheelAdapter(this,
                 1, getDay(arg1, arg2), "%02d");
-        numericWheelAdapter.setLabel("日");
+//        numericWheelAdapter.setLabel("日");
         day.setViewAdapter(numericWheelAdapter);
     }
 

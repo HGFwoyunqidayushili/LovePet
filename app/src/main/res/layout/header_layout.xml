@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:id="@+id/intentUserchangeImage"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/img_ago"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userImages"
-            android:src="@mipmap/ic_launcher"
-            android:layout_height="wrap_content" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户名称"
-            android:textColor="#000"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/userImages"
             android:layout_toEndOf="@+id/userImages"
-            android:id="@+id/userName" />
+            android:layout_toRightOf="@+id/userImages"
+            android:text="用户名称"
+            android:textColor="#000" />
 
         <TextView
+            android:id="@+id/userId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户ID"
             android:layout_alignBottom="@+id/userImages"
-            android:layout_toRightOf="@+id/userImages"
             android:layout_toEndOf="@+id/userImages"
-            android:id="@+id/userId" />
+            android:layout_toRightOf="@+id/userImages"
+            android:text="用户ID" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_go"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:src="@drawable/img_go" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#F5F5F6"
-            android:layout_below="@+id/userImages"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/view">
+            android:layout_below="@+id/userImages"
+            android:background="#F5F5F6">
 
         </View>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-          android:id="@+id/user"
-          android:visibility="gone"
-        >
+        android:visibility="gone">
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
             android:id="@+id/img_icon"
-             android:background="@drawable/down_arrow"
-          />
-        <TextView
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
-            android:text="用户名称"
-            android:textColor="#000"
-            android:layout_alignParentTop="true"
-           android:layout_toRightOf="@+id/img_icon"
-            android:layout_toEndOf="@+id/img_icon"
-            android:id="@+id/userNames" />
+            android:background="@drawable/down_arrow" />
 
         <TextView
+            android:id="@+id/userNames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户ID"
-            android:layout_alignBottom="@+id/img_icon"
-            android:layout_toRightOf="@+id/img_icon"
+            android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/img_icon"
-            android:id="@+id/userIds" />
+            android:layout_toRightOf="@+id/img_icon"
+            android:text="用户名称"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/userIds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/img_icon"
+            android:layout_toEndOf="@+id/img_icon"
+            android:layout_toRightOf="@+id/img_icon"
+            android:text="用户ID" />
     </RelativeLayout>
 </RelativeLayout>
