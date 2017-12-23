@@ -50,10 +50,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private String Scope = "all";
     private TextView qq;
     private TextView forgetpwd;
+    private TextView back;
+    private TextView regist;
     //
 
     @Override
     protected void initView() {
+        View title = findViewById(R.id.title);
+        back = title.findViewById(R.id.tv_back);
+        regist = title.findViewById(R.id.rv_registered);
+
+        back.setOnClickListener(this);
+        regist.setOnClickListener(this);
+
         user_Phono = (EditText) findViewById(R.id.et_login_phone);
         ussr_password = (EditText) findViewById(R.id.et_login_pass);
         forgetpwd = (TextView) findViewById(R.id.tv_forget_password);
@@ -81,6 +90,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.tv_back:
+                finish();
+                break;
+            case R.id.rv_registered:
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btn_login:
                 if (checkUserNameUserPhoo()) {
                     sendUserLogin();
