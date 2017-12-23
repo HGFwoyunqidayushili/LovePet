@@ -123,7 +123,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
 
         //手机号
         phone = (TextView) findViewById(R.id.pa_tv_phone);
-        phone.setText(UserManager.getIntance().getUsetPhono() + "");
+        phone.setText("");
     }
 
     @Override
@@ -346,7 +346,12 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
                     }
                     break;
             }
+
         }
+//        if(requestCode==1){
+//              String name=data.getStringExtra("name");
+//              show(name);
+//        }
     }
 
 
@@ -453,7 +458,26 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
             }
         });
     }
-
+//         public void  show(String string,){
+//             OkHttpClient okHttpClient=new OkHttpClient();
+//              Map<String,Object> map=new HashMap<>();
+//               map.put("",string);
+//             String json=CJSON.toJSONMap(map);
+//             FormBody.Builder  body=new FormBody.Builder();
+//              body.add(CJSON.DATA,json);
+//             Request request=new Request.Builder().url(CJSON.URL_STRING+"").post(body.build()).build();
+//             okHttpClient.newCall(request).enqueue(new Callback() {
+//                 @Override
+//                 public void onFailure(Call call, IOException e) {
+//
+//                 }
+//
+//                 @Override
+//                 public void onResponse(Call call, Response response) throws IOException {
+//
+//                 }
+//             });
+//         }
 
 }
 

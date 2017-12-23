@@ -1,6 +1,5 @@
 package jiyun.com.lovepet.ui.personal.activity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
@@ -53,7 +52,6 @@ public class NameActivity extends BaseActivity {
         rvRegistered.setTextColor(Color.BLACK);
 
 
-
     }
 
     @Override
@@ -75,9 +73,9 @@ public class NameActivity extends BaseActivity {
                 break;
             case R.id.rv_registered:
                 if (etUpdataName.getText().toString() != null) {
+                    //提交到服务器
                     updateName();
                 }
-                //提交到服务器
 
                 break;
         }
@@ -120,10 +118,16 @@ public class NameActivity extends BaseActivity {
                         if (CJSON.getRET(string)) {
                             AppUtils.userInfo.setUserName(etUpdataName.getText()
                                     .toString());
+
+//                            UserInfo userInfo = new UserInfo();
+//                            userInfo.setUserName("");
+//                            userInfo.setUserName(etUpdataName.getText().toString());
+//                            UserManager.getIntance().saveUser(userInfo);
+
                             FileUtil.saveUser(AppUtils.userInfo);
                             ToastUtil.show("修改成功!");
-                            Intent intent = new Intent(NameActivity.this, PersinalInfoActivity.class);
-                            startActivity(intent);
+                          /*  Intent intent = new Intent(NameActivity.this, PersinalInfoActivity.class);
+                            startActivity(intent);*/
                             finish();
                         } else {
                             ToastUtil.show("修改失败");
