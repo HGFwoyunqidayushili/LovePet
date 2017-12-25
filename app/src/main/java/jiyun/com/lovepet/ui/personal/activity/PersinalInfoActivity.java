@@ -36,10 +36,14 @@ import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.manager.UserManager;
 import jiyun.com.lovepet.ui.BaseActivity;
+import jiyun.com.lovepet.utils.AppUtils;
 import jiyun.com.lovepet.utils.CJSON;
 import jiyun.com.lovepet.utils.CustomTextLayout;
+import jiyun.com.lovepet.utils.FileUtil;
 import jiyun.com.lovepet.utils.ImageUtils;
 import jiyun.com.lovepet.utils.PhotoUtils;
+import jiyun.com.lovepet.utils.TableUtils;
+import jiyun.com.lovepet.utils.ToastUtil;
 import jiyun.com.lovepet.utils.ToastUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -148,7 +152,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.pa_rl:
                 Intent intent = new Intent(PersinalInfoActivity.this, NameActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 10086);
                 break;
             case R.id.rl_weichat:
                 Intent intent1 = new Intent(PersinalInfoActivity.this, WeiChatActivity.class);
@@ -321,6 +325,13 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+/*
+        if (requestCode == 10086 && requestCode == 200) {
+            String name = data.getStringExtra("name");
+            this.name.setText(name);
+            updateName(name);
+        }*/
+
 
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
@@ -479,6 +490,63 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
 //             });
 //         }
 
+
+    private void updateName(final String name) {
+
+
+        Map<String, Object> param = new HashMap<>();
+        param.put(TableUtils.UserInfo.USERID, UserManager.getIntance().getUserId());
+        param.put(TableUtils.UserInfo.USERNAME, name);
+        // 生成提交服务器的JSON字符串
+        String json = CJSON.toJSONMap(param);
+        // FileUtil.getToken();
+
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add(CJSON.DATA, json);
+        builder.build();
+
+        final Request request = new Request.Builder().post(builder.build()).url(AppUtils.REQUESTURL + "user/updateUserInfo.jhtml").build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("onFailure: ", e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String string = response.body().string();
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (CJSON.getRET(string)) {
+                            AppUtils.userInfo.setUserName(name);
+
+//                            UserInfo userInfo = new UserInfo();
+//                            userInfo.setUserName("");
+//                            userInfo.setUserName(etUpdataName.getText().toString());
+//                            UserManager.getIntance().saveUser(userInfo);
+
+                            FileUtil.saveUser(AppUtils.userInfo);
+                            ToastUtil.show("修改成功!");
+                          /*  Intent intent = new Intent(NameActivity.this, PersinalInfoActivity.class);
+                            startActivity(intent);*/
+//                            finish();
+                        } else {
+                            ToastUtil.show("修改失败");
+                        }
+                    }
+                });
+
+            }
+        });
+
+
+    }
 }
 
 

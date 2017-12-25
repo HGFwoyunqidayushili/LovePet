@@ -57,6 +57,7 @@ public class NameActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
     }
 
     @Override
@@ -73,6 +74,12 @@ public class NameActivity extends BaseActivity {
                 break;
             case R.id.rv_registered:
                 if (etUpdataName.getText().toString() != null) {
+                 /*   Intent intent = new Intent();
+                    intent.putExtra("name", etUpdataName.getText().toString().trim());
+                    setResult(200, intent);
+
+                    finish();*/
+
                     //提交到服务器
                     updateName();
                 }

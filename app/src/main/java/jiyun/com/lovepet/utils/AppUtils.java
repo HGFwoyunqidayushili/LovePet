@@ -42,7 +42,10 @@ public class AppUtils {
 	// http://www.yhq1913.com
 
 	// 内网请求连接
-	public static final String BASE_URL = "http://192.168.134.26";
+//	public static final String BASE_URL = "http://192.168.134.26";
+
+	//外网
+	public static final String BASE_URL = "http://123.56.150.230:8885";
 
 	// 数据请求URL
 	public static final String REQUESTURL = BASE_URL + "/dog_family/";
