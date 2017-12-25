@@ -13,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.icu.text.StringSearch;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -139,6 +141,7 @@ public class PersinalInfoActivity extends BaseActivity implements View.OnClickLi
         Glide.with(PersinalInfoActivity.this).load(userphotos).into(imgs);
         name.setText(username);
 
+    public void initData(String s) {
 
     }
 

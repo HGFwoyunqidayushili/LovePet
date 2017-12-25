@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.entity.Imm;
 import jiyun.com.lovepet.entity.pet.PetInfo;
 import jiyun.com.lovepet.manager.UserManager;
@@ -97,13 +99,13 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         mTV_pet_Immune= (TextView) findViewById(R.id.mTV_pet_Immune);
 
         //相册
-
+        dismiss= (Button) Mypup.findViewById(R.id.bt);
         phono_Album = (TextView) Mypup.findViewById(R.id.phono_Album);
         take_photo = (TextView) Mypup.findViewById(R.id.take_photo);
-        dismiss = (Button) Mypup.findViewById(R.id.bt_cancel);
+        dismiss = (Button) Mypup.findViewById(R.id.bt_ll);
         phono_Album.setOnClickListener(this);
         take_photo.setOnClickListener(this);
-        dismiss.setOnClickListener(this);
+
 
 
         App_title = (CustomTextLayout) findViewById(R.id.App_title);
@@ -155,10 +157,22 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String string = UploadUtil.uploadFile(iconMap,
+                        final String string = UploadUtil.uploadFile(iconMap,
                                CJSON.URL_STRING
                                         + "petInfo/savePetInfo.jhtml", map);
-                        Log.e("TAG",string);
+                        App.baseActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.e("TAG",string);
+                                if(CJSON.getRET(string)){
+                                    showToast("添加宠物成功");
+                                    finish();
+                                }
+                                else {
+                                    showToast("添加宠物失败");
+                                }
+                            }
+                        });
                     }
                 }).start();
 
@@ -170,7 +184,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
         String str=mTV_pet_Immune.getText().toString().trim();
         if(str==null){
             mmune=false;
@@ -205,7 +219,8 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
 
             case R.id.pet_kind:
                 intent=new Intent(this,PetkindActivity.class);
-                startActivityForResult(intent,4);
+                 startActivityForResult(intent,7);
+
                 break;
             case R.id.pet_yes:
                 //是否绝育
@@ -246,7 +261,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                                 "Lovepet.jpg")));
                 startActivityForResult(intent1, CODE_CAMERA_REQUEST);
                 break;
-            case R.id.bt_cancel:
+            case R.id.bt_ll:
                 popupWindow.dismiss();
                 break;
 
@@ -313,10 +328,16 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                     if (data != null) {
                         // 让刚才选择裁剪得到的图片显示在界面上
                         setPicToView(data);
-
+                        Toast.makeText(AddPetActivity.this, "214142", Toast.LENGTH_SHORT).show();
                     }
                     break;
             }
+        }
+        if(requestCode==7&&resultCode==RESULT_OK){
+           typename=data.getStringExtra(TableUtils.PetInfo.PETNAME);
+            pettype=data.getStringExtra(TableUtils.PetInfo.PETTYPE);
+            mTV_pet_kind.setText(typename);
+
         }
         if(requestCode==3&&resultCode==RESULT_OK){
               String name=data.getStringExtra("name");

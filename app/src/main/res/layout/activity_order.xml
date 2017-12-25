@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_order"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jiyun.com.lovepet.ui.pet.activity.OrderActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGreyBottom"
+        android:padding="10px"
+        android:text="寄养时间" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/kaishi_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+<DatePicker
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/timepick"
+    android:visibility="gone"></DatePicker>
+            <TextView
+                android:id="@+id/intentjiyang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="寄养时间" />
+
+            <TextView
+
+                android:id="@+id/jiyangshijian_jiyang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/zongshu_yuyue"
+            android:layout_width="90px"
+            android:layout_height="90px"
+            android:background="@drawable/y_normal"
+            android:gravity="center"
+            android:text="晚" />
+
+        <LinearLayout
+            android:id="@+id/jieshu_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timepicks"
+                android:visibility="gone"></DatePicker>
+            <TextView
+                android:id="@+id/intentjiehui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="接回时间" />
+
+            <TextView
+                android:id="@+id/jiehuishijian_jiyang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGreyBottom"
+        android:padding="10px"
+        android:text="寄养的宠物（最多添加三只）" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/insert1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_yuyue1"
+            android:layout_width="50dp"
+            android:scaleType="fitXY"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name_yuyue1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NAME" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/shanchu_yuyue1"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:src="@drawable/delete_pet" />
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_yuyue2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+
+            android:id="@+id/insert2"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name_yuyue2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NAME" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/shanchu_yuyue"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:src="@drawable/delete_pet" />
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/insert3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_yuyue3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name_yuyue3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NAME" />
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/shanchu_yuyue3"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_gravity="center"
+            android:layout_margin="20px"
+            android:src="@drawable/delete_pet" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGreyLight" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="寄养服务" />
+
+        <TextView
+            android:id="@+id/tianshu_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="天数" />
+
+        <TextView
+            android:id="@+id/qian_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="价格" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGreyLight" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="洗澡" />
+
+        <TextView
+            android:id="@+id/jian1_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="—"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/tian1_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="1" />
+
+        <TextView
+            android:id="@+id/jia1_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/qian1_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="60" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1px"
+        android:background="@color/colorGreyLight" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="接送" />
+
+        <TextView
+            android:id="@+id/jian2_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="—"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/tian2_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="1" />
+
+        <TextView
+            android:id="@+id/jia2_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/qian2_yuyue"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="50" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGreyLight" />
+
+    <LinearLayout
+        android:layout_margin="20px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="合计金额" />
+        <TextView
+            android:layout_width="0px"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/heji_yuyue"
+            android:gravity="center"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="230.00元" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGreyLight" />
+
+    <LinearLayout
+        android:id="@+id/tianjia_yuyue"
+        android:layout_margin="10px"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_margin="10px"
+            android:layout_gravity="center"
+            android:src="@drawable/app_pet_normal"
+            android:layout_width="50px"
+            android:layout_height="50px" />
+        <TextView
+            android:layout_margin="10px"
+            android:layout_gravity="center"
+            android:text="添加寄养宠物"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_margin="10px"
+            android:layout_gravity="center"
+            android:src="@drawable/enter"
+            android:layout_width="30px"
+            android:layout_height="30px" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGreyBottom"
+        android:padding="10px"
+        android:text="寄养留言" />
+    <EditText
+        android:id="@+id/liuyan_yuyue"
+        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:padding="10px"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGreyBottom"
+        >
+        <TextView
+            android:text="总金额"
+            android:layout_margin="10px"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/zongqian_yuyue"
+            android:layout_margin="10px"
+            android:layout_gravity="center"
+            android:text="230.00"
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+
+            android:text="确定"
+            android:background="#e59707"
+            android:id="@+id/queding_yuyue"
+            android:gravity="center"
+            android:layout_width="200px"
+            android:layout_height="60px"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+</LinearLayout>

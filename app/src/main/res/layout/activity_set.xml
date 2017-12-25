@@ -7,187 +7,181 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="jiyun.com.lovepet.ui.pet.activity.SetActivity">
-
-
-    <jiyun.com.lovepet.utils.CustomTextLayout
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:background="@color/colorGray"
-        app:leftImgHeight="40px"
-        app:leftImgMarginleft="5px"
-        app:leftImgWight="40px"
-        app:leftImg="@mipmap/back"
-        app:centerTvColor="#000"
-        app:centerTvSize="25px"
-        app:centerTvString="设置" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes" />
-
     <LinearLayout
-        android:id="@+id/suggest"
         android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:layout_marginTop="15px"
-        android:background="@color/colorWhite">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15px"
-            android:drawableLeft="@mipmap/suggest"
-            android:drawablePadding="15px"
-            android:gravity="center_vertical"
-            android:text="产品建议" />
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/suggest"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/publish_stories" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15px"
-                android:src="@mipmap/right"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/enter" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView1"
+                android:text="产品建议"
+                android:textSize="@dimen/dp15" />
         </RelativeLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes"
-        />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:background="@color/colorWhite">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15px"
-            android:layout_gravity="center_vertical"
-            android:drawableLeft="@mipmap/new_function"
-            android:drawablePadding="15px"
-            android:gravity="center_vertical"
-            android:text="新功能介绍" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BEBEBE" />
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/New_function"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/new_function" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15px"
-                android:src="@mipmap/right"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/enter" />
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView2"
+                android:text="新功能介绍"
+                android:textSize="@dimen/dp15" />
         </RelativeLayout>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:background="@color/colorWhite">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BEBEBE" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15px"
-            android:drawableLeft="@mipmap/score"
-            android:drawablePadding="15px"
-            android:gravity="center_vertical"
-            android:text="去评分" />
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/pingfen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/score" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15px"
-                android:src="@mipmap/right"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/enter" />
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/pingfen"
+                android:text="去评分"
+                android:textSize="@dimen/dp15" />
         </RelativeLayout>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:background="@color/colorWhite">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BEBEBE" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15px"
-            android:drawableLeft="@mipmap/about"
-            android:drawablePadding="15px"
-            android:gravity="center_vertical"
-            android:text="关于欢欢" />
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/aboutHuianHuan"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/know" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15px"
-                android:src="@mipmap/right"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/enter" />
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView4"
+                android:text="关于欢欢"
+                android:textSize="@dimen/dp15" />
         </RelativeLayout>
-
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes"
-        />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:layout_marginTop="15px"
-        android:background="@color/colorWhite">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15px"
-            android:layout_gravity="center_vertical"
-            android:drawableLeft="@mipmap/picture_wifi"
-            android:drawablePadding="15px"
-            android:text="仅WiFi下显示图片" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/picture_wifi" />
+
             <ToggleButton
+                android:id="@+id/wifiPhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
@@ -199,89 +193,107 @@
                 android:layout_alignParentRight="true"
                 />
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView10"
+                android:text="仅WIFI下显示图片"
+                android:textSize="@dimen/dp15" />
         </RelativeLayout>
 
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:background="@color/colorWhite">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BEBEBE" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15px"
-            android:drawableLeft="@mipmap/loading"
-            android:layout_gravity="center_vertical"
-            android:drawablePadding="15px"
-            android:gravity="center_vertical"
-            android:text="图片缓存 文件大小" />
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/cache" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/enter" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/right"
-                android:layout_alignParentRight="true"
-                android:gravity="center_vertical"
-                android:layout_marginRight="15px"
-                android:text="0.0MB" />
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="40dp"
 
+                android:text="图片缓存文件大小"
+                android:textSize="@dimen/dp15" />
+
+            <TextView
+                android:id="@+id/huancunSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/imageView5" />
         </RelativeLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorBlackes"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:background="@color/colorWhite">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15px"
-            android:drawableLeft="@mipmap/clear"
-            android:layout_gravity="center_vertical"
-            android:drawablePadding="15px"
-            android:gravity="center_vertical"
-            android:text="清除缓存" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BEBEBE" />
+
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/rl_clear"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/clear" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15px"
-                android:src="@mipmap/right"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/enter" />
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/imageView3"
+                android:text="清除缓存"
+                android:textSize="@dimen/dp15" />
         </RelativeLayout>
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_exit"
         android:layout_width="match_parent"
-        android:layout_height="90px"
-        android:layout_marginTop="15px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:padding="10dp"
         android:text="退出登录"
-        android:layout_marginLeft="15px"
-        android:layout_marginRight="15px"
-        android:background="@drawable/bg_style"
-        android:textColor="@color/colorAccent" />
+        android:textColor="#FF0000" />
 
 </LinearLayout>

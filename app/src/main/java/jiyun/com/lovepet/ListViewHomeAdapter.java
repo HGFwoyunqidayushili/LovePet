@@ -8,10 +8,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
-import jiyun.com.lovepet.ui.HomeActivity;
 import jiyun.com.lovepet.utils.CircleImageView;
 
 /**
@@ -22,12 +22,14 @@ public class ListViewHomeAdapter extends BaseAdapter {
     private ViewHolder viewHolder;
 
 
-    private List<jiyun.com.lovepet.HomeBean.DescBean> descBeanList;
+    private List<HomeBean.DescBean> descBeanList;
     private Context context;
-    public ListViewHomeAdapter(List<jiyun.com.lovepet.HomeBean.DescBean> desc, HomeActivity context) {
-           this.descBeanList=desc;
-           this.context=context;
+
+    public ListViewHomeAdapter(List<HomeBean.DescBean> descBeanList, Context context) {
+        this.descBeanList = descBeanList;
+        this.context = context;
     }
+
 
     @Override
     public int getCount() {
@@ -48,22 +50,16 @@ public class ListViewHomeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.homedata, null);
-            viewHolder =  new ViewHolder(convertView);
+
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Glide.with(context).load(descBeanList.get(position)
-
-                .getUserImage())
-
-
-                .error(R.drawable.jiazai)
-
-                .into(viewHolder.imageHome);
+        Glide.with(context).load(descBeanList.get(position).getUserImage()).into(viewHolder.imageHome);
         viewHolder.titleHome.setText(descBeanList.get(position).getFamily());
         viewHolder.contentHome.setText(descBeanList.get(position).getAddress());
-        viewHolder.textView3.setText("￥"+descBeanList.get(position).getPrice()+"");
+        viewHolder.textView3.setText("￥" + descBeanList.get(position).getPrice() + "");
 
         return convertView;
     }

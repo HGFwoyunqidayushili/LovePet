@@ -23,6 +23,7 @@
 
         <Button
             android:layout_width="wrap_content"
+                android:id="@+id/bt"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="150dp"
@@ -30,5 +31,7 @@
             android:paddingLeft="40px"
             android:paddingRight="40px"
             android:text="申请成为寄养家庭" />
+         
+      
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

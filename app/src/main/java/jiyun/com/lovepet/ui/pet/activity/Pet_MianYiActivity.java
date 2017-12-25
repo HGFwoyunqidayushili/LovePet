@@ -184,7 +184,7 @@ public class Pet_MianYiActivity extends BaseActivity implements View.OnClickList
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
 
     }
 

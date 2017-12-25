@@ -55,7 +55,7 @@ public class WeChatActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
 
     }
 

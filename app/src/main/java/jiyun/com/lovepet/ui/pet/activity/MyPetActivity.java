@@ -74,7 +74,7 @@ public class MyPetActivity extends BaseActivity{
     }
 
     @Override
-    protected void initData() {
+    public void initData(String s) {
 
     }
 

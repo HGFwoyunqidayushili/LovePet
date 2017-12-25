@@ -91,7 +91,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    protected void initData() {
+    public  void initData(String sd) {
 
     }
 

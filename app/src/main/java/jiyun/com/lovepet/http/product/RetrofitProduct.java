@@ -22,6 +22,11 @@ public class RetrofitProduct extends RequestProduct {
     }
 
     @Override
+    public void post1(Context context, String page, Map map, Type type, HttpCallBack httpCallBack) {
+
+    }
+
+    @Override
     public void post(Context context, String page, Map map, Type type, HttpCallBack httpCallBack) {
 
     }

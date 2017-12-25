@@ -55,7 +55,7 @@ public class WheelScroller {
 		void onFinished();
 
 		/**
-		 * Justifying callback called to justify a view when scrolling is ended
+		 * Justifying callback called to justify shuaixuan view when scrolling is ended
 		 */
 		void onJustify();
 	}

@@ -34,8 +34,9 @@ public class MyOrderActivity extends BaseActivity {
         FragmentList=new ArrayList<>();
     }
 
+
     @Override
-    protected void initData() {
+    public void initData(String str) {
         TitleList.add("全部");
         TitleList.add("待确认");
         TitleList.add("寄养中");

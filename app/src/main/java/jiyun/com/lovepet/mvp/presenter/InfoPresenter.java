@@ -18,10 +18,8 @@ public class InfoPresenter implements Contract.Presenter {
      public InfoPresenter(Contract.Views views, Context context){
      model=new InfoModel();
 
-
      this.views=views;
      this.context=context;
-
      }
 
 
@@ -34,6 +32,8 @@ public class InfoPresenter implements Contract.Presenter {
     public void getPostData(String url, Map<String, Object> map) {
         model.requestNewsDatas(context,url,map,views);
     }
+
+
 
 
 }

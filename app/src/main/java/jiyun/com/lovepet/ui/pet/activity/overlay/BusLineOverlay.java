@@ -42,7 +42,7 @@ public class BusLineOverlay {
      *
      * @param context     当前activity。
      * @param amap        地图对象。
-     * @param busLineItem 公交线路。详见搜索服务模块的公交线路和公交站点包（com.amap.api.services.busline）中的类 <strong><a href="../../../../../../Search/com/amap/api/services/busline/BusStationItem.html" title="com.amap.api.services.busline中的类">BusStationItem</a></strong>。
+     * @param busLineItem 公交线路。详见搜索服务模块的公交线路和公交站点包（com.amap.api.services.busline）中的类 <strong><shuaixuan href="../../../../../../Search/com/amap/api/services/busline/BusStationItem.html" title="com.amap.api.services.busline中的类">BusStationItem</shuaixuan></strong>。
      * @since V2.1.0
      */
     public BusLineOverlay(Context context, AMap amap, BusLineItem busLineItem) {
@@ -223,7 +223,7 @@ public class BusLineOverlay {
      * 返回第index的公交站点的信息。
      *
      * @param index 第几个公交站点。
-     * @return 公交站点的信息。详见搜索服务模块的公交线路和公交站点包（com.amap.api.services.busline）中的类 <strong><a href="../../../../../../Search/com/amap/api/services/busline/BusStationItem.html" title="com.amap.api.services.busline中的类">BusStationItem</a></strong>。
+     * @return 公交站点的信息。详见搜索服务模块的公交线路和公交站点包（com.amap.api.services.busline）中的类 <strong><shuaixuan href="../../../../../../Search/com/amap/api/services/busline/BusStationItem.html" title="com.amap.api.services.busline中的类">BusStationItem</shuaixuan></strong>。
      * @since V2.1.0
      */
     public BusStationItem getBusStationItem(int index) {
