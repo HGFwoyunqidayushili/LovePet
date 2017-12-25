@@ -1,24 +1,30 @@
 package jiyun.com.lovepet.ui.pet.activity;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import java.util.Calendar;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Calendar;
 
 import jiyun.com.lovepet.R;
 import jiyun.com.lovepet.ui.YuYueSuccess;
+import jiyun.com.lovepet.ui.wallet.activity.PetInsert;
 
-public class OrderActivity extends AppCompatActivity implements View.OnClickListener,TimePicker.OnTimeChangedListener {
+public class OrderActivity extends AppCompatActivity implements View.OnClickListener, TimePicker.OnTimeChangedListener {
 
     private Calendar timeinstance;
     private int year;
@@ -47,6 +53,15 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     private TextView jiehuishijian_jiyang;
     private DatePicker timepick;
     private DatePicker timepicks;
+    private LinearLayout tianjia_yuyue;
+    private ImageView img_yuyue1;
+    private TextView name_yuyue1;
+    private ImageView img_yuyue2;
+    private TextView name_yuyue2;
+    private ImageView img_yuyue3;
+    private TextView name_yuyue3;
+    private LinearLayout insert1;
+    private ImageView shanchu_yuyue1;
 
 
     @Override
@@ -56,9 +71,20 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         initView();
         initCandler();
         initViews_DatePicker();
+        initGetIntent();
         handler = new Handler();
 
     }
+
+    private void initGetIntent() {
+        Intent intent = getIntent();
+        String image = intent.getStringExtra("image");
+        String name = intent.getStringExtra("name");
+        Glide.with(OrderActivity.this).load(image).into(img_yuyue1);
+        name_yuyue1.setText(name);
+        insert1.setVisibility(View.VISIBLE);
+    }
+
     // 对话框形式的datePicker
     private DatePickerDialog getDatePicker_Dialog() {
         DatePickerDialog dpd = new DatePickerDialog(OrderActivity.this,
@@ -73,6 +99,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 }, year, month - 1, day_month);
         return dpd;
     }
+
     // 对话框形式的datePicker
     private DatePickerDialog getDatePicker_Dialogs() {
         DatePickerDialog dpd = new DatePickerDialog(OrderActivity.this,
@@ -166,6 +193,24 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         timepick.setOnClickListener(this);
         timepicks = (DatePicker) findViewById(R.id.timepicks);
         timepicks.setOnClickListener(this);
+        tianjia_yuyue = (LinearLayout) findViewById(R.id.tianjia_yuyue);
+        tianjia_yuyue.setOnClickListener(this);
+        img_yuyue1 = (ImageView) findViewById(R.id.img_yuyue1);
+        img_yuyue1.setOnClickListener(this);
+        name_yuyue1 = (TextView) findViewById(R.id.name_yuyue1);
+        name_yuyue1.setOnClickListener(this);
+        img_yuyue2 = (ImageView) findViewById(R.id.img_yuyue2);
+        img_yuyue2.setOnClickListener(this);
+        name_yuyue2 = (TextView) findViewById(R.id.name_yuyue2);
+        name_yuyue2.setOnClickListener(this);
+        img_yuyue3 = (ImageView) findViewById(R.id.img_yuyue3);
+        img_yuyue3.setOnClickListener(this);
+        name_yuyue3 = (TextView) findViewById(R.id.name_yuyue3);
+        name_yuyue3.setOnClickListener(this);
+        insert1 = (LinearLayout) findViewById(R.id.insert1);
+        insert1.setOnClickListener(this);
+        shanchu_yuyue1 = (ImageView) findViewById(R.id.shanchu_yuyue1);
+        shanchu_yuyue1.setOnClickListener(this);
     }
 
     @Override
@@ -212,7 +257,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                         qian2_yuyue.setText(b * 50 + "");
                         if (b == 0) {
                             Toast.makeText(OrderActivity.this, "最小不能小于0!", Toast.LENGTH_SHORT).show();
-                            tian1_yuyue.setText("错误!不能小于0!");
+                            tian2_yuyue.setText("错误!不能小于0!");
                         }
                     }
                 };
@@ -222,12 +267,14 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        b--;
-                        tian2_yuyue.setText(b + "");
-                        qian2_yuyue.setText(b * 50 + "");
+                        if(a>0) {
+                            b--;
+                            tian2_yuyue.setText(b + "");
+                            qian2_yuyue.setText(b * 50 + "");
+                        }
                         if (b == 0) {
                             Toast.makeText(OrderActivity.this, "最小不能小于0!", Toast.LENGTH_SHORT).show();
-                            tian1_yuyue.setText("错误!不能小于0!");
+                            tian2_yuyue.setText("错误!不能小于0!");
                         }
                     }
                 };
@@ -242,6 +289,29 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             case R.id.jiyangshijian_jiyang:
                 break;
             case R.id.jiehuishijian_jiyang:
+                break;
+            case R.id.tianjia_yuyue:
+                startActivity(new Intent(OrderActivity.this, PetInsert.class));
+                break;
+            case R.id.shanchu_yuyue1:
+                AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
+                builder.setTitle("删除宠物");
+                builder.setMessage("您确认删除吗?");
+                builder.setNegativeButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                         insert1.setVisibility(View.GONE);
+                        Toast.makeText(OrderActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                    }
+
+                    });
+                builder.setPositiveButton("再想想", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
                 break;
         }
         String qian1 = qian1_yuyue.getText().toString().trim();

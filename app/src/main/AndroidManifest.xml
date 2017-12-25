@@ -70,7 +70,8 @@
         <activity android:name=".ui.pet.activity.SeclectorDateActivity" />
         <activity android:name=".ui.pet.activity.OrderActivity" />
         <activity android:name=".ui.pet.activity.JiYangShiXiangQing" />
-        <activity android:name=".ui.YuYueSuccess"></activity>
+        <activity android:name=".ui.YuYueSuccess" />
+        <activity android:name=".ui.wallet.activity.PetInsert"></activity>
     </application>
 
 </manifest>

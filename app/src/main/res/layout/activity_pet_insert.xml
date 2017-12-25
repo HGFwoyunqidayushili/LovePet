@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pet_insert"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="jiyun.com.lovepet.ui.wallet.activity.PetInsert">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue_wd"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="@dimen/dp30"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="添加宠物"/>
+</LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/insertListView"
+        android:layout_height="match_parent"></ListView>
+</LinearLayout>

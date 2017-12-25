@@ -74,7 +74,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private ListView listVirew;
     private HashMap<String, Object> mMap;
     private InfoPresenter infoPresenter;
-    private Map<String,Object> petMap =new HashMap<>();
+    private Map<String, Object> petMap = new HashMap<>();
     private List<jiyun.com.lovepet.HomeBean.DescBean> descBeen;
 
     @Override
@@ -85,11 +85,12 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         initView();
         initData("price asc");
         //寻找控件
-        infoPresenter = new InfoPresenter(this,this);
-       infoPresenter.getPostData(HTTPURL1,mMap);
+        infoPresenter = new InfoPresenter(this, this);
+        infoPresenter.getPostData(HTTPURL1, mMap);
         //点击跳转到各个界面\
         initListener();
     }
+
     @Override
     protected void initView() {
         CustomTextLayout customTextLayout = (CustomTextLayout) findViewById(R.id.App_title);
@@ -99,10 +100,10 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.inflateHeaderView(R.layout.header_layout);
-             //侧滑用户换头像和昵称
-             initChangedImage();
-            //用户点击登录界面
-               initLogin();
+        //侧滑用户换头像和昵称
+        initChangedImage();
+        //用户点击登录界面
+        initLogin();
         IntentOrder();
         //跳转到各个页面!
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -128,7 +129,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         break;
                     case R.id.about:
                         //需知
-                      startActivity(new Intent(HomeActivity.this, Need_to_knowActivity.class));
+                        startActivity(new Intent(HomeActivity.this, Need_to_knowActivity.class));
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.perfect_information:
@@ -165,7 +166,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         shaixuan2.setOnClickListener(new View.OnClickListener() {
 
 
-//
+            //
             @Override
             public void onClick(View view) {
                 if (shaixuan2.isChecked()) {
@@ -187,13 +188,13 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                     smallDog.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (smallDog.isChecked()){
+                            if (smallDog.isChecked()) {
                                 shaixuan2.setText("附近优先");
                                 initData("distance asc");
-                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                infoPresenter.getPostData(HTTPURL1, mMap);
                                 popupWindow2.dismiss();
                                 listVirew.setVisibility(View.VISIBLE);
-                            }else {
+                            } else {
 
                             }
                         }
@@ -201,13 +202,13 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                     inDog.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (inDog.isChecked()){
+                            if (inDog.isChecked()) {
                                 shaixuan2.setText("好评优先");
                                 initData("score desc");
-                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                infoPresenter.getPostData(HTTPURL1, mMap);
                                 popupWindow2.dismiss();
                                 listVirew.setVisibility(View.VISIBLE);
-                            }else {
+                            } else {
 
 
                             }
@@ -216,26 +217,26 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                     bigDog.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (bigDog.isChecked()){
+                            if (bigDog.isChecked()) {
                                 shaixuan2.setText("订单优先");
                                 initData("orderCount desc");
-                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                infoPresenter.getPostData(HTTPURL1, mMap);
                                 popupWindow2.dismiss();
                                 listVirew.setVisibility(View.VISIBLE);
-                            }else {
+                            } else {
                             }
                         }
                     });
                     animal_Cat.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (animal_Cat.isChecked()){
+                            if (animal_Cat.isChecked()) {
                                 shaixuan2.setText("价格从高到低");
                                 initData("price desc");
-                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                infoPresenter.getPostData(HTTPURL1, mMap);
                                 popupWindow2.dismiss();
                                 listVirew.setVisibility(View.VISIBLE);
-                            }else {
+                            } else {
 
                             }
                         }
@@ -244,13 +245,13 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         @Override
                         public void onClick(View v) {
                             if (Puppies
-                                    .isChecked()){
+                                    .isChecked()) {
                                 shaixuan2.setText("价格从低到高");
                                 initData("price asc");
-                                infoPresenter.getPostData(HTTPURL1,mMap);
+                                infoPresenter.getPostData(HTTPURL1, mMap);
                                 popupWindow2.dismiss();
                                 listVirew.setVisibility(View.VISIBLE);
-                            }else {
+                            } else {
                                 popupWindow2.dismiss();
                             }
                         }
@@ -319,7 +320,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(HomeActivity.this, PersinalInfoActivity.class);
+                Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
                 startActivity(intent);
             }
         });
@@ -335,16 +336,16 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
         linearLayout = viewById1.findViewById(R.id.ll_home);
         imagetIntentToMap = viewById1.findViewById(R.id.intentTo_Map);
-          listVirew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-              @Override
-              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                  Intent intent = new Intent(HomeActivity.this, JiYangShiXiangQing.class);
-                  intent.putExtra("image",descBeen.get(position).getUserImage());
-                  intent.putExtra("name",descBeen.get(position).getFamily());
-                  intent.putExtra("id",descBeen.get(position).getUsersId());
-                  startActivity(intent);
-              }
-          });
+        listVirew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(HomeActivity.this, JiYangShiXiangQing.class);
+                intent.putExtra("image", descBeen.get(position).getUserImage());
+                intent.putExtra("name", descBeen.get(position).getFamily());
+                intent.putExtra("id", descBeen.get(position).getUsersId());
+                startActivity(intent);
+            }
+        });
         //跳转到用户登录界面
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -388,10 +389,9 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         mMap.put("coordX", 40.116384);
         mMap.put("coordY", 116.250374);
         mMap.put("orderBy", str);
-         petMap.put("beginIndex",0);
-         petMap.put("endIndex",10);
-         petMap.put("petTypeCode","daxingquan");
-
+        petMap.put("beginIndex", 0);
+        petMap.put("endIndex", 10);
+        petMap.put("petTypeCode", "daxingquan");
 
 
     }
@@ -402,12 +402,11 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     }
 
 
-
     @Override
     public void success(jiyun.com.lovepet.HomeBean homeBean) {
         descBeen = new ArrayList<>();
         List<jiyun.com.lovepet.HomeBean.DescBean> desc = homeBean.getDesc();
-         descBeen.addAll(desc);
+        descBeen.addAll(desc);
         ListViewHomeAdapter listViewHomeAdapter = new ListViewHomeAdapter(desc, HomeActivity.this);
         listVirew.setAdapter(listViewHomeAdapter);
     }
@@ -425,7 +424,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     //返回键监听
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
             builder.setIcon(R.drawable.kawayi);
 
@@ -448,13 +447,13 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
             builder.show();
 
 
-            return  false;
-        }else {
+            return false;
+        } else {
             return super.onKeyDown(keyCode, event);
         }
     }
 
-    public  void  IntentOrder(){
+    public void IntentOrder() {
 
     }
 }

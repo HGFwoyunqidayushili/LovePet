@@ -31,7 +31,6 @@ public class ListViewHomeAdapter extends BaseAdapter {
     }
 
 
-
     @Override
     public int getCount() {
         return descBeanList.size();
@@ -52,15 +51,15 @@ public class ListViewHomeAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.homedata, null);
 
-            viewHolder =  new ViewHolder(convertView);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-                    Glide.with(context).load(descBeanList.get(position).getUserImage()).into(viewHolder.imageHome);
+        Glide.with(context).load(descBeanList.get(position).getUserImage()).into(viewHolder.imageHome);
         viewHolder.titleHome.setText(descBeanList.get(position).getFamily());
         viewHolder.contentHome.setText(descBeanList.get(position).getAddress());
-        viewHolder.textView3.setText("￥"+descBeanList.get(position).getPrice()+"");
+        viewHolder.textView3.setText("￥" + descBeanList.get(position).getPrice() + "");
 
         return convertView;
     }
