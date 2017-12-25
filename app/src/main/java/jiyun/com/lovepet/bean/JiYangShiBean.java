@@ -433,7 +433,7 @@ public class JiYangShiBean  {
             }
         }
 
-        public static class FosterOtherServicesBean {
+        public static class FosterOtherServicesBean{
             /**
              * isUse : 0
              * serviceCode : 3444cf2558df436c87ef4b3fb15c621e

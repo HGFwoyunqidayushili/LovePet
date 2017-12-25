@@ -4,6 +4,10 @@ package jiyun.com.lovepet.entity.user;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
+import jiyun.com.lovepet.entity.PetTypeVO;
+import jiyun.com.lovepet.entity.ServicePricingInfoVO;
 
 /**
  * Created by 阿三 on 2017/12/11.
@@ -44,6 +48,8 @@ public class UserInfo implements Serializable{
     private String coordY;// 纵坐�??
     private String intro;// �??�??
     private int state; // 标识是否审核通过
+    private List<PetTypeVO> petTypeVOs;
+    private List<ServicePricingInfoVO> servicePricingInfoVOs;
 
 
     public String getUserId() {
@@ -351,5 +357,13 @@ public class UserInfo implements Serializable{
                 ", intro='" + intro + '\'' +
                 ", state=" + state +
                 '}';
+    }
+
+    public void setPetTypeVOs(List<PetTypeVO> petTypeVOs) {
+        this.petTypeVOs = petTypeVOs;
+    }
+
+    public void setServicePricingInfoVOs(List<ServicePricingInfoVO> servicePricingInfoVOs) {
+        this.servicePricingInfoVOs = servicePricingInfoVOs;
     }
 }

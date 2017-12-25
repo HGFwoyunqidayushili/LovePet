@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 import jiyun.com.lovepet.R;
+import jiyun.com.lovepet.api.App;
 import jiyun.com.lovepet.entity.Imm;
 import jiyun.com.lovepet.entity.pet.PetInfo;
 import jiyun.com.lovepet.manager.UserManager;
@@ -97,13 +99,13 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
         mTV_pet_Immune= (TextView) findViewById(R.id.mTV_pet_Immune);
 
         //相册
-
+        dismiss= (Button) Mypup.findViewById(R.id.bt);
         phono_Album = (TextView) Mypup.findViewById(R.id.phono_Album);
         take_photo = (TextView) Mypup.findViewById(R.id.take_photo);
-        dismiss = (Button) Mypup.findViewById(R.id.bt_cancel);
+        dismiss = (Button) Mypup.findViewById(R.id.bt_ll);
         phono_Album.setOnClickListener(this);
         take_photo.setOnClickListener(this);
-        dismiss.setOnClickListener(this);
+
 
 
         App_title = (CustomTextLayout) findViewById(R.id.App_title);
@@ -155,9 +157,22 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String string = UploadUtil.uploadFile(iconMap,
+                        final String string = UploadUtil.uploadFile(iconMap,
                                CJSON.URL_STRING
                                         + "petInfo/savePetInfo.jhtml", map);
+                        App.baseActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.e("TAG",string);
+                                if(CJSON.getRET(string)){
+                                    showToast("添加宠物成功");
+                                    finish();
+                                }
+                                else {
+                                    showToast("添加宠物失败");
+                                }
+                            }
+                        });
                     }
                 }).start();
 
@@ -204,7 +219,8 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
 
             case R.id.pet_kind:
                 intent=new Intent(this,PetkindActivity.class);
-                startActivity(intent);
+                 startActivityForResult(intent,7);
+
                 break;
             case R.id.pet_yes:
                 //是否绝育
@@ -245,7 +261,7 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                                 "Lovepet.jpg")));
                 startActivityForResult(intent1, CODE_CAMERA_REQUEST);
                 break;
-            case R.id.bt_cancel:
+            case R.id.bt_ll:
                 popupWindow.dismiss();
                 break;
 
@@ -316,6 +332,12 @@ public class AddPetActivity extends BaseActivity implements View.OnClickListener
                     }
                     break;
             }
+        }
+        if(requestCode==7&&resultCode==RESULT_OK){
+           typename=data.getStringExtra(TableUtils.PetInfo.PETNAME);
+            pettype=data.getStringExtra(TableUtils.PetInfo.PETTYPE);
+            mTV_pet_kind.setText(typename);
+
         }
         if(requestCode==3&&resultCode==RESULT_OK){
               String name=data.getStringExtra("name");

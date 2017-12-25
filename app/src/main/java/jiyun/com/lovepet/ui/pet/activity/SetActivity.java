@@ -1,28 +1,20 @@
 package jiyun.com.lovepet.ui.pet.activity;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.util.Set;
-
 import jiyun.com.lovepet.R;
-import jiyun.com.lovepet.ui.Go_Score_Activity;
 import jiyun.com.lovepet.ui.New_function_Activity;
 import jiyun.com.lovepet.ui.huancun.GlideCacheUtil;
-import jiyun.com.lovepet.ui.pet.activity.utils.SharedPreferencesUtils;
 
 public class SetActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -53,11 +45,11 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initData() {
-        if (a==f){
-            wifiPhoto.setChecked(true);
-        }else  if (x==a){
-            wifiPhoto.setChecked(false);
-        }
+//        if (a==f){
+//            wifiPhoto.setChecked(true);
+//        }else  if (x==a){
+//            wifiPhoto.setChecked(false);
+//        }
     }
 
     private void initView() {
