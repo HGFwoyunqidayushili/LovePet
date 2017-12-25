@@ -130,7 +130,7 @@
                 android:textColor="@color/colorFont" />
 
             <TextView
-                android:id="@+id/tv_qq"
+                android:id="@+id/tv_qqr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"

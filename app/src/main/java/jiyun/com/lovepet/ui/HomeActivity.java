@@ -1,6 +1,5 @@
 package jiyun.com.lovepet.ui;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -9,10 +8,8 @@ import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,17 +21,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.zaaach.citypicker.CityPickerActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import de.hdodenhof.circleimageview.CircleImageView;
+import jiyun.com.lovepet.manager.UserManager;
 
 import jiyun.com.lovepet.HomeBean;
 import jiyun.com.lovepet.ListViewHomeAdapter;
@@ -43,14 +41,19 @@ import jiyun.com.lovepet.mvp.contract.Contract;
 import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
 import jiyun.com.lovepet.ui.foster.activity.FosterActivity;
 import jiyun.com.lovepet.ui.order.activity.MyOrderActivity;
+import jiyun.com.lovepet.ui.personal.activity.LoginActivity;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.JiYangShiXiangQing;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
 import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
+
+
 import jiyun.com.lovepet.ui.pet.activity.Need_to_knowActivity;
+
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
+
 
 public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.com.lovepet.HomeBean> {
     private static final int REQUEST_CODE_PICK_CITY = 233;
@@ -74,6 +77,8 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private ListView listVirew;
     private HashMap<String, Object> mMap;
     private InfoPresenter infoPresenter;
+
+
     private Map<String, Object> petMap = new HashMap<>();
     private List<jiyun.com.lovepet.HomeBean.DescBean> descBeen;
     public static final  int SUCCESS=0;
@@ -93,11 +98,12 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(getLayoutId());//加载布局
         initView();
-        initData("price asc");
-        //寻找控件
+
+    
+
+
         infoPresenter = new InfoPresenter(this, this);
         infoPresenter.getPostData(HTTPURL1, mMap);
 
@@ -125,6 +131,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         initChangedImage();
         //用户点击登录界面
         initLogin();
+
         IntentOrder();
         //跳转到各个页面!
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -167,10 +174,6 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
                         break;
 
-                }
-                return false;
-            }
-        });
     }
 
     private void initListener() {
@@ -180,12 +183,20 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
             @Override
             public void onClick(View view) {
                 if (shaixuan1.isChecked()) {
+
+                    infoPresenter.getPostData(HTTPURL1, mMap);
+                    Log.e("TAG", infoPresenter + "-----------------");
+                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
                     listVirew.setVisibility(View.GONE);
                     View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow2, null);
                     popupWindow = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    popupWindow.setFocusable(true);
                     popupWindow.setBackgroundDrawable(new BitmapDrawable());
                     popupWindow.showAsDropDown(linearLayout);
                 } else {
+                    infoPresenter.getPostData(HTTPURL2, mMap);
+                    Log.e("TAG", infoPresenter + "-----------------");
+
                     popupWindow.dismiss();
                 }
             }
@@ -193,18 +204,22 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         shaixuan2.setOnClickListener(new View.OnClickListener() {
 
 
+            private PopupWindow popupWindow2;
+
+
             //
             @Override
             public void onClick(View view) {
                 if (shaixuan2.isChecked()) {
-                    listVirew.setVisibility(View.GONE);
-                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow1, null);
+                    View popupview = LayoutInflater.from(HomeActivity.this).inflate(R.layout.mypopupwindow2, null);
                     popupWindow2 = new PopupWindow(popupview, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     //设置pop是否获取焦点
+                    popupWindow2.setFocusable(true);
                     popupWindow2.setBackgroundDrawable(new BitmapDrawable());
                     //http://123.56.150.230:8885/dog_family/t_user_info
 
                     popupWindow2.showAsDropDown(linearLayout);
+
                     final RadioButton smallDog = (RadioButton) popupview.findViewById(R.id.smallDog);
                     final RadioButton inDog = (RadioButton) popupview.findViewById(R.id.inDog);
                     final RadioButton bigDog = (RadioButton) popupview.findViewById(R.id.bigDog);
@@ -344,13 +359,44 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private void initChangedImage() {
         View headerView = nav_view.getHeaderView(0);
         RelativeLayout viewById = (RelativeLayout) headerView.findViewById(R.id.intentUserchangeImage);
+
+        imgphone = (CircleImageView) viewById.findViewById(R.id.userImages);
+        final TextView userName = viewById.findViewById(R.id.userName);
+        final TextView userId = viewById.findViewById(R.id.userId);
+
         viewById.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                if (UserManager.getIntance().isLogin()) {
+                    String usetPhotos = UserManager.getIntance().getUsetPhotos();
+//                    Log.e("onClick:--------- ", usetPhotos);
+                    Glide.with(HomeActivity.this).load(UserManager.getIntance().getUsetPhotos()).into(imgphone);
+                    userName.setText(UserManager.getIntance().getUserName());
+                    userId.setText(UserManager.getIntance().getUsetPhono() + "");
+
+
+                    Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
+
+                    intent.putExtra("userphotos", UserManager.getIntance().getUsetPhotos());
+                    intent.putExtra("username", UserManager.getIntance().getUserName());
+                    intent.putExtra("phone", UserManager.getIntance().getUsetPhono() + "");
+                    startActivity(intent);
+                } else {
+
+                    Intent intent1 = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent1);
+                    finish();
+                }
+
+
                 Intent intent = new Intent(HomeActivity.this, PersinalInfoActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
 
     private void initLogin() {
@@ -363,6 +409,9 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
         linearLayout = viewById1.findViewById(R.id.ll_home);
         imagetIntentToMap = viewById1.findViewById(R.id.intentTo_Map);
+
+
+
         listVirew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -375,7 +424,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         });
              
                 
-        //跳转到用户登录界面
+        //跳转到用户登录界面aste
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -411,9 +460,16 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     }
 
     @Override
-    public void initData(String str) {
+    protected void initData() {
         mMap = new HashMap<>();
         mMap.put("beginIndex", 0);
+
+        mMap.put("endIndex", 2);
+        mMap.put("coordX", 40.116384);
+        mMap.put("coordY", 116.250374);
+        mMap.put("orderBy", "distance asc");
+
+
         mMap.put("endIndex", 18);
         mMap.put("coordX", 40.116384);
         mMap.put("coordY", 116.250374);
@@ -443,7 +499,8 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     @Override
     public void failure(Throwable e) {
 
-    }
+    } 
+
 
     @Override
     public void success1(HomeBean homeBean) {
@@ -508,5 +565,5 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
             },1000);
 
         }
-    }
+     
 }

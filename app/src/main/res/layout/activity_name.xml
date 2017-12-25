@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlue"
+    android:orientation="vertical"
+    tools:context="jiyun.com.lovepet.ui.personal.activity.NameActivity">
+
+    <include
+        android:id="@+id/updatename"
+        layout="@layout/activity_toolbar" />
+
+    <EditText
+        android:id="@+id/et_updata_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:hint="请输入16字以内的名称（中文，数字，字母）" />
+</LinearLayout>
