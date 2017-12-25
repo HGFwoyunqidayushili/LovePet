@@ -31,14 +31,13 @@
         <activity android:name=".ui.wallet.activity.MyWalletActivity" />
         //个人信息
         <activity android:name=".ui.personal.activity.BingPhoneActivity" />
-        <activity android:name=".ui.personal.activity.LoginActivity">
-
-
-        </activity>
+        <activity android:name=".ui.personal.activity.LoginActivity" />
         <activity android:name=".ui.personal.activity.RegisterActivity" />
         <activity android:name=".ui.personal.activity.ToolbarActivity" />
         <activity android:name=".ui.personal.activity.WeChatActivity" />
         <activity android:name=".ui.personal.activity.PersinalInfoActivity" />
+        <activity android:name=".ui.personal.activity.QQActivity" />
+        <activity android:name=".ui.personal.activity.WeiChatActivity" />
         //我的宠物
         <activity android:name=".ui.pet.activity.MyPetActivity" />
         <activity android:name=".ui.pet.activity.MapActivity" />
@@ -68,8 +67,6 @@
         <activity android:name=".ui.pet.activity.PetWeigthActivity" />
         <activity android:name=".ui.pet.activity.SeclectorDateActivity" />
         <activity android:name=".ui.pet.activity.Pet_MianYiActivity" />
-
-
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -83,18 +80,14 @@
                 <data android:scheme="tencent1106541335" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-
         <application>
             <activity android:name="com.tencent.plus.ImageActivity" />
         </application>
-
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -106,8 +99,10 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-
-
+        <activity android:name=".ui.personal.activity.ForgotPwdActivity" />
+        <activity android:name=".ui.personal.activity.NameActivity" />
+        <activity android:name=".ui.personal.activity.DataActivity" />
+        <activity android:name=".ui.personal.activity.ConAddActivity"></activity>
     </application>
 
 </manifest>
