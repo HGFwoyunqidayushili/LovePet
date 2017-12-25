@@ -70,7 +70,12 @@
         <activity android:name=".ui.pet.activity.SeclectorDateActivity" />
         <activity android:name=".ui.pet.activity.OrderActivity" />
         <activity android:name=".ui.pet.activity.JiYangShiXiangQing" />
-        <activity android:name=".ui.YuYueSuccess"></activity>
+        <activity android:name=".ui.YuYueSuccess" />
+        <activity android:name=".ui.adapter.activity.FosterApplyActivity" />
+        <activity android:name=".ui.pet.activity.Pet_MianYiActivity" />
+        <activity android:name=".ui.foster.activity.FosterActivity">
+
+        </activity>
     </application>
 
 </manifest>

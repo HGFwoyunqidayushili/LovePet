@@ -61,4 +61,7 @@ dependencies {
     compile files('libs/Android_Map3D_SDK_V5.2.1_20170725.jar')
     compile files('libs/AMap_Search_V5.2.1_20170630.jar')
     compile 'com.zaaach:citypicker:1.1'
+    compile files('libs/universal-image-loader-1.9.3.jar')
+    compile files('libs/picasso-2.5.2.jar')
+    compile files('libs/okhttputils-1.4.0.jar')
 }

@@ -2,9 +2,10 @@ package jiyun.com.lovepet.ui;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -35,19 +36,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jiyun.com.lovepet.Demo;
 import jiyun.com.lovepet.HomeBean;
 import jiyun.com.lovepet.ListViewHomeAdapter;
 import jiyun.com.lovepet.R;
-import jiyun.com.lovepet.bean.PetBean;
-import jiyun.com.lovepet.http.OkHttpUtils;
 import jiyun.com.lovepet.mvp.contract.Contract;
 import jiyun.com.lovepet.mvp.presenter.InfoPresenter;
+import jiyun.com.lovepet.ui.foster.activity.FosterActivity;
+import jiyun.com.lovepet.ui.order.activity.MyOrderActivity;
 import jiyun.com.lovepet.ui.personal.activity.PersinalInfoActivity;
 import jiyun.com.lovepet.ui.pet.activity.JiYangShiXiangQing;
 import jiyun.com.lovepet.ui.pet.activity.MapActivity;
+import jiyun.com.lovepet.ui.pet.activity.MyPetActivity;
 import jiyun.com.lovepet.ui.pet.activity.Need_to_knowActivity;
-import jiyun.com.lovepet.ui.pet.activity.OrderActivity;
 import jiyun.com.lovepet.ui.pet.activity.SetActivity;
 import jiyun.com.lovepet.ui.wallet.activity.MyWalletActivity;
 import jiyun.com.lovepet.utils.CustomTextLayout;
@@ -76,7 +76,20 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
     private InfoPresenter infoPresenter;
     private Map<String,Object> petMap =new HashMap<>();
     private List<jiyun.com.lovepet.HomeBean.DescBean> descBeen;
+    public static final  int SUCCESS=0;
 
+    private Button bt;
+    public Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case SUCCESS:
+                    dismissLoadingDialog();
+                    break;
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,18 +98,25 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         initView();
         initData("price asc");
         //寻找控件
-        infoPresenter = new InfoPresenter(this,this);
-       infoPresenter.getPostData(HTTPURL1,mMap);
+
+
         //点击跳转到各个界面\
         initListener();
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity.this, FosterActivity.class);
+                  startActivity(intent);
+            }
+        });
+
     }
     @Override
     protected void initView() {
+        bt= (Button) findViewById(R.id.bt);
         CustomTextLayout customTextLayout = (CustomTextLayout) findViewById(R.id.App_title);
         editText = (EditText) findViewById(R.id.editText);
-
         draw = (DrawerLayout) findViewById(R.id.draw);
-
         nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.inflateHeaderView(R.layout.header_layout);
              //侧滑用户换头像和昵称
@@ -108,16 +128,22 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                Intent intent;
                 switch (item.getItemId()) {
                     case R.id.messages:
+
                         Toast.makeText(HomeActivity.this, "消息", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.pet:
+                        intent=new Intent(HomeActivity.this, MyPetActivity.class);
+                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "宠物", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.order_details:
+                        intent=new Intent(HomeActivity.this, MyOrderActivity.class);
+                        startActivity(intent);
                         Toast.makeText(HomeActivity.this, "订单", Toast.LENGTH_SHORT).show();
                         draw.closeDrawer(GravityCompat.START);
                         break;
@@ -133,7 +159,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                         break;
                     case R.id.perfect_information:
                         //跳转到设置界面
-                        Intent intent = new Intent(HomeActivity.this, SetActivity.class);
+                        intent = new Intent(HomeActivity.this, SetActivity.class);
                         startActivity(intent);
                         draw.closeDrawer(GravityCompat.START);
                         Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
@@ -342,6 +368,7 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
                   intent.putExtra("image",descBeen.get(position).getUserImage());
                   intent.putExtra("name",descBeen.get(position).getFamily());
                   intent.putExtra("id",descBeen.get(position).getUsersId());
+                  intent.putExtra("position",position);
                   startActivity(intent);
               }
           });
@@ -456,5 +483,29 @@ public class HomeActivity extends BaseActivity implements Contract.Views<jiyun.c
 
     public  void  IntentOrder(){
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        infoPresenter = new InfoPresenter(HomeActivity.this,HomeActivity.this);
+        infoPresenter.getPostData(HTTPURL1,mMap);
+        if(!isConnected()){
+            showToast("请连接网络");
+             showLoadingDialog();
+        }
+        else {
+            showLoadingDialog();
+            final Message message= handler.obtainMessage();
+              message.what=SUCCESS;
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    handler.sendMessage(message);
+                }
+            },1000);
+
+        }
     }
 }

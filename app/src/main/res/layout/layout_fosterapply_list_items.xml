@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <CheckBox
+        android:id="@+id/fosterapply_ls_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:button="@null"
+        android:drawableLeft="@drawable/bg_checkbox"
+        android:text="大型犬"
+      android:enabled="false"
+      android:textColor="#000000"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/dp18" />
+
+    <ImageView
+        android:id="@+id/fosterapply_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/img_go" />
+
+
+    <TextView
+        android:id="@+id/fosterapply_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/fosterapply_go"
+        android:text="元/天"
+        android:textSize="@dimen/dp18" />
+
+    <TextView
+        android:id="@+id/fosterapply_pet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/fosterapply_ls_cb"
+        android:text="-----"
+        android:textSize="@dimen/dp18" />
+
+</RelativeLayout>

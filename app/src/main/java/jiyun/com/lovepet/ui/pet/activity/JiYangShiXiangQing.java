@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -49,6 +50,8 @@ public class JiYangShiXiangQing extends AppCompatActivity implements CustomPopup
     private CustomPopupWindow customPopupWindow;
     private String name;
     private String userId;
+    private long phono;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,12 +123,12 @@ public class JiYangShiXiangQing extends AppCompatActivity implements CustomPopup
                 //popupWindow的条目的监听事件
             switch (v.getId()){
                 case  R.id.tv_photograph:
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"10086"));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phono+""));
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
                 case R.id.tv_photo:
-                    Intent intent1 = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:"+"10086"));
+                    Intent intent1 = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:"+phono+""));
                     intent1.putExtra("sms_body", "你好!");
                     startActivity(intent1);
                     break;
@@ -140,6 +143,9 @@ public class JiYangShiXiangQing extends AppCompatActivity implements CustomPopup
         JiYangShiBean.DescBean.FosterInfoBean fosterInfo = desc.getFosterInfo();
         String realName = fosterInfo.getRealName();
         String address = fosterInfo.getAddress();
+
+        phono=fosterInfo.getUserPhone();
+        Log.e("TAG",phono+"");
         dizhi_fellow.setText(address);
         userName.setText(realName);
         try {
@@ -147,7 +153,7 @@ public class JiYangShiXiangQing extends AppCompatActivity implements CustomPopup
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<JiYangShiBean.DescBean.FosterOtherServicesBean> fosterOtherServices = desc.getFosterOtherServices();
+
 
 
     }
@@ -164,8 +170,8 @@ public class JiYangShiXiangQing extends AppCompatActivity implements CustomPopup
         String realName = fosterInfo.getRealName();
         String address = fosterInfo.getAddress();
         dizhi_fellow.setText(address);
+        Log.e("TAG","家庭住址---------------------"+address);
         userName.setText(realName);
-        List<JiYangShiBean.DescBean.FosterServicesBean> fosterServices = desc.getFosterServices();
 
 
         List<JiYangShiBean.DescBean.FosterOtherServicesBean> fosterOtherServices = desc.getFosterOtherServices();
